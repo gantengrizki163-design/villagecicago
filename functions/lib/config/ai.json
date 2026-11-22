@@ -1,0 +1,58 @@
+{
+    "provider": "gemini",
+    "model": "gemini-4-hydrogen",
+    "dailyCallsLimit": 25,
+    "dailyTokenLimit": 12000,
+    "maxInputChars": 220,
+    "maxOutputTokens": 180,
+    "temperature": 0.65,
+    "memoryRetentionDays": 30,
+    "maxHistoryMessages": 6,
+    "maxSummaryChars": 280,
+    "blockedPatterns": [
+        "ignore previous instructions",
+        "abaikan instruksi",
+        "system prompt",
+        "developer prompt",
+        "give me money",
+        "beri saya uang",
+        "transfer uang",
+        "admin access",
+        "jailbreak",
+        "act as root"
+    ],
+    "blockedProfanity": [
+        "anjing",
+        "bangsat",
+        "kontol",
+        "memek",
+        "tolol",
+        "goblok"
+    ],
+    "faqCache": [
+        {
+            "key": "faq_stasiun_jadwal",
+            "npcId": "*",
+            "keywords": ["kereta", "stasiun", "jadwal", "berangkat", "tiket"],
+            "reply": "Kereta lokal Cicalengka berangkat berkala dari peron Stasiun Utara. Cek papan jadwal di loket stasiun untuk tujuan Rancaekek, Bandung, atau Nagreg."
+        },
+        {
+            "key": "faq_kpr_bank",
+            "npcId": "*",
+            "keywords": ["kpr", "cicilan", "kredit", "pinjaman", "bank"],
+            "reply": "Untuk KPR di Bank Priangan, pastikan skor kredit minimal 65, catatan kriminal bersih, dan siapkan uang muka minimal 20% dari harga properti."
+        },
+        {
+            "key": "faq_imb_kavling",
+            "npcId": "*",
+            "keywords": ["imb", "izin", "bangun", "kavling", "tanah"],
+            "reply": "Setelah membeli sertifikat kavling, urus izin IMB terlebih dahulu di Kantor Desa Cicalengka, lalu siapkan material semen, bata, kayu, genteng, dan cat dari Pasar Grosir."
+        },
+        {
+            "key": "faq_hukum_polsek",
+            "npcId": "*",
+            "keywords": ["polisi", "denda", "penjara", "wanted", "jaminan", "banding"],
+            "reply": "Semua urusan denda, catatan kriminal, banding, atau jaminan tahanan dapat diurus di Polsek Cicalengka sebelah barat daya Alun-Alun."
+        }
+    ]
+}

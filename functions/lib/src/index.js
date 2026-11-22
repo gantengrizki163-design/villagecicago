@@ -1,0 +1,36 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.dailyJobAttendanceCheck = exports.syncPlayerState = exports.completeTrip = exports.buyTicket = exports.payBill = exports.getBills = exports.claimCourse = exports.enrollCourse = exports.endShift = exports.startShift = exports.resignJob = exports.applyJob = exports.claimClinic = exports.visitClinic = exports.takeBath = exports.sendChat = exports.savePosition = exports.rest = exports.buyFood = exports.createCharacter = void 0;
+var createCharacter_1 = require("./handlers/createCharacter");
+Object.defineProperty(exports, "createCharacter", { enumerable: true, get: function () { return createCharacter_1.createCharacter; } });
+var buyFood_1 = require("./handlers/buyFood");
+Object.defineProperty(exports, "buyFood", { enumerable: true, get: function () { return buyFood_1.buyFood; } });
+var rest_1 = require("./handlers/rest");
+Object.defineProperty(exports, "rest", { enumerable: true, get: function () { return rest_1.rest; } });
+var savePosition_1 = require("./handlers/savePosition");
+Object.defineProperty(exports, "savePosition", { enumerable: true, get: function () { return savePosition_1.savePosition; } });
+var sendChat_1 = require("./handlers/sendChat");
+Object.defineProperty(exports, "sendChat", { enumerable: true, get: function () { return sendChat_1.sendChat; } });
+// Fase 2 Cloud Functions
+var wellness_1 = require("./handlers/wellness");
+Object.defineProperty(exports, "takeBath", { enumerable: true, get: function () { return wellness_1.takeBath; } });
+Object.defineProperty(exports, "visitClinic", { enumerable: true, get: function () { return wellness_1.visitClinic; } });
+Object.defineProperty(exports, "claimClinic", { enumerable: true, get: function () { return wellness_1.claimClinic; } });
+var jobs_1 = require("./handlers/jobs");
+Object.defineProperty(exports, "applyJob", { enumerable: true, get: function () { return jobs_1.applyJob; } });
+Object.defineProperty(exports, "resignJob", { enumerable: true, get: function () { return jobs_1.resignJob; } });
+Object.defineProperty(exports, "startShift", { enumerable: true, get: function () { return jobs_1.startShift; } });
+Object.defineProperty(exports, "endShift", { enumerable: true, get: function () { return jobs_1.endShift; } });
+var courses_1 = require("./handlers/courses");
+Object.defineProperty(exports, "enrollCourse", { enumerable: true, get: function () { return courses_1.enrollCourse; } });
+Object.defineProperty(exports, "claimCourse", { enumerable: true, get: function () { return courses_1.claimCourse; } });
+var bills_1 = require("./handlers/bills");
+Object.defineProperty(exports, "getBills", { enumerable: true, get: function () { return bills_1.getBills; } });
+Object.defineProperty(exports, "payBill", { enumerable: true, get: function () { return bills_1.payBill; } });
+var train_1 = require("./handlers/train");
+Object.defineProperty(exports, "buyTicket", { enumerable: true, get: function () { return train_1.buyTicket; } });
+Object.defineProperty(exports, "completeTrip", { enumerable: true, get: function () { return train_1.completeTrip; } });
+var syncState_1 = require("./handlers/syncState");
+Object.defineProperty(exports, "syncPlayerState", { enumerable: true, get: function () { return syncState_1.syncPlayerState; } });
+Object.defineProperty(exports, "dailyJobAttendanceCheck", { enumerable: true, get: function () { return syncState_1.dailyJobAttendanceCheck; } });
+//# sourceMappingURL=index.js.map

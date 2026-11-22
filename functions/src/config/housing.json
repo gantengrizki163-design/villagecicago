@@ -1,0 +1,131 @@
+{
+  "propertyTypes": {
+    "kos": {
+      "label": "Kamar Kos",
+      "defaultGrid": { "cols": 5, "rows": 5 },
+      "recoveryBonus": 0.1,
+      "maxRoommates": 1
+    },
+    "kontrakan": {
+      "label": "Kontrakan",
+      "defaultGrid": { "cols": 6, "rows": 6 },
+      "recoveryBonus": 0.2,
+      "maxRoommates": 2
+    },
+    "apartemen": {
+      "label": "Apartemen Kecil",
+      "defaultGrid": { "cols": 6, "rows": 6 },
+      "recoveryBonus": 0.3,
+      "maxRoommates": 2
+    },
+    "ruko": {
+      "label": "Ruko Niaga",
+      "defaultGrid": { "cols": 7, "rows": 7 },
+      "recoveryBonus": 0.25,
+      "maxRoommates": 3
+    },
+    "rumah": {
+      "label": "Rumah Tapak",
+      "defaultGrid": { "cols": 8, "rows": 8 },
+      "recoveryBonus": 0.38,
+      "maxRoommates": 3
+    },
+    "lapak_pasar": {
+      "label": "Lapak Pasar",
+      "defaultGrid": { "cols": 4, "rows": 4 },
+      "recoveryBonus": 0.0,
+      "maxRoommates": 0
+    }
+  },
+  "valuationFormula": {
+    "areaMultipliers": {
+      "stasiun": 1.12,
+      "alun_alun": 1.15,
+      "pasar": 1.08,
+      "perumahan": 1.1,
+      "kampung": 0.95
+    },
+    "stationTierBonus": {
+      "dekat": 0.12,
+      "sedang": 0.05,
+      "jauh": 0
+    },
+    "conditionMinFactor": 0.65,
+    "conditionWeight": 0.35,
+    "furnitureValueShare": 0.5,
+    "listingSupplyPenaltyPerListing": 0.015,
+    "maxSupplyPenalty": 0.12,
+    "conditionDecayPerGameDay": 1.5,
+    "repairCostPerPoint": 1200
+  },
+  "leaseSettings": {
+    "weeklyPeriodMs": 25200000,
+    "monthlyPeriodMs": 100800000,
+    "monthlyRentDiscount": 0.9,
+    "gracePeriodMs": 7200000,
+    "lateFeeRate": 0.2,
+    "maxMissedPeriodsBeforeEviction": 2,
+    "rentalIncomeTaxRate": 0.05,
+    "saleTransferTaxRate": 0.025,
+    "propertyTaxRatePerCycle": 0.004,
+    "depositDamageDeductionPerPoint": 1000
+  },
+  "negotiationSettings": {
+    "offerExpiryMs": 3600000,
+    "npcMaxDiscountBase": 0.06,
+    "npcMaxDiscountHighRep": 0.1,
+    "npcHighRepThreshold": 75,
+    "npcAutoCounterRatio": 0.85,
+    "npcCounterMidpointShare": 0.5
+  },
+  "livingAndSleep": {
+    "homeRecoveryMultiplierBase": 1.35,
+    "homeConditionBonusMax": 0.25,
+    "sleepDurationSec": 12,
+    "homeSleepEnergyRestore": 75,
+    "homeSleepHealthRestore": 18,
+    "homeSleepMoodRestore": 22,
+    "homeBathHygieneRestore": 70,
+    "homeBathMoodRestore": 18,
+    "homeBathCooldownSec": 15,
+    "utilityCostsPerCycle": {
+      "electricityBase": 15000,
+      "acSurcharge": 5000,
+      "waterBase": 9000,
+      "internetBase": 12000
+    },
+    "starterOption": {
+      "propertyId": "prop_kos_kampung_5",
+      "firstCycleRent": 15000,
+      "deposit": 0,
+      "label": "Bantuan Awal Kos Murah Babakan (1x)"
+    }
+  },
+  "homelessSettings": {
+    "energyDecayMultiplier": 1.35,
+    "hygieneDecayMultiplier": 1.45,
+    "moodDecayMultiplier": 1.4,
+    "healthRiskMultiplier": 1.35,
+    "emperanSpots": [
+      { "id": "emperan_pasar", "label": "Emperan Ruko Pasar", "x": 40, "z": 14 },
+      { "id": "emperan_stasiun", "label": "Emperan Teras Stasiun", "x": -18, "z": -48 }
+    ],
+    "emperanSleepDurationSec": 10,
+    "emperanSleepEnergyRestore": 32,
+    "emperanSleepMoodDelta": -10,
+    "emperanSleepHygieneDelta": -14,
+    "shelter": {
+      "id": "penampungan_cicalengka",
+      "label": "Penampungan Sosial Cicalengka",
+      "x": -70,
+      "z": -2,
+      "openStartHour": 19,
+      "openEndHour": 7,
+      "fee": 2000,
+      "sleepDurationSec": 10,
+      "sleepEnergyRestore": 52,
+      "sleepMoodDelta": -2,
+      "sleepHygieneDelta": -5
+    }
+  }
+}

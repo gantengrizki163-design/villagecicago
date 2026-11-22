@@ -1,0 +1,219 @@
+{
+  "jobs": [
+    {
+      "id": "kasir_minimarket",
+      "title": "Kasir Minimarket",
+      "employer": "Cicalengka Mart",
+      "zone": "cicalengka",
+      "location": { "x": 30, "z": -22, "label": "Minimarket Cicalengka" },
+      "basePay": 28000,
+      "minDurationSec": 25,
+      "energyCost": 18,
+      "hygieneCost": 8,
+      "skillGain": { "hitung": 2, "komunikasi": 1 },
+      "requiredSkills": { "komunikasi": 0, "fisik": 0, "hitung": 0, "teknis": 0 },
+      "miniGameType": "kasir",
+      "ranks": [
+        { "title": "Kasir Magang", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+        { "title": "Kasir Senior", "minTotalWorkSec": 300, "payMultiplier": 1.2 },
+        { "title": "Kepala Toko", "minTotalWorkSec": 900, "payMultiplier": 1.45 }
+      ]
+    },
+    {
+      "id": "pedagang_pasar",
+      "title": "Pedagang Pasar",
+      "employer": "Pasar Sehat Cicalengka",
+      "zone": "cicalengka",
+      "location": { "x": 46, "z": 4, "label": "Pasar Cicalengka" },
+      "basePay": 32000,
+      "minDurationSec": 28,
+      "energyCost": 22,
+      "hygieneCost": 12,
+      "skillGain": { "komunikasi": 2, "hitung": 2 },
+      "requiredSkills": { "komunikasi": 4, "fisik": 0, "hitung": 4, "teknis": 0 },
+      "miniGameType": "pedagang",
+      "ranks": [
+        { "title": "Pedagang Pemula", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+        { "title": "Juragan Kios", "minTotalWorkSec": 360, "payMultiplier": 1.25 },
+        { "title": "Bandar Pasar", "minTotalWorkSec": 1000, "payMultiplier": 1.5 }
+      ]
+    },
+    {
+      "id": "kurir",
+      "title": "Kurir Paket",
+      "employer": "Kilat Priangan Ekspres",
+      "zone": "cicalengka",
+      "location": { "x": 0, "z": -30, "label": "Pos Kurir Cicalengka" },
+      "basePay": 38000,
+      "minDurationSec": 24,
+      "energyCost": 26,
+      "hygieneCost": 15,
+      "skillGain": { "fisik": 3, "komunikasi": 1 },
+      "requiredSkills": { "komunikasi": 0, "fisik": 6, "hitung": 0, "teknis": 0 },
+      "miniGameType": "kurir",
+      "vehicleBonusHint": "Bonus +15% pakai motor, +30% dg Motor Ojol / Box Kurir",
+      "ranks": [
+        { "title": "Kurir Baru", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+        { "title": "Kurir Kilat", "minTotalWorkSec": 300, "payMultiplier": 1.25 },
+        { "title": "Koordinator Rute", "minTotalWorkSec": 900, "payMultiplier": 1.5 }
+      ]
+    },
+    {
+      "id": "ojek_online",
+      "title": "Pengemudi Ojek Online",
+      "employer": "CikOjek Priangan",
+      "zone": "cicalengka",
+      "location": { "x": 8, "z": -40, "label": "Pangkalan CikOjek Stasiun" },
+      "basePay": 46000,
+      "minDurationSec": 24,
+      "energyCost": 18,
+      "hygieneCost": 10,
+      "skillGain": { "komunikasi": 2, "fisik": 1, "teknis": 1 },
+      "requiredSkills": { "komunikasi": 2, "fisik": 2, "hitung": 0, "teknis": 0 },
+      "miniGameType": "ojek_online",
+      "vehicleReq": {
+        "requiredSim": "C",
+        "categories": ["motor"],
+        "preferredModelIds": ["motor_ojek"],
+        "preferredAccessories": ["box_kurir"],
+        "bonusLabel": "Wajib SIM C + Motor (+20% dg Motor Ojol / Box Kurir)"
+      },
+      "ranks": [
+        { "title": "Driver Ojol Baru", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+        { "title": "Mitra Jawara", "minTotalWorkSec": 300, "payMultiplier": 1.25 },
+        { "title": "Kapten Prioritas", "minTotalWorkSec": 900, "payMultiplier": 1.5 }
+      ]
+    },
+    {
+      "id": "sopir_angkot",
+      "title": "Sopir Angkot Trayek Tetap",
+      "employer": "Organda Trayek Cicalengka",
+      "zone": "cicalengka",
+      "location": { "x": 4, "z": -40, "label": "Terminal & Halte Stasiun" },
+      "basePay": 58000,
+      "minDurationSec": 28,
+      "energyCost": 18,
+      "hygieneCost": 10,
+      "skillGain": { "komunikasi": 2, "hitung": 1, "teknis": 2 },
+      "requiredSkills": { "komunikasi": 4, "fisik": 0, "hitung": 2, "teknis": 2 },
+      "miniGameType": "sopir_angkot",
+      "vehicleReq": {
+        "requiredSim": "A",
+        "categories": ["mobil"],
+        "allowedModelIds": ["mobil_angkot"],
+        "bonusLabel": "Wajib SIM A + Angkot (9 kursi, +15% kondisi prima)"
+      },
+      "ranks": [
+        { "title": "Sopir Cadangan", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+        { "title": "Sopir Trayek Tetap", "minTotalWorkSec": 360, "payMultiplier": 1.25 },
+        { "title": "Mandor Angkot", "minTotalWorkSec": 1000, "payMultiplier": 1.5 }
+      ]
+    },
+    {
+      "id": "sopir_logistik",
+      "title": "Sopir Logistik Niaga",
+      "employer": "Koperasi Distribusi Priangan",
+      "zone": "cicalengka",
+      "location": { "x": 46, "z": -16.8, "label": "Pasar Grosir Induk" },
+      "basePay": 68000,
+      "minDurationSec": 30,
+      "energyCost": 22,
+      "hygieneCost": 14,
+      "skillGain": { "fisik": 2, "hitung": 1, "teknis": 2 },
+      "requiredSkills": { "komunikasi": 0, "fisik": 6, "hitung": 4, "teknis": 4 },
+      "miniGameType": "sopir_logistik",
+      "vehicleReq": {
+        "requiredSim": "A",
+        "categories": ["mobil"],
+        "allowedModelIds": ["mobil_pickup", "mobil_truk_kecil"],
+        "preferredModelIds": ["mobil_truk_kecil"],
+        "preferredAccessories": ["rak_atap"],
+        "bonusLabel": "Wajib SIM A + Pickup/Truk Kecil (bonus kapasitas bagasi)"
+      },
+      "ranks": [
+        { "title": "Kernet Muatan", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+        { "title": "Sopir Logistik", "minTotalWorkSec": 360, "payMultiplier": 1.25 },
+        { "title": "Kepala Ekspedisi", "minTotalWorkSec": 1000, "payMultiplier": 1.5 }
+      ]
+    },
+    {
+      "id": "buruh_pabrik",
+      "title": "Buruh Pabrik Tekstil",
+      "employer": "PT Tekstil Rancaekek",
+      "zone": "rancaekek",
+      "location": { "x": 18, "z": -14, "label": "Pabrik Tekstil Rancaekek" },
+      "basePay": 44000,
+      "minDurationSec": 30,
+      "energyCost": 30,
+      "hygieneCost": 22,
+      "skillGain": { "fisik": 2, "teknis": 3 },
+      "requiredSkills": { "komunikasi": 0, "fisik": 10, "hitung": 0, "teknis": 5 },
+      "miniGameType": "pabrik",
+      "ranks": [
+        { "title": "Operator Junior", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+        { "title": "Operator Mesin", "minTotalWorkSec": 360, "payMultiplier": 1.25 },
+        { "title": "Mandor Produksi", "minTotalWorkSec": 1000, "payMultiplier": 1.5 }
+      ]
+    },
+    {
+      "id": "guru_honorer",
+      "title": "Guru Honorer",
+      "employer": "SDN Harapan Bandung",
+      "zone": "bandung",
+      "location": { "x": -18, "z": -12, "label": "Sekolah Bandung" },
+      "basePay": 48000,
+      "minDurationSec": 30,
+      "energyCost": 20,
+      "hygieneCost": 6,
+      "skillGain": { "komunikasi": 3, "hitung": 2 },
+      "requiredSkills": { "komunikasi": 12, "fisik": 0, "hitung": 10, "teknis": 0 },
+      "miniGameType": "guru",
+      "ranks": [
+        { "title": "Guru Bantu", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+        { "title": "Guru Tetap", "minTotalWorkSec": 360, "payMultiplier": 1.25 },
+        { "title": "Wakil Kepala Sekolah", "minTotalWorkSec": 1000, "payMultiplier": 1.5 }
+      ]
+    },
+    {
+      "id": "polisi",
+      "title": "Polisi Patroli Polsek",
+      "employer": "Polsek Cicalengka",
+      "zone": "cicalengka",
+      "location": { "x": -6, "z": 26, "label": "Polsek Cicalengka" },
+      "basePay": 46000,
+      "minDurationSec": 28,
+      "energyCost": 22,
+      "hygieneCost": 10,
+      "skillGain": { "fisik": 2, "komunikasi": 2, "teknis": 1 },
+      "requiredSkills": { "komunikasi": 8, "fisik": 10, "hitung": 0, "teknis": 0 },
+      "requiresCleanRecord": true,
+      "minReputation": 55,
+      "miniGameType": "polisi",
+      "ranks": [
+        { "title": "Bripda Patroli", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+        { "title": "Bripka Reskrim", "minTotalWorkSec": 360, "payMultiplier": 1.25 },
+        { "title": "Kanit Polsek", "minTotalWorkSec": 1000, "payMultiplier": 1.5 }
+      ]
+    },
+    {
+      "id": "agen_properti",
+      "title": "Agen Properti Priangan",
+      "employer": "Kantor Agen Properti Priangan",
+      "zone": "cicalengka",
+      "location": { "x": 6, "z": 26, "label": "Kantor Agen Properti Priangan" },
+      "basePay": 36000,
+      "minDurationSec": 26,
+      "energyCost": 16,
+      "hygieneCost": 6,
+      "skillGain": { "komunikasi": 3, "hitung": 2 },
+      "requiredSkills": { "komunikasi": 8, "fisik": 0, "hitung": 6, "teknis": 0 },
+      "minReputation": 50,
+      "miniGameType": "agen_properti",
+      "ranks": [
+        { "title": "Agen Muda", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+        { "title": "Konsultan Properti", "minTotalWorkSec": 360, "payMultiplier": 1.25 },
+        { "title": "Principal Broker", "minTotalWorkSec": 1000, "payMultiplier": 1.5 }
+      ]
+    }
+  ]
+}

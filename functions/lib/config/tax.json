@@ -1,0 +1,10 @@
+{
+    "incomeTaxRate": 0.03,
+    "businessSalesVatRate": 0.02,
+    "businessProfitTaxRate": 0.08,
+    "propertySaleTaxRate": 0.025,
+    "propertyRentalTaxRate": 0.05,
+    "marketplaceFeeRate": 0.04,
+    "auctionFeeRate": 0.05,
+    "minTaxableAmount": 1000
+}

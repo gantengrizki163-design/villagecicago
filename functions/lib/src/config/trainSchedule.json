@@ -1,0 +1,66 @@
+{
+    "cycleRealMs": 60000,
+    "arriveEndMs": 14000,
+    "boardingEndMs": 40000,
+    "departEndMs": 54000,
+    "stations": {
+        "cicalengka": {
+            "id": "cicalengka",
+            "name": "Stasiun Cicalengka (+689m)",
+            "platformPos": { "x": 0, "y": 1.0, "z": -42, "rotY": 0 },
+            "ticketBooth": { "x": 0, "z": -50 },
+            "accentColor": "#0284c7"
+        },
+        "rancaekek": {
+            "id": "rancaekek",
+            "name": "Stasiun Rancaekek (Kawasan Industri)",
+            "platformPos": { "x": 0, "y": 1.0, "z": -36, "rotY": 0 },
+            "ticketBooth": { "x": 0, "z": -42 },
+            "accentColor": "#d97706"
+        },
+        "bandung": {
+            "id": "bandung",
+            "name": "Stasiun Bandung (Pusat Pendidikan)",
+            "platformPos": { "x": 0, "y": 1.0, "z": -36, "rotY": 0 },
+            "ticketBooth": { "x": 0, "z": -42 },
+            "accentColor": "#2563eb"
+        },
+        "nagreg": {
+            "id": "nagreg",
+            "name": "Stasiun Nagreg (+848m Panorama)",
+            "platformPos": { "x": 0, "y": 1.0, "z": -36, "rotY": 0 },
+            "ticketBooth": { "x": 0, "z": -42 },
+            "accentColor": "#059669"
+        }
+    },
+    "destinations": [
+        {
+            "id": "cicalengka",
+            "label": "Cicalengka",
+            "subtitle": "Alun-Alun, Warung, Pasar, Kontrakan & Puskesmas",
+            "ticketPrice": 5000,
+            "travelDurationSec": 15
+        },
+        {
+            "id": "rancaekek",
+            "label": "Rancaekek",
+            "subtitle": "Zona Pabrik Tekstil & Pengiriman Industri",
+            "ticketPrice": 5000,
+            "travelDurationSec": 16
+        },
+        {
+            "id": "nagreg",
+            "label": "Nagreg",
+            "subtitle": "Dataran Tinggi Sejuk & Warung Pemandangan",
+            "ticketPrice": 6000,
+            "travelDurationSec": 20
+        },
+        {
+            "id": "bandung",
+            "label": "Bandung",
+            "subtitle": "Zona Pendidikan & Sekolah Honorer",
+            "ticketPrice": 8000,
+            "travelDurationSec": 24
+        }
+    ]
+}

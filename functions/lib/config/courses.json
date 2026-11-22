@@ -1,0 +1,46 @@
+{
+    "schoolLocation": {
+        "zone": "cicalengka",
+        "x": -48,
+        "z": 38,
+        "label": "Balai Kursus & Sekolah Cicalengka"
+    },
+    "courses": [
+        {
+            "id": "kursus_komunikasi",
+            "title": "Public Speaking & Layanan Warga",
+            "skillKey": "komunikasi",
+            "skillGain": 8,
+            "cost": 25000,
+            "durationSec": 18,
+            "description": "Melatih tata krama Sunda, negosiasi pasar, dan komunikasi mengajar."
+        },
+        {
+            "id": "kursus_hitung",
+            "title": "Akuntansi Kasir & Hitung Cepat",
+            "skillKey": "hitung",
+            "skillGain": 8,
+            "cost": 25000,
+            "durationSec": 18,
+            "description": "Meningkatkan ketelitian transaksi kasir, dagang, dan hitung dasar."
+        },
+        {
+            "id": "kursus_fisik",
+            "title": "Pelatihan Logistik & Stamina",
+            "skillKey": "fisik",
+            "skillGain": 8,
+            "cost": 20000,
+            "durationSec": 15,
+            "description": "Menambah ketahanan fisik untuk pekerjaan kurir dan operator pabrik."
+        },
+        {
+            "id": "kursus_teknis",
+            "title": "Teknik Mesin Tekstil Dasar",
+            "skillKey": "teknis",
+            "skillGain": 8,
+            "cost": 30000,
+            "durationSec": 22,
+            "description": "Syarat utama melamar posisi Buruh Pabrik Tekstil di Rancaekek."
+        }
+    ]
+}

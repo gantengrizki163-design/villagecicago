@@ -1,0 +1,92 @@
+{
+    "leasing": {
+        "minCreditScore": 60,
+        "minCompletedShifts": 2,
+        "maxActiveLeases": 2,
+        "maxWantedLevelAllowed": 0,
+        "minDownPaymentRate": 0.2,
+        "maxDownPaymentRate": 0.6,
+        "cycleMs": 25200000,
+        "gracePeriodMs": 7200000,
+        "lateFeeRate": 0.12,
+        "maxMissedBeforeRepossess": 2,
+        "tenors": [
+            { "termCycles": 4, "label": "4 Siklus (Cepat)", "interestRatePerTerm": 0.08 },
+            { "termCycles": 6, "label": "6 Siklus (Standar)", "interestRatePerTerm": 0.12 },
+            { "termCycles": 8, "label": "8 Siklus (Ringan)", "interestRatePerTerm": 0.16 }
+        ]
+    },
+    "tradeIn": {
+        "valuationRatio": 0.72,
+        "minConditionAccepted": 25,
+        "maxOdometerKmAccepted": 1500
+    },
+    "testDrive": {
+        "durationSec": 120,
+        "maxRadiusMeters": 68,
+        "fee": 0,
+        "cooldownSec": 60
+    },
+    "marketplace": {
+        "listingFee": 2500,
+        "escrowFeeRate": 0.04,
+        "titleTransferTaxRate": 0.03,
+        "minPriceRatio": 0.3,
+        "maxPriceRatio": 1.6
+    },
+    "dealers": [
+        {
+            "id": "dealer_motor_baru",
+            "name": "Dealer Motor Siliwangi Baru",
+            "kind": "motor_new",
+            "isUsed": false,
+            "category": "motor",
+            "lotId": "dealer_motor_baru",
+            "modelIds": ["motor_bebek", "motor_matic", "motor_sport", "motor_trail", "motor_listrik", "motor_ojek"]
+        },
+        {
+            "id": "lapak_motor_bekas",
+            "name": "Lapak Motor Bekas Kang Ujang",
+            "kind": "motor_used",
+            "isUsed": true,
+            "category": "motor",
+            "lotId": "lapak_motor_bekas",
+            "modelIds": ["motor_tua", "motor_bebek", "motor_matic", "motor_ojek", "motor_trail"]
+        },
+        {
+            "id": "showroom_mobil_baru",
+            "name": "Showroom Mobil Priangan Baru",
+            "kind": "mobil_new",
+            "isUsed": false,
+            "category": "mobil",
+            "lotId": "showroom_mobil_baru",
+            "modelIds": ["mobil_city", "mobil_hatchback", "mobil_sedan", "mobil_mpv", "mobil_suv", "mobil_pickup", "mobil_listrik", "mobil_angkot", "mobil_truk_kecil"]
+        },
+        {
+            "id": "showroom_mobil_bekas",
+            "name": "Showroom Mobil Bekas Jaya",
+            "kind": "mobil_used",
+            "isUsed": true,
+            "category": "mobil",
+            "lotId": "showroom_mobil_bekas",
+            "modelIds": ["mobil_city", "mobil_hatchback", "mobil_mpv", "mobil_pickup", "mobil_angkot", "mobil_sedan"]
+        }
+    ],
+    "services": {
+        "spbu": {
+            "id": "spbu_cicalengka",
+            "name": "SPBU & Stasiun Cas Cicalengka",
+            "lotId": "spbu_cicalengka"
+        },
+        "bengkel": {
+            "id": "bengkel_umum",
+            "name": "Bengkel Resmi Priangan",
+            "lotId": "bengkel_umum"
+        },
+        "samsat": {
+            "id": "kantor_desa",
+            "name": "Loket Samsat & STNK Desa",
+            "lotId": "kantor_desa"
+        }
+    }
+}

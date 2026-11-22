@@ -1,0 +1,107 @@
+{
+  "shopLocation": {
+    "x": -6,
+    "z": -22,
+    "label": "Toko Mebel Cicalengka"
+  },
+  "items": [
+    {
+      "id": "kasur_lipat",
+      "name": "Kasur Lipat Busa",
+      "category": "bed",
+      "price": 45000,
+      "gridW": 1,
+      "gridD": 2,
+      "color": "#60a5fa",
+      "sleepBonus": 0.08,
+      "moodBonus": 2,
+      "description": "Kasur praktis hemat ruang untuk tidur lebih nyaman."
+    },
+    {
+      "id": "tempat_tidur_single",
+      "name": "Tempat Tidur Single Kayu",
+      "category": "bed",
+      "price": 95000,
+      "gridW": 1,
+      "gridD": 2,
+      "color": "#93c5fd",
+      "sleepBonus": 0.16,
+      "moodBonus": 4,
+      "description": "Rangka kayu kokoh yang mempercepat pemulihan energi."
+    },
+    {
+      "id": "tempat_tidur_queen",
+      "name": "Tempat Tidur Queen Jati",
+      "category": "bed",
+      "price": 185000,
+      "gridW": 2,
+      "gridD": 2,
+      "color": "#a78bfa",
+      "sleepBonus": 0.28,
+      "moodBonus": 8,
+      "description": "Kasur empuk ukuran luas dengan kualitas tidur maksimal."
+    },
+    {
+      "id": "meja_kayu",
+      "name": "Meja Kayu Minimalis",
+      "category": "table",
+      "price": 55000,
+      "gridW": 2,
+      "gridD": 1,
+      "color": "#b45309",
+      "sleepBonus": 0,
+      "moodBonus": 3,
+      "description": "Meja serbaguna untuk makan maupun menata barang."
+    },
+    {
+      "id": "kursi_santai",
+      "name": "Kursi Santai Rotan",
+      "category": "chair",
+      "price": 35000,
+      "gridW": 1,
+      "gridD": 1,
+      "color": "#d97706",
+      "sleepBonus": 0.04,
+      "moodBonus": 6,
+      "description": "Kursi anyaman nyaman untuk melepas penat sepulang kerja."
+    },
+    {
+      "id": "tv_led",
+      "name": "TV LED 32 Inch",
+      "category": "electronics",
+      "price": 140000,
+      "gridW": 2,
+      "gridD": 1,
+      "color": "#1e293b",
+      "sleepBonus": 0,
+      "moodBonus": 12,
+      "description": "Hiburan malam di rumah yang mendongkrak mood drastis."
+    },
+    {
+      "id": "kulkas_mini",
+      "name": "Kulkas 1 Pintu",
+      "category": "appliance",
+      "price": 160000,
+      "gridW": 1,
+      "gridD": 1,
+      "color": "#e2e8f0",
+      "sleepBonus": 0,
+      "moodBonus": 5,
+      "foodBonus": 0.1,
+      "description": "Menjaga stok makanan di rumah tetap segar dan lebih mengenyangkan."
+    },
+    {
+      "id": "kompor_gas",
+      "name": "Kompor Gas 2 Tungku",
+      "category": "appliance",
+      "price": 85000,
+      "gridW": 1,
+      "gridD": 1,
+      "color": "#475569",
+      "sleepBonus": 0,
+      "moodBonus": 4,
+      "foodBonus": 0.15,
+      "description": "Memasak bekal di rumah agar lebih hemat dan sehat."
+    }
+  ]
+}

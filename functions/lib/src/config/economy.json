@@ -1,0 +1,19 @@
+{
+    "hygieneDecayPerHour": 14,
+    "moodDecayPerHour": 8,
+    "moodFastDecayPerHour": 16,
+    "healthDecayCriticalPerHour": 18,
+    "healthDecayDirtyPerHour": 8,
+    "bathLocation": { "x": 14, "z": 6, "label": "Kamar Mandi Umum Alun-Alun" },
+    "bathCooldownSec": 20,
+    "bathHygieneRestore": 55,
+    "bathMoodRestore": 12,
+    "billCycleMs": 25200000,
+    "billGraceMs": 7200000,
+    "rentBillAmount": 75000,
+    "rentLatePenalty": 18750,
+    "electricityBillAmount": 25000,
+    "electricityLatePenalty": 5000,
+    "maxMissedShiftsBeforeFiring": 3,
+    "expectedShiftIntervalMs": 28800000
+}

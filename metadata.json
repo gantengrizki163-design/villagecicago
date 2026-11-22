@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Remix Remix Remix Remix Remix Remix Remix Remix Cicalengka Life 3D",
+  "description": "Game web multiplayer simulasi kehidupan nyata 3D berlatar Kecamatan Cicalengka, Kabupaten Bandung, Jawa Barat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

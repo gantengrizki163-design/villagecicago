@@ -1,0 +1,90 @@
+{
+    "kantorDesaLocation": { "x": -30, "z": 4, "label": "Kantor Desa Cicalengka (Izin Usaha)" },
+    "pasarGrosirLocation": { "x": 46, "z": -22, "label": "Pasar Grosir Cicalengka" },
+    "balaiLelangLocation": { "x": 6, "z": -22, "label": "Balai Lelang & Marketplace" },
+    "maxBusinessesPerPlayer": 3,
+    "businessTypes": {
+        "lapak_pasar": {
+            "label": "Lapak Pasar",
+            "allowedPropertyTypes": ["lapak_pasar"],
+            "permitFee": 25000,
+            "minCapital": 40000,
+            "basePopularity": 30,
+            "npcMaxCustomersPerGameDay": 14,
+            "maxStockSlots": 10,
+            "maxEmployees": 1
+        },
+        "warung": {
+            "label": "Warung Makan",
+            "allowedPropertyTypes": ["ruko", "lapak_pasar"],
+            "permitFee": 45000,
+            "minCapital": 80000,
+            "basePopularity": 35,
+            "npcMaxCustomersPerGameDay": 22,
+            "maxStockSlots": 16,
+            "maxEmployees": 2
+        },
+        "kelontong": {
+            "label": "Toko Kelontong",
+            "allowedPropertyTypes": ["ruko"],
+            "permitFee": 60000,
+            "minCapital": 120000,
+            "basePopularity": 38,
+            "npcMaxCustomersPerGameDay": 26,
+            "maxStockSlots": 20,
+            "maxEmployees": 2
+        },
+        "jasa": {
+            "label": "Usaha Jasa (Laundry/Fotokopi)",
+            "allowedPropertyTypes": ["ruko"],
+            "permitFee": 55000,
+            "minCapital": 100000,
+            "basePopularity": 34,
+            "npcMaxCustomersPerGameDay": 18,
+            "maxStockSlots": 12,
+            "maxEmployees": 2
+        },
+        "bengkel": {
+            "label": "Bengkel Motor & Servis",
+            "allowedPropertyTypes": ["ruko"],
+            "permitFee": 75000,
+            "minCapital": 160000,
+            "basePopularity": 32,
+            "npcMaxCustomersPerGameDay": 16,
+            "maxStockSlots": 14,
+            "maxEmployees": 3
+        },
+        "dealer": {
+            "label": "Dealer & Showroom Kendaraan",
+            "allowedPropertyTypes": ["ruko"],
+            "permitFee": 120000,
+            "minCapital": 350000,
+            "basePopularity": 36,
+            "npcMaxCustomersPerGameDay": 10,
+            "maxStockSlots": 10,
+            "maxEmployees": 3
+        }
+    },
+    "npcEmployee": {
+        "wagePerGameDay": 18000,
+        "productivityBonus": 0.25,
+        "maxUnpaidCyclesBeforeResign": 2
+    },
+    "playerEmployee": {
+        "minWagePerShift": 20000,
+        "maxWagePerShift": 75000,
+        "productivityBonus": 0.45
+    },
+    "promotions": [
+        { "id": "spanduk", "label": "Spanduk Jalan", "cost": 15000, "popularityBoost": 12, "durationMs": 7200000 },
+        { "id": "brosur", "label": "Sebar Brosur Pasar", "cost": 35000, "popularityBoost": 22, "durationMs": 14400000 },
+        { "id": "radio_lokal", "label": "Iklan Radio Priangan", "cost": 75000, "popularityBoost": 35, "durationMs": 25200000 }
+    ],
+    "withdrawal": {
+        "minWithdrawAmount": 10000,
+        "maxWithdrawPerTx": 500000,
+        "minReserveCash": 10000
+    },
+    "sellBusinessCapitalRefundRatio": 0.65,
+    "maxNpcSettleGameDaysPerCall": 7
+}

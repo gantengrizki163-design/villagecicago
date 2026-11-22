@@ -1,0 +1,55 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "players": {
+      ".read": "auth != null",
+      ".indexOn": ["zone", "updatedAt"],
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['uid', 'name', 'gender', 'skinColor', 'hairColor', 'shirtColor', 'pantsColor', 'x', 'y', 'z', 'rotY', 'anim', 'zone', 'updatedAt']) && newData.child('uid').val() === $uid && newData.child('name').isString() && newData.child('name').val().length >= 3 && newData.child('name').val().length <= 20 && (newData.child('gender').val() === 'laki-laki' || newData.child('gender').val() === 'perempuan') && newData.child('skinColor').isString() && newData.child('skinColor').val().length === 7 && newData.child('hairColor').isString() && newData.child('hairColor').val().length === 7 && newData.child('shirtColor').isString() && newData.child('shirtColor').val().length === 7 && newData.child('pantsColor').isString() && newData.child('pantsColor').val().length === 7 && newData.child('x').isNumber() && newData.child('x').val() >= -85 && newData.child('x').val() <= 85 && newData.child('y').isNumber() && newData.child('y').val() >= -5 && newData.child('y').val() <= 45 && newData.child('z').isNumber() && newData.child('z').val() >= -85 && newData.child('z').val() <= 85 && newData.child('rotY').isNumber() && newData.child('rotY').val() >= -7 && newData.child('rotY').val() <= 7 && (newData.child('anim').val() === 'idle' || newData.child('anim').val() === 'walk' || newData.child('anim').val() === 'driving' || newData.child('anim').val() === 'passenger') && newData.child('zone').isString() && newData.child('zone').val().length >= 3 && newData.child('zone').val().length <= 28 && (!newData.hasChild('currentZone') || (newData.child('currentZone').isString() && newData.child('currentZone').val().length <= 20)) && (!newData.hasChild('vehicleId') || (newData.child('vehicleId').isString() && newData.child('vehicleId').val().length >= 1 && newData.child('vehicleId').val().length <= 64)) && (!newData.hasChild('seatIndex') || (newData.child('seatIndex').isNumber() && newData.child('seatIndex').val() >= 0 && newData.child('seatIndex').val() <= 12)) && newData.child('updatedAt').isNumber() && newData.child('updatedAt').val() <= (now + 5000) && (!data.exists() || newData.child('currentZone').val() !== data.child('currentZone').val() || ((newData.child('anim').val() === 'driving' || newData.child('anim').val() === 'passenger' || data.child('anim').val() === 'driving' || data.child('anim').val() === 'passenger') ? ((newData.child('x').val() - data.child('x').val()) <= 32 && (data.child('x').val() - newData.child('x').val()) <= 32 && (newData.child('z').val() - data.child('z').val()) <= 32 && (data.child('z').val() - newData.child('z').val()) <= 32 && (newData.child('y').val() - data.child('y').val()) <= 8 && (data.child('y').val() - newData.child('y').val()) <= 8) : ((newData.child('x').val() - data.child('x').val()) <= 6 && (data.child('x').val() - newData.child('x').val()) <= 6 && (newData.child('z').val() - data.child('z').val()) <= 6 && (data.child('z').val() - newData.child('z').val()) <= 6 && (newData.child('y').val() - data.child('y').val()) <= 5 && (data.child('y').val() - newData.child('y').val()) <= 5)))"
+      }
+    },
+
+    "presence": {
+      ".read": "auth != null",
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['online', 'lastSeen']) && newData.child('online').isBoolean() && newData.child('lastSeen').isNumber() && (!newData.hasChild('inTrain') || newData.child('inTrain').isBoolean()) && (!newData.hasChild('currentZone') || (newData.child('currentZone').isString() && newData.child('currentZone').val().length <= 20)) && (!newData.hasChild('inHomeId') || (newData.child('inHomeId').isString() && newData.child('inHomeId').val().length <= 64)) && (!newData.hasChild('inBusinessId') || (newData.child('inBusinessId').isString() && newData.child('inBusinessId').val().length <= 64)) && (!newData.hasChild('isHomeless') || newData.child('isHomeless').isBoolean()) && (!newData.hasChild('wantedLevel') || (newData.child('wantedLevel').isNumber() && newData.child('wantedLevel').val() >= 0 && newData.child('wantedLevel').val() <= 100)) && (!newData.hasChild('isJailed') || newData.child('isJailed').isBoolean()) && (!newData.hasChild('onPatrol') || newData.child('onPatrol').isBoolean()) && (!newData.hasChild('isAgent') || newData.child('isAgent').isBoolean()) && (!newData.hasChild('drivingVehicleId') || (newData.child('drivingVehicleId').isString() && newData.child('drivingVehicleId').val().length <= 64)) && (!newData.hasChild('passengerVehicleId') || (newData.child('passengerVehicleId').isString() && newData.child('passengerVehicleId').val().length <= 64)) && (!newData.hasChild('sessionId') || (newData.child('sessionId').isString() && newData.child('sessionId').val().length <= 64))"
+      }
+    },
+
+    "vehicles": {
+      ".read": "auth != null",
+      ".indexOn": ["zone", "driverId", "ownerId", "updatedAt"],
+      "$vehicleId": {
+        ".write": "auth != null && data.exists() && data.child('driverId').val() === auth.uid",
+        ".validate": "newData.hasChildren(['vehicleId', 'ownerId', 'modelId', 'category', 'color', 'plateNumber', 'zone', 'x', 'y', 'z', 'rotY', 'vx', 'vz', 'speed', 'steerAngle', 'headlights', 'hornAtMs', 'maxSpeed', 'seatCapacity', 'updatedAt']) && newData.child('vehicleId').val() === $vehicleId && newData.child('ownerId').val() === data.child('ownerId').val() && newData.child('driverId').val() === data.child('driverId').val() && newData.child('modelId').val() === data.child('modelId').val() && newData.child('category').val() === data.child('category').val() && newData.child('plateNumber').val() === data.child('plateNumber').val() && newData.child('maxSpeed').val() === data.child('maxSpeed').val() && newData.child('seatCapacity').val() === data.child('seatCapacity').val() && (newData.child('category').val() === 'motor' || newData.child('category').val() === 'mobil') && newData.child('color').isString() && newData.child('color').val().length === 7 && newData.child('zone').val() === data.child('zone').val() && (!newData.hasChild('driverName') || (newData.child('driverName').isString() && newData.child('driverName').val().length <= 32)) && (!newData.hasChild('isTestDrive') || newData.child('isTestDrive').isBoolean()) && (!newData.hasChild('turnSignal') || (newData.child('turnSignal').val() === 'off' || newData.child('turnSignal').val() === 'left' || newData.child('turnSignal').val() === 'right' || newData.child('turnSignal').val() === 'hazard')) && (!newData.hasChild('sessionId') || (newData.child('sessionId').isString() && newData.child('sessionId').val().length <= 64 && (!data.child('sessionId').exists() || newData.child('sessionId').val() === data.child('sessionId').val()))) && newData.child('x').isNumber() && newData.child('x').val() >= -85 && newData.child('x').val() <= 85 && newData.child('y').isNumber() && newData.child('y').val() >= -5 && newData.child('y').val() <= 45 && newData.child('z').isNumber() && newData.child('z').val() >= -85 && newData.child('z').val() <= 85 && newData.child('rotY').isNumber() && newData.child('rotY').val() >= -7 && newData.child('rotY').val() <= 7 && newData.child('maxSpeed').isNumber() && newData.child('maxSpeed').val() >= 5 && newData.child('maxSpeed').val() <= 30 && newData.child('speed').isNumber() && newData.child('speed').val() >= 0 && newData.child('speed').val() <= (data.child('maxSpeed').val() + 1.5) && newData.child('vx').isNumber() && newData.child('vx').val() >= -(data.child('maxSpeed').val() + 1.5) && newData.child('vx').val() <= (data.child('maxSpeed').val() + 1.5) && newData.child('vz').isNumber() && newData.child('vz').val() >= -(data.child('maxSpeed').val() + 1.5) && newData.child('vz').val() <= (data.child('maxSpeed').val() + 1.5) && newData.child('steerAngle').isNumber() && newData.child('steerAngle').val() >= -1.5 && newData.child('steerAngle').val() <= 1.5 && newData.child('headlights').isBoolean() && newData.child('hornAtMs').isNumber() && newData.child('hornAtMs').val() >= 0 && newData.child('hornAtMs').val() <= (now + 5000) && newData.child('updatedAt').isNumber() && newData.child('updatedAt').val() >= data.child('updatedAt').val() && newData.child('updatedAt').val() <= (now + 5000) && (newData.child('x').val() - data.child('x').val()) <= 32 && (data.child('x').val() - newData.child('x').val()) <= 32 && (newData.child('z').val() - data.child('z').val()) <= 32 && (data.child('z').val() - newData.child('z').val()) <= 32 && (newData.child('y').val() - data.child('y').val()) <= 8 && (data.child('y').val() - newData.child('y').val()) <= 8 && (newData.child('x').val() - data.child('x').val()) <= (data.child('maxSpeed').val() * 1.35 * ((newData.child('updatedAt').val() - data.child('updatedAt').val()) / 1000.0) + 4.5) && (data.child('x').val() - newData.child('x').val()) <= (data.child('maxSpeed').val() * 1.35 * ((newData.child('updatedAt').val() - data.child('updatedAt').val()) / 1000.0) + 4.5) && (newData.child('z').val() - data.child('z').val()) <= (data.child('maxSpeed').val() * 1.35 * ((newData.child('updatedAt').val() - data.child('updatedAt').val()) / 1000.0) + 4.5) && (data.child('z').val() - newData.child('z').val()) <= (data.child('maxSpeed').val() * 1.35 * ((newData.child('updatedAt').val() - data.child('updatedAt').val()) / 1000.0) + 4.5)",
+        "passengers": {
+          "$puid": {
+            ".write": "auth != null && auth.uid === $puid && !newData.exists()"
+          }
+        }
+      }
+    },
+
+    "localChat": {
+      ".read": "auth != null",
+      ".write": false,
+      ".indexOn": ["createdAt"]
+    },
+
+    "crimeScenes": {
+      ".read": "auth != null",
+      ".write": false,
+      ".indexOn": ["expiresAt", "zone"]
+    },
+
+    "lawAlerts": {
+      ".read": "auth != null",
+      ".write": false,
+      ".indexOn": ["expiresAt", "targetUid"]
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "hygieneDecayPerHour": 14,
+  "moodDecayPerHour": 8,
+  "moodFastDecayPerHour": 16,
+  "healthDecayCriticalPerHour": 18,
+  "healthDecayDirtyPerHour": 8,
+  "bathLocation": { "x": 32, "z": 10, "label": "Kamar Mandi Umum Alun-Alun" },
+  "bathCooldownSec": 20,
+  "bathHygieneRestore": 55,
+  "bathMoodRestore": 12,
+  "billCycleMs": 25200000,
+  "billGraceMs": 7200000,
+  "rentBillAmount": 75000,
+  "rentLatePenalty": 18750,
+  "electricityBillAmount": 25000,
+  "electricityLatePenalty": 5000,
+  "maxMissedShiftsBeforeFiring": 3,
+  "expectedShiftIntervalMs": 28800000,
+  "homelessEnergyDecayMultiplier": 1.35,
+  "homelessHygieneDecayMultiplier": 1.45,
+  "homelessMoodDecayMultiplier": 1.4,
+  "homelessHealthDecayMultiplier": 1.35,
+  "homeRestRecoveryMultiplier": 1.35,
+  "rentalTaxRate": 0.05,
+  "propertyTaxRatePerCycle": 0.004,
+  "saleTransferTaxRate": 0.025,
+  "roommateMaxCount": 3,
+  "tokoMebelLocation": { "x": -6, "z": -22, "label": "Toko Mebel Cicalengka" },
+  "penampunganLocation": { "x": -70, "z": -2, "label": "Penampungan Sosial Cicalengka" },
+  "inflationRatePerGameDay": 0.0015,
+  "minInflationIndex": 0.85,
+  "maxInflationIndex": 1.45,
+  "supplyDemandSensitivity": 0.25,
+  "minSupplyDemandFactor": 0.75,
+  "maxSupplyDemandFactor": 1.35,
+  "marketStatsCooldownMs": 300000,
+  "minPriceRatioVsMarket": 0.5,
+  "maxPriceRatioVsMarket": 1.8,
+  "maxMarketListingsPerPlayer": 10,
+  "maxAuctionsPerPlayer": 3,
+  "auctionMinDurationMs": 900000,
+  "auctionMaxDurationMs": 86400000,
+  "auctionAntiSnipeWindowMs": 60000,
+  "auctionAntiSnipeExtendMs": 90000,
+  "auctionMaxExtensions": 5,
+  "events": [
+    {
+      "id": "normal",
+      "label": "Ekonomi Stabil",
+      "durationMs": 7200000,
+      "categoryMultipliers": {}
+    },
+    {
+      "id": "panen_raya",
+      "label": "Panen Raya Priangan",
+      "durationMs": 7200000,
+      "categoryMultipliers": { "raw": 0.82 }
+    },
+    {
+      "id": "kemarau_pangan",
+      "label": "Kemarau Panjang (Bahan Pokok Naik)",
+      "durationMs": 7200000,
+      "categoryMultipliers": { "raw": 1.28, "product": 1.15 }
+    },
+    {
+      "id": "hari_raya",
+      "label": "Pekan Festival Hari Raya",
+      "durationMs": 7200000,
+      "categoryMultipliers": { "product": 1.25, "food": 1.2 }
+    },
+    {
+      "id": "diskon_grosir",
+      "label": "Pekan Diskon Grosir Cicalengka",
+      "durationMs": 7200000,
+      "categoryMultipliers": { "raw": 0.85, "product": 0.9 }
+    }
+  ]
+}

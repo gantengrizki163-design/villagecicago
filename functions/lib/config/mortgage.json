@@ -1,0 +1,21 @@
+{
+    "minCreditScore": 65,
+    "minReputation": 45,
+    "maxWantedLevelAllowed": 0,
+    "minCompletedShifts": 3,
+    "maxActiveMortgages": 2,
+    "minDownPaymentRate": 0.2,
+    "maxDownPaymentRate": 0.6,
+    "cycleMs": 25200000,
+    "gracePeriodMs": 7200000,
+    "lateFeeRate": 0.12,
+    "maxMissedBeforeForeclosure": 2,
+    "earlyRepayPenaltyRate": 0.03,
+    "foreclosureAuctionDurationMs": 3600000,
+    "foreclosureStartPriceRatio": 0.75,
+    "tenors": [
+        { "termCycles": 8, "label": "8 Siklus (Pendek)", "interestRatePerTerm": 0.08 },
+        { "termCycles": 12, "label": "12 Siklus (Menengah)", "interestRatePerTerm": 0.12 },
+        { "termCycles": 16, "label": "16 Siklus (Panjang)", "interestRatePerTerm": 0.16 }
+    ]
+}

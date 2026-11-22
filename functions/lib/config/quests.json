@@ -1,0 +1,126 @@
+{
+    "maxActiveQuestsPerPlayer": 3,
+    "maxCompletedQuestsPerDay": 4,
+    "maxDailyQuestMoneyCap": 75000,
+    "quests": [
+        {
+            "id": "q_antar_kopi_polsek",
+            "npcId": "npc_teh_neng",
+            "npcName": "Teh Neng (Warung)",
+            "title": "Antar Kopi Hangat ke Polsek",
+            "description": "Bantu Teh Neng mengantarkan pesanan kopi untuk petugas jaga di Polsek Cicalengka.",
+            "type": "deliver",
+            "objective": {
+                "targetNpcId": "npc_polwan_rina",
+                "targetPos": { "x": -6, "z": 26 },
+                "targetLabel": "Polsek Cicalengka",
+                "requiredCount": 1
+            },
+            "rewardMoney": 14000,
+            "rewardRep": 3,
+            "rewardItemId": null,
+            "rewardItemQty": 0,
+            "dailyLimit": 1,
+            "active": true
+        },
+        {
+            "id": "q_cari_berkas_desa",
+            "npcId": "npc_pak_tatang",
+            "npcName": "Pak Kades Tatang",
+            "title": "Cari Berkas IMB Tercecer",
+            "description": "Berkas permohonan IMB warga tertinggal di sekitar Alun-Alun atau Stasiun. Ambil dan kembalikan ke Kantor Desa.",
+            "type": "find",
+            "objective": {
+                "searchPos": { "x": 0, "z": -2 },
+                "returnPos": { "x": -30, "z": 4 },
+                "targetLabel": "Alun-Alun Utara -> Kantor Desa",
+                "requiredCount": 1
+            },
+            "rewardMoney": 18000,
+            "rewardRep": 4,
+            "rewardItemId": null,
+            "rewardItemQty": 0,
+            "dailyLimit": 1,
+            "active": true
+        },
+        {
+            "id": "q_bantu_stok_grosir",
+            "npcId": "npc_mang_oding",
+            "npcName": "Mang Oding (Grosir)",
+            "title": "Bantu Distribusi Paket Sembako",
+            "description": "Beli atau bawa minimal 1 item bahan pokok/bisnis untuk menjaga pasokan pasar Cicalengka.",
+            "type": "help_business",
+            "objective": {
+                "targetPos": { "x": 46, "z": -22 },
+                "targetLabel": "Pasar Grosir Cicalengka",
+                "requiredCount": 1
+            },
+            "rewardMoney": 16000,
+            "rewardRep": 3,
+            "rewardItemId": "beras_5kg",
+            "rewardItemQty": 1,
+            "dailyLimit": 1,
+            "active": true
+        },
+        {
+            "id": "q_lapor_keamanan",
+            "npcId": "npc_bripka_asep",
+            "npcName": "Bripka Asep",
+            "title": "Patroli Siskamling & Lapor Keamanan",
+            "description": "Periksa titik rawan Stasiun/Pasar atau laporkan aktivitas mencurigakan ke Polsek Cicalengka.",
+            "type": "report_crime",
+            "objective": {
+                "checkpointPos": { "x": 0, "z": -46 },
+                "returnPos": { "x": -6, "z": 26 },
+                "targetLabel": "Stasiun Cicalengka -> Polsek",
+                "requiredCount": 1
+            },
+            "rewardMoney": 20000,
+            "rewardRep": 5,
+            "rewardItemId": null,
+            "rewardItemQty": 0,
+            "dailyLimit": 1,
+            "active": true
+        },
+        {
+            "id": "q_gotong_royong_kampung",
+            "npcId": "npc_bu_kokom",
+            "npcName": "Bu Kokom (Ibu RT)",
+            "title": "Gotong Royong Bersih Alun-Alun",
+            "description": "Ikut kerja bakti membersihkan area Alun-Alun Cicalengka demi kenyamanan seluruh warga.",
+            "type": "gotong_royong",
+            "objective": {
+                "targetPos": { "x": 0, "z": 6 },
+                "targetLabel": "Alun-Alun Cicalengka",
+                "energyCost": 12,
+                "requiredCount": 1
+            },
+            "rewardMoney": 15000,
+            "rewardRep": 5,
+            "rewardItemId": null,
+            "rewardItemQty": 0,
+            "dailyLimit": 1,
+            "active": true
+        },
+        {
+            "id": "q_survei_kavling",
+            "npcId": "npc_kang_ujang",
+            "npcName": "Kang Ujang (Agen)",
+            "title": "Survei Kavling Perumahan Baru",
+            "description": "Kunjungi lokasi kavling pengembangan di Perumahan Timur dan laporkan kondisinya ke Kantor Agen.",
+            "type": "find",
+            "objective": {
+                "searchPos": { "x": 30, "z": 74 },
+                "returnPos": { "x": 6, "z": 26 },
+                "targetLabel": "Kavling Perumahan -> Kantor Agen",
+                "requiredCount": 1
+            },
+            "rewardMoney": 17000,
+            "rewardRep": 3,
+            "rewardItemId": null,
+            "rewardItemQty": 0,
+            "dailyLimit": 1,
+            "active": true
+        }
+    ]
+}

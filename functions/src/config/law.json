@@ -1,0 +1,162 @@
+{
+  "policeStation": {
+    "x": -6,
+    "z": 26,
+    "label": "Polsek Cicalengka & Tahanan",
+    "jailCenter": { "x": -6, "y": 1, "z": 30 },
+    "jailRadius": 5.5,
+    "releaseSpawn": { "x": -6, "y": 1, "z": 21 }
+  },
+  "crimeCooldownSec": 180,
+  "wantedMax": 100,
+  "wantedDecayPerGameHour": 2.5,
+  "witnessRadiusMeters": 18,
+  "cctvZones": [
+    { "id": "cctv_stasiun", "label": "CCTV Stasiun Cicalengka", "x": -14, "z": -44, "radius": 18, "catchBonus": 0.25 },
+    { "id": "cctv_bank", "label": "CCTV Bank Priangan", "x": -40, "z": -6, "radius": 16, "catchBonus": 0.3 },
+    { "id": "cctv_alun", "label": "CCTV Alun-Alun", "x": -13, "z": -6, "radius": 20, "catchBonus": 0.2 },
+    { "id": "cctv_pasar", "label": "CCTV Pasar Cicalengka", "x": 36, "z": -6, "radius": 18, "catchBonus": 0.22 }
+  ],
+  "nightHours": { "start": 21, "end": 5, "catchRiskDelta": -0.14 },
+  "bailMultiplierOfFine": 1.6,
+  "appealFee": 15000,
+  "appealSuccessChance": 0.45,
+  "appealSentenceReductionRatio": 0.35,
+  "prisonWorkCooldownSec": 45,
+  "prisonWorkSentenceCutSec": 90,
+  "prisonWorkPay": 3500,
+  "policeEnforcement": {
+    "arrestRadiusMeters": 8,
+    "arrestCooldownPerTargetSec": 300,
+    "evidenceMaxAgeMs": 3600000,
+    "arrestReward": 18000,
+    "fineCommissionRate": 0.2,
+    "abuseMaxStrikes": 3,
+    "abusePenaltyFine": 35000,
+    "abuseSuspensionMs": 1800000
+  },
+  "securityModules": {
+    "lock": { "id": "lock", "label": "Gembok Baja Ganda", "installCost": 35000, "monthlyCost": 4000, "protection": 18 },
+    "alarm": { "id": "alarm", "label": "Alarm Anti-Maling", "installCost": 75000, "monthlyCost": 10000, "protection": 25 },
+    "cctv": { "id": "cctv", "label": "Kamera CCTV Pintar", "installCost": 120000, "monthlyCost": 16000, "protection": 30 },
+    "guard": { "id": "guard", "label": "Satpam Hansip NPC", "installCost": 60000, "monthlyCost": 35000, "protection": 35 }
+  },
+  "insurancePlans": {
+    "basic": {
+      "id": "basic",
+      "label": "Asuransi Properti Dasar",
+      "coverageAmount": 350000,
+      "premiumPerCycle": 12000,
+      "deductibleRate": 0.15,
+      "maxClaimsPerCycle": 2
+    },
+    "premium": {
+      "id": "premium",
+      "label": "Asuransi Properti & Niaga Plus",
+      "coverageAmount": 900000,
+      "premiumPerCycle": 28000,
+      "deductibleRate": 0.08,
+      "maxClaimsPerCycle": 4
+    }
+  },
+  "offenses": [
+    {
+      "id": "buat_keributan",
+      "title": "Membuat Keributan Umum",
+      "severity": 1,
+      "targetTypes": ["public"],
+      "baseCatchChance": 0.4,
+      "rewardMin": 0,
+      "rewardMax": 0,
+      "fine": 15000,
+      "sentenceSec": 300,
+      "wantedDelta": 10,
+      "reputationDelta": -4,
+      "creditScoreDelta": -2
+    },
+    {
+      "id": "lintas_rel",
+      "title": "Menerobos / Berjalan di Rel Kereta",
+      "severity": 1,
+      "targetTypes": ["public"],
+      "baseCatchChance": 0.55,
+      "rewardMin": 0,
+      "rewardMax": 0,
+      "fine": 20000,
+      "sentenceSec": 300,
+      "wantedDelta": 12,
+      "reputationDelta": -3,
+      "creditScoreDelta": -1
+    },
+    {
+      "id": "copet_warga",
+      "title": "Pencopetan Warga / Pedagang",
+      "severity": 2,
+      "targetTypes": ["npc", "player"],
+      "baseCatchChance": 0.34,
+      "rewardMin": 8000,
+      "rewardMax": 15000,
+      "fine": 28000,
+      "sentenceSec": 480,
+      "wantedDelta": 18,
+      "reputationDelta": -8,
+      "creditScoreDelta": -4
+    },
+    {
+      "id": "merusak_properti",
+      "title": "Vandalisme & Merusak Properti",
+      "severity": 2,
+      "targetTypes": ["property"],
+      "baseCatchChance": 0.38,
+      "rewardMin": 3000,
+      "rewardMax": 9000,
+      "fine": 35000,
+      "sentenceSec": 600,
+      "wantedDelta": 22,
+      "reputationDelta": -10,
+      "creditScoreDelta": -5
+    },
+    {
+      "id": "curi_toko",
+      "title": "Pencurian Stok Toko / Warung",
+      "severity": 3,
+      "targetTypes": ["business"],
+      "baseCatchChance": 0.42,
+      "rewardMin": 12000,
+      "rewardMax": 24000,
+      "fine": 55000,
+      "sentenceSec": 900,
+      "wantedDelta": 30,
+      "reputationDelta": -14,
+      "creditScoreDelta": -8
+    },
+    {
+      "id": "penipuan_dagang",
+      "title": "Penipuan Transaksi / Trading",
+      "severity": 3,
+      "targetTypes": ["player", "business"],
+      "baseCatchChance": 0.48,
+      "rewardMin": 10000,
+      "rewardMax": 20000,
+      "fine": 65000,
+      "sentenceSec": 1200,
+      "wantedDelta": 32,
+      "reputationDelta": -18,
+      "creditScoreDelta": -12
+    },
+    {
+      "id": "bolos_pajak",
+      "title": "Penggelapan / Pembolosan Pajak",
+      "severity": 3,
+      "targetTypes": ["public"],
+      "baseCatchChance": 0.65,
+      "rewardMin": 0,
+      "rewardMax": 0,
+      "fine": 75000,
+      "sentenceSec": 1500,
+      "wantedDelta": 35,
+      "reputationDelta": -15,
+      "creditScoreDelta": -15
+    }
+  ]
+}

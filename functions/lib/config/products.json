@@ -1,0 +1,357 @@
+{
+    "suppliers": [
+        {
+            "id": "sup_sembako",
+            "name": "Grosir Sembako Mang Oding",
+            "areaTag": "pasar",
+            "specialty": "raw",
+            "discountRate": 0.0
+        },
+        {
+            "id": "sup_bengkel",
+            "name": "Agen Sparepart Pak Asep",
+            "areaTag": "stasiun",
+            "specialty": "bengkel",
+            "discountRate": 0.03
+        },
+        {
+            "id": "sup_jasa",
+            "name": "Distributor Usaha Teh Rina",
+            "areaTag": "alun_alun",
+            "specialty": "jasa",
+            "discountRate": 0.02
+        },
+        {
+            "id": "sup_bangunan",
+            "name": "TB Sumber Karya (Bahan Bangunan)",
+            "areaTag": "pasar",
+            "specialty": "material",
+            "discountRate": 0.03
+        }
+    ],
+    "products": [
+        {
+            "id": "beras_5kg",
+            "name": "Beras Cianjur (Paket Masak)",
+            "category": "raw",
+            "supplierId": "sup_sembako",
+            "wholesalePrice": 9000,
+            "basePrice": 11500,
+            "suggestedRetail": 13000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["kelontong", "lapak_pasar", "warung"]
+        },
+        {
+            "id": "telur_ayam",
+            "name": "Telur Ayam Kampung (Porsi)",
+            "category": "raw",
+            "supplierId": "sup_sembako",
+            "wholesalePrice": 3500,
+            "basePrice": 4500,
+            "suggestedRetail": 5500,
+            "shelfLifeGameDays": 3,
+            "businessTypes": ["kelontong", "lapak_pasar", "warung"]
+        },
+        {
+            "id": "mie_instan_mentah",
+            "name": "Mie Kering & Bumbu",
+            "category": "raw",
+            "supplierId": "sup_sembako",
+            "wholesalePrice": 3200,
+            "basePrice": 4200,
+            "suggestedRetail": 5500,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["kelontong", "warung"]
+        },
+        {
+            "id": "daun_teh_gula",
+            "name": "Paket Teh & Gula",
+            "category": "raw",
+            "supplierId": "sup_sembako",
+            "wholesalePrice": 2000,
+            "basePrice": 2800,
+            "suggestedRetail": 4000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["kelontong", "warung"]
+        },
+        {
+            "id": "sayur_segar",
+            "name": "Sayuran Pasar Segar",
+            "category": "raw",
+            "supplierId": "sup_sembako",
+            "wholesalePrice": 4000,
+            "basePrice": 5500,
+            "suggestedRetail": 7000,
+            "shelfLifeGameDays": 2,
+            "businessTypes": ["lapak_pasar", "warung"]
+        },
+        {
+            "id": "minyak_goreng",
+            "name": "Minyak Goreng 1L",
+            "category": "product",
+            "supplierId": "sup_sembako",
+            "wholesalePrice": 15000,
+            "basePrice": 18500,
+            "suggestedRetail": 21500,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["kelontong", "lapak_pasar"]
+        },
+        {
+            "id": "kopi_sachet_pak",
+            "name": "Kopi Tubruk Priangan (Pak)",
+            "category": "product",
+            "supplierId": "sup_sembako",
+            "wholesalePrice": 11000,
+            "basePrice": 14000,
+            "suggestedRetail": 17000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["kelontong", "warung"]
+        },
+        {
+            "id": "deterjen_cair",
+            "name": "Deterjen & Pewangi Laundry",
+            "category": "raw",
+            "supplierId": "sup_jasa",
+            "wholesalePrice": 4500,
+            "basePrice": 6000,
+            "suggestedRetail": 8000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["jasa", "kelontong"]
+        },
+        {
+            "id": "kertas_rim",
+            "name": "Paket Kertas HVS & Tinta",
+            "category": "raw",
+            "supplierId": "sup_jasa",
+            "wholesalePrice": 6000,
+            "basePrice": 8000,
+            "suggestedRetail": 11000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["jasa"]
+        },
+        {
+            "id": "oli_mesin",
+            "name": "Oli Mesin 0.8L",
+            "category": "raw",
+            "supplierId": "sup_bengkel",
+            "wholesalePrice": 32000,
+            "basePrice": 40000,
+            "suggestedRetail": 48000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["bengkel"]
+        },
+        {
+            "id": "busi_kampas",
+            "name": "Paket Busi & Kampas Rem",
+            "category": "raw",
+            "supplierId": "sup_bengkel",
+            "wholesalePrice": 22000,
+            "basePrice": 28000,
+            "suggestedRetail": 36000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["bengkel"]
+        },
+        {
+            "id": "paket_nasi_telur",
+            "name": "Nasi Telur Dadar Warung",
+            "category": "product",
+            "supplierId": null,
+            "wholesalePrice": 12500,
+            "basePrice": 14500,
+            "suggestedRetail": 17000,
+            "shelfLifeGameDays": 1,
+            "hungerRestore": 48,
+            "thirstRestore": 0,
+            "energyRestore": 12,
+            "businessTypes": ["warung", "lapak_pasar"]
+        },
+        {
+            "id": "paket_mie_telur",
+            "name": "Mie Rebus Spesial Telur",
+            "category": "product",
+            "supplierId": null,
+            "wholesalePrice": 11500,
+            "basePrice": 13500,
+            "suggestedRetail": 16000,
+            "shelfLifeGameDays": 1,
+            "hungerRestore": 45,
+            "thirstRestore": 10,
+            "energyRestore": 10,
+            "businessTypes": ["warung"]
+        },
+        {
+            "id": "es_teh_jumbo",
+            "name": "Es Teh Manis Segar",
+            "category": "product",
+            "supplierId": null,
+            "wholesalePrice": 4200,
+            "basePrice": 5500,
+            "suggestedRetail": 7000,
+            "shelfLifeGameDays": 1,
+            "hungerRestore": 0,
+            "thirstRestore": 40,
+            "energyRestore": 6,
+            "businessTypes": ["warung", "lapak_pasar"]
+        },
+        {
+            "id": "paket_laundry_kilo",
+            "name": "Jasa Cuci Setrika 3Kg",
+            "category": "product",
+            "supplierId": null,
+            "wholesalePrice": 12000,
+            "basePrice": 15000,
+            "suggestedRetail": 18000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["jasa"]
+        },
+        {
+            "id": "paket_fotokopi_jilid",
+            "name": "Jasa Fotokopi & Jilid",
+            "category": "product",
+            "supplierId": null,
+            "wholesalePrice": 12500,
+            "basePrice": 16000,
+            "suggestedRetail": 20000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["jasa"]
+        },
+        {
+            "id": "servis_ringan_motor",
+            "name": "Servis Tune-Up & Ganti Oli",
+            "category": "product",
+            "supplierId": null,
+            "wholesalePrice": 62000,
+            "basePrice": 74000,
+            "suggestedRetail": 88000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["bengkel"]
+        },
+        {
+            "id": "semen_sak",
+            "name": "Semen Portland (Sak)",
+            "category": "material",
+            "supplierId": "sup_bangunan",
+            "wholesalePrice": 18000,
+            "basePrice": 22000,
+            "suggestedRetail": 26000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["kelontong"]
+        },
+        {
+            "id": "bata_merah",
+            "name": "Bata Merah (Paket 100 Bh)",
+            "category": "material",
+            "supplierId": "sup_bangunan",
+            "wholesalePrice": 14000,
+            "basePrice": 17500,
+            "suggestedRetail": 21000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["kelontong"]
+        },
+        {
+            "id": "kayu_balok",
+            "name": "Kayu Kaso & Balok (Ikat)",
+            "category": "material",
+            "supplierId": "sup_bangunan",
+            "wholesalePrice": 24000,
+            "basePrice": 29000,
+            "suggestedRetail": 34000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["kelontong"]
+        },
+        {
+            "id": "genteng_pak",
+            "name": "Genteng Jatiwangi (Paket)",
+            "category": "material",
+            "supplierId": "sup_bangunan",
+            "wholesalePrice": 20000,
+            "basePrice": 25000,
+            "suggestedRetail": 30000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["kelontong"]
+        },
+        {
+            "id": "cat_tembok",
+            "name": "Cat Tembok 5Kg",
+            "category": "material",
+            "supplierId": "sup_bangunan",
+            "wholesalePrice": 16000,
+            "basePrice": 20000,
+            "suggestedRetail": 24000,
+            "shelfLifeGameDays": 0,
+            "businessTypes": ["kelontong"]
+        }
+    ],
+    "recipes": [
+        {
+            "id": "rec_nasi_telur",
+            "name": "Masak Nasi Telur Dadar",
+            "outputItemId": "paket_nasi_telur",
+            "outputQty": 2,
+            "businessTypes": ["warung", "lapak_pasar"],
+            "inputs": [
+                { "itemId": "beras_5kg", "qty": 1 },
+                { "itemId": "telur_ayam", "qty": 2 },
+                { "itemId": "sayur_segar", "qty": 1 }
+            ],
+            "energyCost": 6
+        },
+        {
+            "id": "rec_mie_telur",
+            "name": "Masak Mie Rebus Telur",
+            "outputItemId": "paket_mie_telur",
+            "outputQty": 2,
+            "businessTypes": ["warung"],
+            "inputs": [
+                { "itemId": "mie_instan_mentah", "qty": 2 },
+                { "itemId": "telur_ayam", "qty": 2 }
+            ],
+            "energyCost": 5
+        },
+        {
+            "id": "rec_es_teh",
+            "name": "Racik Es Teh Manis",
+            "outputItemId": "es_teh_jumbo",
+            "outputQty": 3,
+            "businessTypes": ["warung", "lapak_pasar"],
+            "inputs": [
+                { "itemId": "daun_teh_gula", "qty": 2 }
+            ],
+            "energyCost": 3
+        },
+        {
+            "id": "rec_laundry",
+            "name": "Proses Cuci & Setrika",
+            "outputItemId": "paket_laundry_kilo",
+            "outputQty": 2,
+            "businessTypes": ["jasa"],
+            "inputs": [
+                { "itemId": "deterjen_cair", "qty": 2 }
+            ],
+            "energyCost": 7
+        },
+        {
+            "id": "rec_fotokopi",
+            "name": "Cetak & Jilid Dokumen",
+            "outputItemId": "paket_fotokopi_jilid",
+            "outputQty": 2,
+            "businessTypes": ["jasa"],
+            "inputs": [
+                { "itemId": "kertas_rim", "qty": 1 }
+            ],
+            "energyCost": 5
+        },
+        {
+            "id": "rec_servis_motor",
+            "name": "Servis Tune-Up Motor",
+            "outputItemId": "servis_ringan_motor",
+            "outputQty": 1,
+            "businessTypes": ["bengkel"],
+            "inputs": [
+                { "itemId": "oli_mesin", "qty": 1 },
+                { "itemId": "busi_kampas", "qty": 1 }
+            ],
+            "energyCost": 10
+        }
+    ]
+}

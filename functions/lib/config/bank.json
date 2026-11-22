@@ -1,0 +1,38 @@
+{
+    "bankLocation": { "x": -46, "z": 2, "label": "Bank Priangan Cicalengka" },
+    "atmLocations": [
+        { "id": "atm_stasiun", "x": -8, "z": -48, "label": "ATM Stasiun Cicalengka" },
+        { "id": "atm_alun", "x": 26, "z": 10, "label": "ATM Alun-Alun Cicalengka" },
+        { "id": "atm_pasar", "x": 50, "z": 12, "label": "ATM Pasar Cicalengka" }
+    ],
+    "openAccountFee": 5000,
+    "savingsDailyInterestRate": 0.004,
+    "maxInterestDaysPerClaim": 30,
+    "transferAdminFeeFlat": 1500,
+    "transferAdminFeeRate": 0.005,
+    "transferAdminFeeMax": 15000,
+    "minTransferAmount": 5000,
+    "maxDepositPerTx": 5000000,
+    "creditScore": {
+        "defaultScore": 65,
+        "min": 0,
+        "max": 100,
+        "onTimePaymentDelta": 3,
+        "latePaymentDelta": -10,
+        "loanRepaidBonus": 6,
+        "defaultPenalty": -25
+    },
+    "loan": {
+        "minCreditScore": 55,
+        "minCompletedShifts": 2,
+        "maxActiveLoans": 1,
+        "cycleMs": 25200000,
+        "gracePeriodMs": 7200000,
+        "lateFeeRate": 0.15,
+        "tiers": [
+            { "minScore": 55, "maxScore": 69, "maxPrincipal": 150000, "flatInterestRate": 0.12, "termCycles": 4 },
+            { "minScore": 70, "maxScore": 84, "maxPrincipal": 400000, "flatInterestRate": 0.09, "termCycles": 5 },
+            { "minScore": 85, "maxScore": 100, "maxPrincipal": 900000, "flatInterestRate": 0.06, "termCycles": 6 }
+        ]
+    }
+}

@@ -1,0 +1,80 @@
+{
+    "clinics": [
+        {
+            "id": "puskesmas",
+            "name": "Puskesmas Cicalengka",
+            "tier": "murah",
+            "zone": "cicalengka",
+            "location": { "x": -48, "z": -22 },
+            "description": "Layanan kesehatan terjangkau milik pemerintah, perlu antre sebentar.",
+            "packages": [
+                {
+                    "id": "pemeriksaan",
+                    "name": "Pemeriksaan Umum",
+                    "cost": 10000,
+                    "healthRestore": 25,
+                    "moodRestore": 5,
+                    "waitSec": 12
+                },
+                {
+                    "id": "obat",
+                    "name": "Tebus Obat & Vitamin",
+                    "cost": 18000,
+                    "healthRestore": 50,
+                    "moodRestore": 10,
+                    "waitSec": 20
+                },
+                {
+                    "id": "rawat_inap",
+                    "name": "Rawat Inap Puskesmas",
+                    "cost": 35000,
+                    "healthRestore": 90,
+                    "moodRestore": 15,
+                    "waitSec": 35
+                }
+            ]
+        },
+        {
+            "id": "klinik_swasta",
+            "name": "Klinik Medika Cicalengka",
+            "tier": "cepat",
+            "zone": "cicalengka",
+            "location": { "x": -46, "z": 26 },
+            "description": "Klinik swasta modern dengan penanganan instan tanpa antre panjang.",
+            "packages": [
+                {
+                    "id": "pemeriksaan",
+                    "name": "Konsultasi Dokter Cepat",
+                    "cost": 28000,
+                    "healthRestore": 30,
+                    "moodRestore": 8,
+                    "waitSec": 3
+                },
+                {
+                    "id": "obat",
+                    "name": "Paket Obat Paten",
+                    "cost": 45000,
+                    "healthRestore": 60,
+                    "moodRestore": 14,
+                    "waitSec": 5
+                },
+                {
+                    "id": "rawat_inap",
+                    "name": "VIP Recovery Care",
+                    "cost": 75000,
+                    "healthRestore": 100,
+                    "moodRestore": 25,
+                    "waitSec": 8
+                }
+            ]
+        }
+    ],
+    "faintPenalty": {
+        "hospitalPos": { "x": -48, "y": 1.0, "z": -16, "rotY": 0 },
+        "maxFee": 25000,
+        "reviveHealth": 35,
+        "reviveEnergy": 30,
+        "reviveHunger": 25,
+        "reviveThirst": 25
+    }
+}

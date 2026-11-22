@@ -1,0 +1,162 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createBusiness = exports.getAccountSummary = exports.repayLoan = exports.applyLoan = exports.transfer = exports.withdraw = exports.deposit = exports.openAccount = exports.placeFurniture = exports.buyFurniture = exports.setHomePreferences = exports.eatFromInventory = exports.batheAtHome = exports.sleepAtHome = exports.buyProperty = exports.leaveRoommate = exports.acceptRoommate = exports.inviteRoommate = exports.terminateLease = exports.createLease = exports.respondOffer = exports.makeOffer = exports.setViewingSchedule = exports.grantGuestAccess = exports.repairProperty = exports.leaveProperty = exports.enterProperty = exports.requestViewing = exports.cancelListing = exports.createListing = exports.dailyJobAttendanceCheck = exports.syncPlayerState = exports.completeTrip = exports.buyTicket = exports.payBill = exports.getBills = exports.claimCourse = exports.enrollCourse = exports.endShift = exports.startShift = exports.resignJob = exports.applyJob = exports.claimClinic = exports.visitClinic = exports.takeBath = exports.sendChat = exports.savePosition = exports.rest = exports.buyFood = exports.createCharacter = void 0;
+exports.buyLand = exports.foreclose = exports.earlyRepay = exports.payMortgage = exports.applyMortgage = exports.abandonQuest = exports.completeQuest = exports.acceptQuest = exports.executeNpcAction = exports.getNpcOptions = exports.talkToNpc = exports.fileClaim = exports.buyInsurance = exports.hireGuard = exports.installSecurity = exports.getCriminalRecord = exports.fileAppeal = exports.payBail = exports.serveSentence = exports.reviewPoliceAction = exports.releasePlayer = exports.issueFine = exports.arrestPlayer = exports.payFine = exports.reportCrime = exports.attemptCrime = exports.scheduledMarketTick = exports.triggerEconomicEvent = exports.updateMarketStats = exports.settleAuction = exports.placeBid = exports.createAuction = exports.cancelMarketListing = exports.buyMarketListing = exports.createMarketListing = exports.payWages = exports.fireEmployee = exports.hireEmployee = exports.postBusinessJob = exports.settleNpcSales = exports.runPromotion = exports.buyFromBusiness = exports.discardStock = exports.setPrice = exports.produceItem = exports.buyStock = exports.sellBusiness = exports.closeBusiness = exports.withdrawBusinessProfit = exports.setBusinessSettings = void 0;
+exports.triggerPhase6DailyMaintenance = exports.scheduledPhase6DailyMaintenance = exports.buyFurnitureSet = exports.completeRenovation = exports.startRenovation = exports.createDevelopmentProject = exports.closeDeal = exports.createClientRequest = exports.becomeAgent = exports.completeConstruction = exports.advanceConstruction = exports.startConstruction = exports.applyPermit = void 0;
+var createCharacter_1 = require("./handlers/createCharacter");
+Object.defineProperty(exports, "createCharacter", { enumerable: true, get: function () { return createCharacter_1.createCharacter; } });
+var buyFood_1 = require("./handlers/buyFood");
+Object.defineProperty(exports, "buyFood", { enumerable: true, get: function () { return buyFood_1.buyFood; } });
+var rest_1 = require("./handlers/rest");
+Object.defineProperty(exports, "rest", { enumerable: true, get: function () { return rest_1.rest; } });
+var savePosition_1 = require("./handlers/savePosition");
+Object.defineProperty(exports, "savePosition", { enumerable: true, get: function () { return savePosition_1.savePosition; } });
+var sendChat_1 = require("./handlers/sendChat");
+Object.defineProperty(exports, "sendChat", { enumerable: true, get: function () { return sendChat_1.sendChat; } });
+// Fase 2 Cloud Functions
+var wellness_1 = require("./handlers/wellness");
+Object.defineProperty(exports, "takeBath", { enumerable: true, get: function () { return wellness_1.takeBath; } });
+Object.defineProperty(exports, "visitClinic", { enumerable: true, get: function () { return wellness_1.visitClinic; } });
+Object.defineProperty(exports, "claimClinic", { enumerable: true, get: function () { return wellness_1.claimClinic; } });
+var jobs_1 = require("./handlers/jobs");
+Object.defineProperty(exports, "applyJob", { enumerable: true, get: function () { return jobs_1.applyJob; } });
+Object.defineProperty(exports, "resignJob", { enumerable: true, get: function () { return jobs_1.resignJob; } });
+Object.defineProperty(exports, "startShift", { enumerable: true, get: function () { return jobs_1.startShift; } });
+Object.defineProperty(exports, "endShift", { enumerable: true, get: function () { return jobs_1.endShift; } });
+var courses_1 = require("./handlers/courses");
+Object.defineProperty(exports, "enrollCourse", { enumerable: true, get: function () { return courses_1.enrollCourse; } });
+Object.defineProperty(exports, "claimCourse", { enumerable: true, get: function () { return courses_1.claimCourse; } });
+var bills_1 = require("./handlers/bills");
+Object.defineProperty(exports, "getBills", { enumerable: true, get: function () { return bills_1.getBills; } });
+Object.defineProperty(exports, "payBill", { enumerable: true, get: function () { return bills_1.payBill; } });
+var train_1 = require("./handlers/train");
+Object.defineProperty(exports, "buyTicket", { enumerable: true, get: function () { return train_1.buyTicket; } });
+Object.defineProperty(exports, "completeTrip", { enumerable: true, get: function () { return train_1.completeTrip; } });
+var syncState_1 = require("./handlers/syncState");
+Object.defineProperty(exports, "syncPlayerState", { enumerable: true, get: function () { return syncState_1.syncPlayerState; } });
+Object.defineProperty(exports, "dailyJobAttendanceCheck", { enumerable: true, get: function () { return syncState_1.dailyJobAttendanceCheck; } });
+// Fase 3 Cloud Functions (Hunian, Pasar Properti, Sewa, Beli, Roommate & Dekorasi)
+var properties_1 = require("./handlers/properties");
+Object.defineProperty(exports, "createListing", { enumerable: true, get: function () { return properties_1.createListing; } });
+Object.defineProperty(exports, "cancelListing", { enumerable: true, get: function () { return properties_1.cancelListing; } });
+Object.defineProperty(exports, "requestViewing", { enumerable: true, get: function () { return properties_1.requestViewing; } });
+Object.defineProperty(exports, "enterProperty", { enumerable: true, get: function () { return properties_1.enterProperty; } });
+Object.defineProperty(exports, "leaveProperty", { enumerable: true, get: function () { return properties_1.leaveProperty; } });
+Object.defineProperty(exports, "repairProperty", { enumerable: true, get: function () { return properties_1.repairProperty; } });
+Object.defineProperty(exports, "grantGuestAccess", { enumerable: true, get: function () { return properties_1.grantGuestAccess; } });
+Object.defineProperty(exports, "setViewingSchedule", { enumerable: true, get: function () { return properties_1.setViewingSchedule; } });
+var offers_1 = require("./handlers/offers");
+Object.defineProperty(exports, "makeOffer", { enumerable: true, get: function () { return offers_1.makeOffer; } });
+Object.defineProperty(exports, "respondOffer", { enumerable: true, get: function () { return offers_1.respondOffer; } });
+var leases_1 = require("./handlers/leases");
+Object.defineProperty(exports, "createLease", { enumerable: true, get: function () { return leases_1.createLease; } });
+Object.defineProperty(exports, "terminateLease", { enumerable: true, get: function () { return leases_1.terminateLease; } });
+Object.defineProperty(exports, "inviteRoommate", { enumerable: true, get: function () { return leases_1.inviteRoommate; } });
+Object.defineProperty(exports, "acceptRoommate", { enumerable: true, get: function () { return leases_1.acceptRoommate; } });
+Object.defineProperty(exports, "leaveRoommate", { enumerable: true, get: function () { return leases_1.leaveRoommate; } });
+var ownership_1 = require("./handlers/ownership");
+Object.defineProperty(exports, "buyProperty", { enumerable: true, get: function () { return ownership_1.buyProperty; } });
+Object.defineProperty(exports, "sleepAtHome", { enumerable: true, get: function () { return ownership_1.sleepAtHome; } });
+Object.defineProperty(exports, "batheAtHome", { enumerable: true, get: function () { return ownership_1.batheAtHome; } });
+Object.defineProperty(exports, "eatFromInventory", { enumerable: true, get: function () { return ownership_1.eatFromInventory; } });
+Object.defineProperty(exports, "setHomePreferences", { enumerable: true, get: function () { return ownership_1.setHomePreferences; } });
+var furniture_1 = require("./handlers/furniture");
+Object.defineProperty(exports, "buyFurniture", { enumerable: true, get: function () { return furniture_1.buyFurniture; } });
+Object.defineProperty(exports, "placeFurniture", { enumerable: true, get: function () { return furniture_1.placeFurniture; } });
+// Fase 4 Cloud Functions: Perbankan
+var bank_1 = require("./handlers/bank");
+Object.defineProperty(exports, "openAccount", { enumerable: true, get: function () { return bank_1.openAccount; } });
+Object.defineProperty(exports, "deposit", { enumerable: true, get: function () { return bank_1.deposit; } });
+Object.defineProperty(exports, "withdraw", { enumerable: true, get: function () { return bank_1.withdraw; } });
+Object.defineProperty(exports, "transfer", { enumerable: true, get: function () { return bank_1.transfer; } });
+Object.defineProperty(exports, "applyLoan", { enumerable: true, get: function () { return bank_1.applyLoan; } });
+Object.defineProperty(exports, "repayLoan", { enumerable: true, get: function () { return bank_1.repayLoan; } });
+Object.defineProperty(exports, "getAccountSummary", { enumerable: true, get: function () { return bank_1.getAccountSummary; } });
+// Fase 4 Cloud Functions: Bisnis, Stok, Produksi, Karyawan & Penjualan
+var business_1 = require("./handlers/business");
+Object.defineProperty(exports, "createBusiness", { enumerable: true, get: function () { return business_1.createBusiness; } });
+Object.defineProperty(exports, "setBusinessSettings", { enumerable: true, get: function () { return business_1.setBusinessSettings; } });
+Object.defineProperty(exports, "withdrawBusinessProfit", { enumerable: true, get: function () { return business_1.withdrawBusinessProfit; } });
+Object.defineProperty(exports, "closeBusiness", { enumerable: true, get: function () { return business_1.closeBusiness; } });
+Object.defineProperty(exports, "sellBusiness", { enumerable: true, get: function () { return business_1.sellBusiness; } });
+Object.defineProperty(exports, "buyStock", { enumerable: true, get: function () { return business_1.buyStock; } });
+Object.defineProperty(exports, "produceItem", { enumerable: true, get: function () { return business_1.produceItem; } });
+Object.defineProperty(exports, "setPrice", { enumerable: true, get: function () { return business_1.setPrice; } });
+Object.defineProperty(exports, "discardStock", { enumerable: true, get: function () { return business_1.discardStock; } });
+Object.defineProperty(exports, "buyFromBusiness", { enumerable: true, get: function () { return business_1.buyFromBusiness; } });
+Object.defineProperty(exports, "runPromotion", { enumerable: true, get: function () { return business_1.runPromotion; } });
+Object.defineProperty(exports, "settleNpcSales", { enumerable: true, get: function () { return business_1.settleNpcSales; } });
+Object.defineProperty(exports, "postBusinessJob", { enumerable: true, get: function () { return business_1.postBusinessJob; } });
+Object.defineProperty(exports, "hireEmployee", { enumerable: true, get: function () { return business_1.hireEmployee; } });
+Object.defineProperty(exports, "fireEmployee", { enumerable: true, get: function () { return business_1.fireEmployee; } });
+Object.defineProperty(exports, "payWages", { enumerable: true, get: function () { return business_1.payWages; } });
+// Fase 4 Cloud Functions: Marketplace P2P & Lelang Escrow
+var marketplace_1 = require("./handlers/marketplace");
+Object.defineProperty(exports, "createMarketListing", { enumerable: true, get: function () { return marketplace_1.createMarketListing; } });
+Object.defineProperty(exports, "buyMarketListing", { enumerable: true, get: function () { return marketplace_1.buyMarketListing; } });
+Object.defineProperty(exports, "cancelMarketListing", { enumerable: true, get: function () { return marketplace_1.cancelMarketListing; } });
+var auctions_1 = require("./handlers/auctions");
+Object.defineProperty(exports, "createAuction", { enumerable: true, get: function () { return auctions_1.createAuction; } });
+Object.defineProperty(exports, "placeBid", { enumerable: true, get: function () { return auctions_1.placeBid; } });
+Object.defineProperty(exports, "settleAuction", { enumerable: true, get: function () { return auctions_1.settleAuction; } });
+// Fase 4 Cloud Functions: Harga Dinamis, Event Ekonomi & Scheduler Ringan
+var economy_1 = require("./handlers/economy");
+Object.defineProperty(exports, "updateMarketStats", { enumerable: true, get: function () { return economy_1.updateMarketStats; } });
+Object.defineProperty(exports, "triggerEconomicEvent", { enumerable: true, get: function () { return economy_1.triggerEconomicEvent; } });
+Object.defineProperty(exports, "scheduledMarketTick", { enumerable: true, get: function () { return economy_1.scheduledMarketTick; } });
+// Fase 6 Cloud Functions: Hukum, Kriminalitas, Polisi & Penjara
+var law_1 = require("./handlers/law");
+Object.defineProperty(exports, "attemptCrime", { enumerable: true, get: function () { return law_1.attemptCrime; } });
+Object.defineProperty(exports, "reportCrime", { enumerable: true, get: function () { return law_1.reportCrime; } });
+Object.defineProperty(exports, "payFine", { enumerable: true, get: function () { return law_1.payFine; } });
+Object.defineProperty(exports, "arrestPlayer", { enumerable: true, get: function () { return law_1.arrestPlayer; } });
+Object.defineProperty(exports, "issueFine", { enumerable: true, get: function () { return law_1.issueFine; } });
+Object.defineProperty(exports, "releasePlayer", { enumerable: true, get: function () { return law_1.releasePlayer; } });
+Object.defineProperty(exports, "reviewPoliceAction", { enumerable: true, get: function () { return law_1.reviewPoliceAction; } });
+Object.defineProperty(exports, "serveSentence", { enumerable: true, get: function () { return law_1.serveSentence; } });
+Object.defineProperty(exports, "payBail", { enumerable: true, get: function () { return law_1.payBail; } });
+Object.defineProperty(exports, "fileAppeal", { enumerable: true, get: function () { return law_1.fileAppeal; } });
+Object.defineProperty(exports, "getCriminalRecord", { enumerable: true, get: function () { return law_1.getCriminalRecord; } });
+// Fase 6 Cloud Functions: Keamanan Properti & Asuransi
+var security_1 = require("./handlers/security");
+Object.defineProperty(exports, "installSecurity", { enumerable: true, get: function () { return security_1.installSecurity; } });
+Object.defineProperty(exports, "hireGuard", { enumerable: true, get: function () { return security_1.hireGuard; } });
+Object.defineProperty(exports, "buyInsurance", { enumerable: true, get: function () { return security_1.buyInsurance; } });
+Object.defineProperty(exports, "fileClaim", { enumerable: true, get: function () { return security_1.fileClaim; } });
+// Fase 6 Cloud Functions: Dialog AI & Aksi NPC Terstruktur
+var npcDialog_1 = require("./handlers/npcDialog");
+Object.defineProperty(exports, "talkToNpc", { enumerable: true, get: function () { return npcDialog_1.talkToNpc; } });
+Object.defineProperty(exports, "getNpcOptions", { enumerable: true, get: function () { return npcDialog_1.getNpcOptions; } });
+Object.defineProperty(exports, "executeNpcAction", { enumerable: true, get: function () { return npcDialog_1.executeNpcAction; } });
+// Fase 6 Cloud Functions: Quest & Misi Warga
+var quests_1 = require("./handlers/quests");
+Object.defineProperty(exports, "acceptQuest", { enumerable: true, get: function () { return quests_1.acceptQuest; } });
+Object.defineProperty(exports, "completeQuest", { enumerable: true, get: function () { return quests_1.completeQuest; } });
+Object.defineProperty(exports, "abandonQuest", { enumerable: true, get: function () { return quests_1.abandonQuest; } });
+// Fase 6 Cloud Functions: KPR Bank Priangan
+var mortgage_1 = require("./handlers/mortgage");
+Object.defineProperty(exports, "applyMortgage", { enumerable: true, get: function () { return mortgage_1.applyMortgage; } });
+Object.defineProperty(exports, "payMortgage", { enumerable: true, get: function () { return mortgage_1.payMortgage; } });
+Object.defineProperty(exports, "earlyRepay", { enumerable: true, get: function () { return mortgage_1.earlyRepay; } });
+Object.defineProperty(exports, "foreclose", { enumerable: true, get: function () { return mortgage_1.foreclose; } });
+// Fase 6 Cloud Functions: Tanah Kavling, IMB & Konstruksi Multi-Fase
+var landConstruction_1 = require("./handlers/landConstruction");
+Object.defineProperty(exports, "buyLand", { enumerable: true, get: function () { return landConstruction_1.buyLand; } });
+Object.defineProperty(exports, "applyPermit", { enumerable: true, get: function () { return landConstruction_1.applyPermit; } });
+Object.defineProperty(exports, "startConstruction", { enumerable: true, get: function () { return landConstruction_1.startConstruction; } });
+Object.defineProperty(exports, "advanceConstruction", { enumerable: true, get: function () { return landConstruction_1.advanceConstruction; } });
+Object.defineProperty(exports, "completeConstruction", { enumerable: true, get: function () { return landConstruction_1.completeConstruction; } });
+// Fase 6 Cloud Functions: Agen Properti, Developer, Renovasi Besar & Paket Mebel
+var agentRenovation_1 = require("./handlers/agentRenovation");
+Object.defineProperty(exports, "becomeAgent", { enumerable: true, get: function () { return agentRenovation_1.becomeAgent; } });
+Object.defineProperty(exports, "createClientRequest", { enumerable: true, get: function () { return agentRenovation_1.createClientRequest; } });
+Object.defineProperty(exports, "closeDeal", { enumerable: true, get: function () { return agentRenovation_1.closeDeal; } });
+Object.defineProperty(exports, "createDevelopmentProject", { enumerable: true, get: function () { return agentRenovation_1.createDevelopmentProject; } });
+Object.defineProperty(exports, "startRenovation", { enumerable: true, get: function () { return agentRenovation_1.startRenovation; } });
+Object.defineProperty(exports, "completeRenovation", { enumerable: true, get: function () { return agentRenovation_1.completeRenovation; } });
+Object.defineProperty(exports, "buyFurnitureSet", { enumerable: true, get: function () { return agentRenovation_1.buyFurnitureSet; } });
+// Fase 6 Cloud Scheduler: Rekap Kriminalitas Harian & Pembaruan Harga Tanah Dinamis
+var phase6Scheduler_1 = require("./handlers/phase6Scheduler");
+Object.defineProperty(exports, "scheduledPhase6DailyMaintenance", { enumerable: true, get: function () { return phase6Scheduler_1.scheduledPhase6DailyMaintenance; } });
+Object.defineProperty(exports, "triggerPhase6DailyMaintenance", { enumerable: true, get: function () { return phase6Scheduler_1.triggerPhase6DailyMaintenance; } });
+//# sourceMappingURL=index.js.map

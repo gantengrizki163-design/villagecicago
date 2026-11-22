@@ -1,0 +1,1333 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Private user account profile linked to Firebase Authentication.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "email": { "type": "string", "format": "email", "maxLength": 254 },
+        "displayName": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "provider": { "type": "string", "enum": ["password", "google.com"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "lastLoginAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "createdAt", "lastLoginAt"]
+    },
+    "Character": {
+      "title": "Character",
+      "description": "Persistent player character with Phase 2 vitals/jobs/trips and Phase 3 housing/sleep/reputation state.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "name": { "type": "string", "minLength": 3, "maxLength": 20, "pattern": "^[a-zA-Z0-9 _.-]{3,20}$" },
+        "nameLower": { "type": "string", "minLength": 3, "maxLength": 20 },
+        "gender": { "type": "string", "enum": ["laki-laki", "perempuan"] },
+        "skinColor": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$", "maxLength": 7 },
+        "hairColor": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$", "maxLength": 7 },
+        "shirtColor": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$", "maxLength": 7 },
+        "pantsColor": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$", "maxLength": 7 },
+        "money": { "type": "number" },
+        "health": { "type": "number" },
+        "hygiene": { "type": "number" },
+        "mood": { "type": "number" },
+        "statsUpdatedAt": { "type": "string", "format": "date-time" },
+        "currentZone": { "type": "string", "enum": ["cicalengka", "rancaekek", "bandung", "nagreg"] },
+        "skills": { "type": "object" },
+        "currentJob": { "type": "object" },
+        "activeShift": { "type": "object" },
+        "activeTrip": { "type": "object" },
+        "activeClinic": { "type": "object" },
+        "activeCourse": { "type": "object" },
+        "faintedCount": { "type": "number" },
+        "lastBillPeriod": { "type": "number" },
+        "currentHomeId": { "type": "string", "maxLength": 64 },
+        "activeLeaseId": { "type": "string", "maxLength": 64 },
+        "homeless": { "type": "boolean" },
+        "reputation": { "type": "number" },
+        "starterHousingClaimed": { "type": "boolean" },
+        "activeSleep": { "type": "object" },
+        "lastSleepLocation": { "type": "object" },
+        "lastPosition": { "type": "object" },
+        "bankAccount": { "type": "object" },
+        "creditScore": { "type": "number" },
+        "businesses": { "type": "array", "items": { "type": "string" } },
+        "wantedLevel": { "type": "number" },
+        "wantedUpdatedAtMs": { "type": "number" },
+        "lastCrimeAtMs": { "type": "number" },
+        "criminalRecordCount": { "type": "number" },
+        "sentence": { "type": "object" },
+        "mortgages": { "type": "array", "items": { "type": "string" } },
+        "lands": { "type": "array", "items": { "type": "string" } },
+        "questLog": { "type": "object" },
+        "npcAffinity": { "type": "object" },
+        "agentLicense": { "type": "object" },
+        "policeStats": { "type": "object" },
+        "ownedVehicleCount": { "type": "number" },
+        "drivingVehicleId": { "type": "string", "maxLength": 64 },
+        "passengerVehicleId": { "type": "string", "maxLength": 64 },
+        "simA": { "type": "object" },
+        "simC": { "type": "object" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "name", "nameLower", "gender", "skinColor", "hairColor", "shirtColor", "pantsColor", "money", "lastPosition", "createdAt", "updatedAt"]
+    },
+    "CharacterNameLock": {
+      "title": "CharacterNameLock",
+      "description": "Atomic uniqueness reservation for character names.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "name": { "type": "string", "minLength": 3, "maxLength": 20 },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "name", "createdAt"]
+    },
+    "CharacterStats": {
+      "title": "CharacterStats",
+      "description": "Lazy-evaluated survival & health/hygiene/mood stats for a character.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "hunger": { "type": "number" },
+        "thirst": { "type": "number" },
+        "energy": { "type": "number" },
+        "health": { "type": "number" },
+        "hygiene": { "type": "number" },
+        "mood": { "type": "number" },
+        "lastCalculatedAt": { "type": "string", "format": "date-time" },
+        "lastRestAt": { "type": "string", "format": "date-time" },
+        "lastBathAt": { "type": "string", "format": "date-time" },
+        "lastSleepAt": { "type": "string", "format": "date-time" },
+        "lastPurchaseAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "hunger", "thirst", "energy", "lastCalculatedAt"]
+    },
+    "TransactionRecord": {
+      "title": "TransactionRecord",
+      "description": "Wallet ledger entry under characters/{uid}/transactions.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "type": { "type": "string", "enum": ["income", "expense", "penalty"] },
+        "category": { "type": "string", "maxLength": 40 },
+        "amount": { "type": "number" },
+        "balanceAfter": { "type": "number" },
+        "description": { "type": "string", "maxLength": 160 },
+        "createdAtMs": { "type": "number" }
+      },
+      "required": ["uid", "type", "category", "amount", "balanceAfter", "description", "createdAtMs"]
+    },
+    "BillRecord": {
+      "title": "BillRecord",
+      "description": "Lazy-generated rent, electricity, water, internet, property tax, and loan installment bills under characters/{uid}/bills.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "billType": { "type": "string", "enum": ["rent", "electricity", "water", "internet", "property_tax", "loan_installment", "mortgage_installment", "security_fee", "insurance_premium", "fine", "vehicle_tax", "vehicle_lease_installment", "vehicle_ticket_fine"] },
+        "title": { "type": "string", "maxLength": 100 },
+        "periodIndex": { "type": "number" },
+        "baseAmount": { "type": "number" },
+        "lateFee": { "type": "number" },
+        "status": { "type": "string", "enum": ["unpaid", "paid", "defaulted"] },
+        "propertyId": { "type": "string", "maxLength": 64 },
+        "leaseId": { "type": "string", "maxLength": 64 },
+        "loanId": { "type": "string", "maxLength": 64 },
+        "mortgageId": { "type": "string", "maxLength": 64 },
+        "vehicleId": { "type": "string", "maxLength": 64 },
+        "vehicleLeaseId": { "type": "string", "maxLength": 64 },
+        "dueAtMs": { "type": "number" },
+        "paidAtMs": { "type": "number" }
+      },
+      "required": ["uid", "billType", "title", "periodIndex", "baseAmount", "lateFee", "status", "dueAtMs"]
+    },
+    "EmploymentRecord": {
+      "title": "EmploymentRecord",
+      "description": "Employment history record under characters/{uid}/employments.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "jobId": { "type": "string", "maxLength": 64 },
+        "title": { "type": "string", "maxLength": 64 },
+        "status": { "type": "string", "enum": ["active", "resigned", "fired"] },
+        "hiredAtMs": { "type": "number" },
+        "endedAtMs": { "type": "number" },
+        "reason": { "type": "string", "maxLength": 120 }
+      },
+      "required": ["uid", "jobId", "title", "status", "hiredAtMs"]
+    },
+    "ShiftRecord": {
+      "title": "ShiftRecord",
+      "description": "Work shift & server-generated task prompt under characters/{uid}/shifts.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "jobId": { "type": "string", "maxLength": 64 },
+        "businessId": { "type": "string", "maxLength": 64 },
+        "status": { "type": "string", "enum": ["active", "completed", "abandoned"] },
+        "startedAtMs": { "type": "number" },
+        "endedAtMs": { "type": "number" },
+        "score": { "type": "number" },
+        "payEarned": { "type": "number" }
+      },
+      "required": ["uid", "jobId", "status", "startedAtMs"]
+    },
+    "ShiftSecret": {
+      "title": "ShiftSecret",
+      "description": "Server-only mini-game answer key under characters/{uid}/shift_secrets.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "answers": { "type": "object" }
+      },
+      "required": ["uid", "answers"]
+    },
+    "TicketRecord": {
+      "title": "TicketRecord",
+      "description": "Train ticket & trip record under characters/{uid}/tickets.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "fromZone": { "type": "string", "maxLength": 32 },
+        "toZone": { "type": "string", "maxLength": 32 },
+        "price": { "type": "number" },
+        "departedAtMs": { "type": "number" },
+        "arrivesAtMs": { "type": "number" },
+        "status": { "type": "string", "enum": ["traveling", "arrived"] }
+      },
+      "required": ["uid", "fromZone", "toZone", "price", "departedAtMs", "arrivesAtMs", "status"]
+    },
+    "ClinicVisitRecord": {
+      "title": "ClinicVisitRecord",
+      "description": "Clinic treatment & queue timestamp under characters/{uid}/clinic_visits.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "clinicId": { "type": "string", "maxLength": 32 },
+        "packageId": { "type": "string", "maxLength": 32 },
+        "cost": { "type": "number" },
+        "startedAtMs": { "type": "number" },
+        "completesAtMs": { "type": "number" },
+        "status": { "type": "string", "enum": ["waiting", "claimed"] }
+      },
+      "required": ["uid", "clinicId", "packageId", "cost", "startedAtMs", "completesAtMs", "status"]
+    },
+    "CourseEnrollmentRecord": {
+      "title": "CourseEnrollmentRecord",
+      "description": "Course enrollment & timestamp completion under characters/{uid}/course_enrollments.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "courseId": { "type": "string", "maxLength": 40 },
+        "skillKey": { "type": "string", "maxLength": 24 },
+        "skillGain": { "type": "number" },
+        "cost": { "type": "number" },
+        "startedAtMs": { "type": "number" },
+        "completesAtMs": { "type": "number" },
+        "status": { "type": "string", "enum": ["studying", "claimed"] }
+      },
+      "required": ["uid", "courseId", "skillKey", "skillGain", "cost", "startedAtMs", "completesAtMs", "status"]
+    },
+    "CharacterInventoryItem": {
+      "title": "CharacterInventoryItem",
+      "description": "Furniture, food, raw materials, and finished goods stored under characters/{uid}/inventory/{itemId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "itemId": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "category": { "type": "string", "enum": ["furniture", "food", "raw", "product", "misc"] },
+        "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "quantity": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["uid", "itemId", "category", "name", "quantity", "updatedAtMs"]
+    },
+    "Property": {
+      "title": "Property",
+      "description": "Housing or commercial property in Cicalengka with 3D exterior coords, interior layout, and furniture.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "name": { "type": "string", "minLength": 3, "maxLength": 80 },
+        "type": { "type": "string", "enum": ["kos", "kontrakan", "rumah", "apartemen", "ruko", "lapak_pasar"] },
+        "zone": { "type": "string", "enum": ["cicalengka"] },
+        "areaTag": { "type": "string", "enum": ["stasiun", "pasar", "kampung", "perumahan", "alun_alun"] },
+        "ownerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "ownerType": { "type": "string", "enum": ["player", "npc"] },
+        "ownerName": { "type": "string", "maxLength": 64 },
+        "position": { "type": "object" },
+        "stationDistanceMeters": { "type": "number" },
+        "stationDistanceTier": { "type": "string", "enum": ["dekat", "sedang", "jauh"] },
+        "size": { "type": "object" },
+        "rooms": { "type": "number" },
+        "condition": { "type": "number" },
+        "facilities": { "type": "object" },
+        "layout": { "type": "object" },
+        "furniture": { "type": "object" },
+        "baseRent": { "type": "number" },
+        "baseDeposit": { "type": "number" },
+        "baseValue": { "type": "number" },
+        "activeListingId": { "type": "string", "maxLength": 64 },
+        "activeLeaseId": { "type": "string", "maxLength": 64 },
+        "activeBusinessId": { "type": "string", "maxLength": 64 },
+        "viewingSchedule": { "type": "object" },
+        "mortgageInfo": { "type": "object" },
+        "securityLevel": { "type": "number" },
+        "hasInsurance": { "type": "boolean" },
+        "renovationTier": { "type": "number" },
+        "extensions": { "type": "array", "items": { "type": "string" } },
+        "landPlotId": { "type": "string", "maxLength": 64 },
+        "furnitureSetBonus": { "type": "array", "items": { "type": "string" } },
+        "hasGarage": { "type": "boolean" },
+        "garageCapacity": { "type": "number" },
+        "lastConditionDecayAtMs": { "type": "number" },
+        "lastTaxAtMs": { "type": "number" },
+        "createdAtMs": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["id", "name", "type", "zone", "areaTag", "ownerId", "ownerType", "position", "size", "rooms", "condition", "facilities", "layout", "furniture", "baseValue"]
+    },
+    "PropertyListing": {
+      "title": "PropertyListing",
+      "description": "Public active or historical rent/sale listing for a property with filterable indexed fields.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "propertyId": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "propertyName": { "type": "string", "maxLength": 80 },
+        "propertyType": { "type": "string", "enum": ["kos", "kontrakan", "rumah", "apartemen", "ruko", "lapak_pasar"] },
+        "areaTag": { "type": "string", "enum": ["stasiun", "pasar", "kampung", "perumahan", "alun_alun"] },
+        "rooms": { "type": "number" },
+        "condition": { "type": "number" },
+        "stationDistanceTier": { "type": "string", "enum": ["dekat", "sedang", "jauh"] },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "ownerType": { "type": "string", "enum": ["player", "npc"] },
+        "ownerName": { "type": "string", "maxLength": 64 },
+        "kind": { "type": "string", "enum": ["rent", "sale"] },
+        "price": { "type": "number" },
+        "deposit": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "closed", "cancelled", "expired"] },
+        "createdAtMs": { "type": "number" },
+        "expiresAtMs": { "type": "number" }
+      },
+      "required": ["id", "propertyId", "propertyType", "areaTag", "rooms", "condition", "ownerId", "ownerType", "kind", "price", "deposit", "status", "createdAtMs", "expiresAtMs"]
+    },
+    "PropertyOffer": {
+      "title": "PropertyOffer",
+      "description": "Rent or purchase price negotiation offer between buyer and property owner/agent.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "listingId": { "type": "string", "maxLength": 64 },
+        "propertyId": { "type": "string", "maxLength": 64 },
+        "propertyName": { "type": "string", "maxLength": 80 },
+        "kind": { "type": "string", "enum": ["rent", "sale"] },
+        "buyerId": { "type": "string", "maxLength": 128 },
+        "buyerName": { "type": "string", "maxLength": 32 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "ownerType": { "type": "string", "enum": ["player", "npc"] },
+        "askingPrice": { "type": "number" },
+        "amount": { "type": "number" },
+        "counterAmount": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "accepted", "rejected", "countered", "expired", "completed"] },
+        "note": { "type": "string", "maxLength": 160 },
+        "createdAtMs": { "type": "number" },
+        "expiresAtMs": { "type": "number" }
+      },
+      "required": ["id", "listingId", "propertyId", "buyerId", "ownerId", "amount", "status", "createdAtMs", "expiresAtMs"]
+    },
+    "PropertyLease": {
+      "title": "PropertyLease",
+      "description": "Active or closed rental contract with deposit, periodic due timestamps, and roommates.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "propertyId": { "type": "string", "maxLength": 64 },
+        "propertyName": { "type": "string", "maxLength": 80 },
+        "tenantId": { "type": "string", "maxLength": 128 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "ownerType": { "type": "string", "enum": ["player", "npc"] },
+        "rent": { "type": "number" },
+        "deposit": { "type": "number" },
+        "depositRefunded": { "type": "boolean" },
+        "period": { "type": "string", "enum": ["weekly", "monthly"] },
+        "periodMs": { "type": "number" },
+        "startAtMs": { "type": "number" },
+        "nextDueAtMs": { "type": "number" },
+        "lastUtilityBillAtMs": { "type": "number" },
+        "missedPeriods": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "ended", "evicted"] },
+        "roommates": { "type": "object" },
+        "roommateIds": { "type": "array", "items": { "type": "string" } },
+        "pendingInvites": { "type": "object" },
+        "pendingInviteUids": { "type": "array", "items": { "type": "string" } },
+        "rules": { "type": "string", "maxLength": 160 }
+      },
+      "required": ["id", "propertyId", "tenantId", "ownerId", "rent", "deposit", "period", "startAtMs", "nextDueAtMs", "status"]
+    },
+    "PropertyAccessMember": {
+      "title": "PropertyAccessMember",
+      "description": "Access control list entry under property_access/{propertyId}/members/{uid}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "propertyId": { "type": "string", "maxLength": 64 },
+        "role": { "type": "string", "enum": ["owner", "tenant", "roommate", "guest", "viewer"] },
+        "grantedAtMs": { "type": "number" },
+        "expiresAtMs": { "type": "number" }
+      },
+      "required": ["uid", "propertyId", "role", "grantedAtMs"]
+    },
+    "PropertyViewing": {
+      "title": "PropertyViewing",
+      "description": "Property inspection/survey audit record under property_viewings/{viewingId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "propertyId": { "type": "string", "maxLength": 64 },
+        "viewerId": { "type": "string", "maxLength": 128 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "viewedAtMs": { "type": "number" },
+        "expiresAtMs": { "type": "number" },
+        "conditionAtViewing": { "type": "number" }
+      },
+      "required": ["id", "propertyId", "viewerId", "ownerId", "viewedAtMs"]
+    },
+    "BankAccount": {
+      "title": "BankAccount",
+      "description": "Bank Cicalengka account with checking balance, lazy-interest savings, and credit score under accounts/{uid}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "accountNumber": { "type": "string", "maxLength": 24 },
+        "balance": { "type": "number" },
+        "savings": { "type": "number" },
+        "lastInterestAtMs": { "type": "number" },
+        "creditScore": { "type": "number" },
+        "totalInterestEarned": { "type": "number" },
+        "createdAtMs": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["uid", "accountNumber", "balance", "savings", "lastInterestAtMs", "creditScore", "createdAtMs"]
+    },
+    "LoanRecord": {
+      "title": "LoanRecord",
+      "description": "Bank loan contract with periodic installment schedule under loans/{loanId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "borrowerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "borrowerName": { "type": "string", "maxLength": 32 },
+        "principal": { "type": "number" },
+        "rate": { "type": "number" },
+        "installment": { "type": "number" },
+        "termCycles": { "type": "number" },
+        "paidCycles": { "type": "number" },
+        "nextDueAtMs": { "type": "number" },
+        "remaining": { "type": "number" },
+        "missedCount": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "paid", "defaulted"] },
+        "createdAtMs": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["id", "borrowerId", "principal", "rate", "installment", "nextDueAtMs", "remaining", "status", "createdAtMs"]
+    },
+    "LedgerEntry": {
+      "title": "LedgerEntry",
+      "description": "Immutable double-entry financial ledger under ledger/{entryId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "from": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "to": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "amount": { "type": "number" },
+        "taxAmount": { "type": "number" },
+        "reason": { "type": "string", "maxLength": 64 },
+        "refId": { "type": "string", "maxLength": 80 },
+        "atMs": { "type": "number" }
+      },
+      "required": ["id", "from", "to", "amount", "reason", "refId", "atMs"]
+    },
+    "Business": {
+      "title": "Business",
+      "description": "Player-owned commercial business at a Cicalengka ruko or pasar stall under businesses/{businessId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "ownerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "ownerName": { "type": "string", "maxLength": 32 },
+        "type": { "type": "string", "enum": ["warung", "kelontong", "bengkel", "dealer", "jasa", "lapak_pasar"] },
+        "name": { "type": "string", "minLength": 3, "maxLength": 64 },
+        "propertyId": { "type": "string", "maxLength": 64 },
+        "areaTag": { "type": "string", "enum": ["stasiun", "pasar", "kampung", "perumahan", "alun_alun"] },
+        "position": { "type": "object" },
+        "capital": { "type": "number" },
+        "cash": { "type": "number" },
+        "popularity": { "type": "number" },
+        "level": { "type": "number" },
+        "isOpen": { "type": "boolean" },
+        "hours": { "type": "object" },
+        "lastSettledAtMs": { "type": "number" },
+        "lastWageAtMs": { "type": "number" },
+        "permits": { "type": "object" },
+        "promoBoostUntilMs": { "type": "number" },
+        "promoBoostValue": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "closed", "auctioning"] },
+        "createdAtMs": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["id", "ownerId", "type", "name", "propertyId", "cash", "popularity", "level", "isOpen", "lastSettledAtMs", "status"]
+    },
+    "BusinessStockItem": {
+      "title": "BusinessStockItem",
+      "description": "Inventory item & retail price under businesses/{businessId}/stock/{itemId}.",
+      "type": "object",
+      "properties": {
+        "businessId": { "type": "string", "maxLength": 64 },
+        "itemId": { "type": "string", "maxLength": 64 },
+        "name": { "type": "string", "maxLength": 80 },
+        "category": { "type": "string", "maxLength": 32 },
+        "qty": { "type": "number" },
+        "avgCost": { "type": "number" },
+        "sellPrice": { "type": "number" },
+        "expiresAtMs": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["businessId", "itemId", "name", "qty", "sellPrice", "updatedAtMs"]
+    },
+    "BusinessEmployee": {
+      "title": "BusinessEmployee",
+      "description": "NPC or player employee working for a business under businesses/{businessId}/employees/{empId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "businessId": { "type": "string", "maxLength": 64 },
+        "uid": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 40 },
+        "isNpc": { "type": "boolean" },
+        "roleTitle": { "type": "string", "maxLength": 40 },
+        "wagePerCycle": { "type": "number" },
+        "productivity": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "resigned", "fired"] },
+        "hiredAtMs": { "type": "number" },
+        "lastPaidAtMs": { "type": "number" },
+        "unpaidWage": { "type": "number" }
+      },
+      "required": ["id", "businessId", "uid", "name", "isNpc", "wagePerCycle", "status", "hiredAtMs"]
+    },
+    "BusinessDailyReport": {
+      "title": "BusinessDailyReport",
+      "description": "Aggregated daily profit & loss summary under businesses/{businessId}/daily_reports/{dayKey}.",
+      "type": "object",
+      "properties": {
+        "dayKey": { "type": "string", "maxLength": 24 },
+        "businessId": { "type": "string", "maxLength": 64 },
+        "revenue": { "type": "number" },
+        "npcSales": { "type": "number" },
+        "playerSales": { "type": "number" },
+        "stockCost": { "type": "number" },
+        "wageCost": { "type": "number" },
+        "taxPaid": { "type": "number" },
+        "promoCost": { "type": "number" },
+        "netProfit": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["dayKey", "businessId", "revenue", "netProfit", "updatedAtMs"]
+    },
+    "BusinessPromotion": {
+      "title": "BusinessPromotion",
+      "description": "Timestamp-based marketing campaign under businesses/{businessId}/promotions/{promoId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "businessId": { "type": "string", "maxLength": 64 },
+        "tier": { "type": "string", "maxLength": 32 },
+        "cost": { "type": "number" },
+        "popularityBoost": { "type": "number" },
+        "startedAtMs": { "type": "number" },
+        "expiresAtMs": { "type": "number" }
+      },
+      "required": ["id", "businessId", "tier", "cost", "popularityBoost", "startedAtMs", "expiresAtMs"]
+    },
+    "BusinessJobPost": {
+      "title": "BusinessJobPost",
+      "description": "Public job posting created by a player business owner under business_job_posts/{postId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "businessId": { "type": "string", "maxLength": 64 },
+        "businessName": { "type": "string", "maxLength": 64 },
+        "businessType": { "type": "string", "maxLength": 24 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "roleTitle": { "type": "string", "maxLength": 40 },
+        "wagePerShift": { "type": "number" },
+        "slotsOpen": { "type": "number" },
+        "status": { "type": "string", "enum": ["open", "closed"] },
+        "createdAtMs": { "type": "number" }
+      },
+      "required": ["id", "businessId", "ownerId", "roleTitle", "wagePerShift", "status", "createdAtMs"]
+    },
+    "MarketListing": {
+      "title": "MarketListing",
+      "description": "Fixed-price player-to-player escrow marketplace listing under market_listings/{listingId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "sellerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "sellerName": { "type": "string", "maxLength": 32 },
+        "itemId": { "type": "string", "maxLength": 64 },
+        "itemName": { "type": "string", "maxLength": 80 },
+        "category": { "type": "string", "maxLength": 32 },
+        "qty": { "type": "number" },
+        "price": { "type": "number" },
+        "unitPrice": { "type": "number" },
+        "areaTag": { "type": "string", "maxLength": 24 },
+        "status": { "type": "string", "enum": ["active", "sold", "cancelled"] },
+        "createdAtMs": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["id", "sellerId", "itemId", "qty", "price", "status", "createdAtMs"]
+    },
+    "Auction": {
+      "title": "Auction",
+      "description": "Escrow auction for items, properties, or businesses with anti-sniping extension under auctions/{auctionId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "sellerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "sellerName": { "type": "string", "maxLength": 32 },
+        "subject": { "type": "object" },
+        "subjectType": { "type": "string", "enum": ["item", "property", "business", "vehicle"] },
+        "subjectId": { "type": "string", "maxLength": 64 },
+        "startPrice": { "type": "number" },
+        "minIncrement": { "type": "number" },
+        "currentBid": { "type": "number" },
+        "currentBidderId": { "type": "string", "maxLength": 128 },
+        "currentBidderName": { "type": "string", "maxLength": 32 },
+        "bidCount": { "type": "number" },
+        "endsAtMs": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "settled", "cancelled"] },
+        "createdAtMs": { "type": "number" }
+      },
+      "required": ["id", "sellerId", "subject", "subjectType", "startPrice", "minIncrement", "currentBid", "endsAtMs", "status"]
+    },
+    "AuctionBid": {
+      "title": "AuctionBid",
+      "description": "Bid history record under auctions/{auctionId}/bids/{bidId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "auctionId": { "type": "string", "maxLength": 64 },
+        "bidderId": { "type": "string", "maxLength": 128 },
+        "bidderName": { "type": "string", "maxLength": 32 },
+        "amount": { "type": "number" },
+        "createdAtMs": { "type": "number" }
+      },
+      "required": ["id", "auctionId", "bidderId", "amount", "createdAtMs"]
+    },
+    "MarketStat": {
+      "title": "MarketStat",
+      "description": "Batch-updated dynamic market price & supply/demand summary under market_stats/{itemId}.",
+      "type": "object",
+      "properties": {
+        "itemId": { "type": "string", "maxLength": 64 },
+        "name": { "type": "string", "maxLength": 80 },
+        "category": { "type": "string", "maxLength": 32 },
+        "basePrice": { "type": "number" },
+        "currentPrice": { "type": "number" },
+        "wholesalePrice": { "type": "number" },
+        "supply": { "type": "number" },
+        "demand": { "type": "number" },
+        "pendingSupplyDelta": { "type": "number" },
+        "pendingDemandDelta": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["itemId", "basePrice", "currentPrice", "supply", "demand", "updatedAtMs"]
+    },
+    "TreasuryState": {
+      "title": "TreasuryState",
+      "description": "National treasury & macro economy state under state/treasury.",
+      "type": "object",
+      "properties": {
+        "balance": { "type": "number" },
+        "totalTaxCollected": { "type": "number" },
+        "incomeTaxTotal": { "type": "number" },
+        "businessTaxTotal": { "type": "number" },
+        "propertyTaxTotal": { "type": "number" },
+        "marketFeeTotal": { "type": "number" },
+        "auctionFeeTotal": { "type": "number" },
+        "vehicleTaxTotal": { "type": "number" },
+        "inflationIndex": { "type": "number" },
+        "activeEventId": { "type": "string", "maxLength": 40 },
+        "activeEventUntilMs": { "type": "number" },
+        "estimatedMoneySupply": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["balance", "totalTaxCollected", "inflationIndex", "updatedAtMs"]
+    },
+    "Supplier": {
+      "title": "Supplier",
+      "description": "Wholesale supplier NPC profile under suppliers/{supplierId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "name": { "type": "string", "maxLength": 64 },
+        "areaTag": { "type": "string", "maxLength": 24 },
+        "specialty": { "type": "string", "maxLength": 32 },
+        "discountRate": { "type": "number" }
+      },
+      "required": ["id", "name", "areaTag", "specialty", "discountRate"]
+    },
+    "InventoryItem": {
+      "title": "InventoryItem",
+      "description": "Legacy Phase 1 player inventory item entry.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "itemId": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "name": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "quantity": { "type": "number" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "itemId", "name", "quantity", "updatedAt"]
+    },
+    "ShopMenuItem": {
+      "title": "ShopMenuItem",
+      "description": "Food & beverage catalog sold at Warung Makan Cicalengka.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "name": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "description": { "type": "string", "maxLength": 200 },
+        "price": { "type": "number" },
+        "hungerRestore": { "type": "number" },
+        "thirstRestore": { "type": "number" },
+        "energyRestore": { "type": "number" },
+        "available": { "type": "boolean" }
+      },
+      "required": ["id", "name", "price", "hungerRestore", "thirstRestore", "energyRestore", "available"]
+    },
+    "ChatLog": {
+      "title": "ChatLog",
+      "description": "Persistent global chat message.",
+      "type": "object",
+      "properties": {
+        "senderUid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "senderName": { "type": "string", "minLength": 3, "maxLength": 20 },
+        "message": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "channel": { "type": "string", "enum": ["global"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["senderUid", "senderName", "message", "channel", "createdAt"]
+    },
+    "GameConfig": {
+      "title": "GameConfig",
+      "description": "Global game configuration document (game, jobs, clinic, courses, trainSchedule, economy, housing, furniture, bank, business, products, tax, law, npcs, quests, mortgage, land, construction, ai).",
+      "type": "object",
+      "properties": {
+        "dayDurationMs": { "type": "number" },
+        "epochMs": { "type": "number" }
+      }
+    },
+    "CrimeRecord": {
+      "title": "CrimeRecord",
+      "description": "Criminal offense & evidence record under crime_records/{recordId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "characterId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "characterName": { "type": "string", "maxLength": 32 },
+        "offenseId": { "type": "string", "maxLength": 40 },
+        "offenseTitle": { "type": "string", "maxLength": 80 },
+        "severity": { "type": "number" },
+        "atMs": { "type": "number" },
+        "location": { "type": "object" },
+        "targetType": { "type": "string", "enum": ["npc", "player", "property", "business", "public", "vehicle"] },
+        "targetId": { "type": "string", "maxLength": 128 },
+        "witnesses": { "type": "array", "items": { "type": "string" } },
+        "status": { "type": "string", "enum": ["wanted", "reported", "fined", "arrested", "paid", "expired"] },
+        "fine": { "type": "number" },
+        "sentenceSec": { "type": "number" },
+        "evidenceScore": { "type": "number" }
+      },
+      "required": ["id", "characterId", "offenseId", "severity", "atMs", "location", "status", "fine", "sentenceSec"]
+    },
+    "Sentence": {
+      "title": "Sentence",
+      "description": "Active or past jail sentence under sentences/{uid}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "recordId": { "type": "string", "maxLength": 64 },
+        "startAtMs": { "type": "number" },
+        "endAtMs": { "type": "number" },
+        "originalEndAtMs": { "type": "number" },
+        "reason": { "type": "string", "maxLength": 160 },
+        "fineAmount": { "type": "number" },
+        "bailAmount": { "type": "number" },
+        "bailPaid": { "type": "boolean" },
+        "bailPaidBy": { "type": "string", "maxLength": 128 },
+        "workReductionSec": { "type": "number" },
+        "appealFiled": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["serving", "released", "bailed"] }
+      },
+      "required": ["uid", "startAtMs", "endAtMs", "reason", "bailPaid", "status"]
+    },
+    "PoliceAction": {
+      "title": "PoliceAction",
+      "description": "Immutable police enforcement audit log under police_actions/{id}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "officerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "officerName": { "type": "string", "maxLength": 32 },
+        "targetId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "targetName": { "type": "string", "maxLength": 32 },
+        "action": { "type": "string", "enum": ["arrest", "fine", "release", "patrol_check", "abuse_penalty"] },
+        "evidence": { "type": "string", "maxLength": 200 },
+        "recordId": { "type": "string", "maxLength": 64 },
+        "amount": { "type": "number" },
+        "atMs": { "type": "number" },
+        "reviewed": { "type": "boolean" },
+        "reviewStatus": { "type": "string", "enum": ["valid", "pending", "warning", "abuse"] },
+        "reportedBy": { "type": "string", "maxLength": 128 }
+      },
+      "required": ["id", "officerId", "targetId", "action", "evidence", "atMs", "reviewed"]
+    },
+    "SecurityInstall": {
+      "title": "SecurityInstall",
+      "description": "Property or business security hardware & guard config under security_installs/{propertyId}.",
+      "type": "object",
+      "properties": {
+        "propertyId": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "ownerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "businessId": { "type": "string", "maxLength": 64 },
+        "modules": { "type": "object" },
+        "guardName": { "type": "string", "maxLength": 40 },
+        "monthlyCost": { "type": "number" },
+        "protectionScore": { "type": "number" },
+        "lastBilledAtMs": { "type": "number" },
+        "lastIncidentAtMs": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["propertyId", "ownerId", "modules", "monthlyCost", "protectionScore", "updatedAtMs"]
+    },
+    "InsurancePolicy": {
+      "title": "InsurancePolicy",
+      "description": "Property/business theft & damage insurance policy under insurance/{id}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "ownerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "subjectType": { "type": "string", "enum": ["property", "business", "vehicle"] },
+        "subjectId": { "type": "string", "maxLength": 64 },
+        "planId": { "type": "string", "maxLength": 32 },
+        "coverageAmount": { "type": "number" },
+        "premiumPerCycle": { "type": "number" },
+        "lastPremiumAtMs": { "type": "number" },
+        "deductibleRate": { "type": "number" },
+        "claimsUsed": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "lapsed", "cancelled"] },
+        "createdAtMs": { "type": "number" }
+      },
+      "required": ["id", "ownerId", "subjectType", "subjectId", "planId", "coverageAmount", "premiumPerCycle", "status", "createdAtMs"]
+    },
+    "InsuranceClaim": {
+      "title": "InsuranceClaim",
+      "description": "Property or business insurance claim payout record under insurance_claims/{claimId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "insuranceId": { "type": "string", "maxLength": 64 },
+        "ownerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "subjectType": { "type": "string", "enum": ["property", "business"] },
+        "subjectId": { "type": "string", "maxLength": 64 },
+        "incidentId": { "type": "string", "maxLength": 64 },
+        "claimedLoss": { "type": "number" },
+        "payoutAmount": { "type": "number" },
+        "status": { "type": "string", "enum": ["approved", "rejected", "pending"] },
+        "createdAtMs": { "type": "number" }
+      },
+      "required": ["id", "insuranceId", "ownerId", "subjectType", "subjectId", "claimedLoss", "payoutAmount", "status", "createdAtMs"]
+    },
+    "NpcState": {
+      "title": "NpcState",
+      "description": "Mutable lightweight NPC state (mood, compact inventory, relationships) under npc_state/{npcId}.",
+      "type": "object",
+      "properties": {
+        "npcId": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "mood": { "type": "string", "maxLength": 24 },
+        "inventory": { "type": "array", "items": { "type": "string" } },
+        "relationships": { "type": "object" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["npcId", "mood", "updatedAtMs"]
+    },
+    "NpcMemory": {
+      "title": "NpcMemory",
+      "description": "Short-retention AI conversation summary & affinity under npc_memory/{npcId_uid}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 192 },
+        "npcId": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "affinity": { "type": "number" },
+        "summary": { "type": "string", "maxLength": 320 },
+        "lastTopics": { "type": "array", "items": { "type": "string" } },
+        "interactionCount": { "type": "number" },
+        "updatedAtMs": { "type": "number" },
+        "expiresAtMs": { "type": "number" }
+      },
+      "required": ["id", "npcId", "uid", "affinity", "summary", "updatedAtMs", "expiresAtMs"]
+    },
+    "QuestTemplate": {
+      "title": "QuestTemplate",
+      "description": "Active NPC quest definition under quests/{questId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "npcId": { "type": "string", "maxLength": 64 },
+        "npcName": { "type": "string", "maxLength": 48 },
+        "title": { "type": "string", "maxLength": 80 },
+        "description": { "type": "string", "maxLength": 240 },
+        "type": { "type": "string", "enum": ["deliver", "find", "help_business", "report_crime", "gotong_royong"] },
+        "objective": { "type": "object" },
+        "rewardMoney": { "type": "number" },
+        "rewardRep": { "type": "number" },
+        "rewardItemId": { "type": "string", "maxLength": 64 },
+        "dailyLimit": { "type": "number" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "npcId", "title", "type", "objective", "rewardMoney", "rewardRep", "active"]
+    },
+    "PlayerQuestLog": {
+      "title": "PlayerQuestLog",
+      "description": "Player quest progress entry under characters/{uid}/quest_log/{logId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "questId": { "type": "string", "maxLength": 64 },
+        "npcId": { "type": "string", "maxLength": 64 },
+        "title": { "type": "string", "maxLength": 80 },
+        "type": { "type": "string", "maxLength": 24 },
+        "progress": { "type": "number" },
+        "targetCount": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "completed", "abandoned", "expired"] },
+        "dayKey": { "type": "string", "maxLength": 16 },
+        "acceptedAtMs": { "type": "number" },
+        "completedAtMs": { "type": "number" }
+      },
+      "required": ["id", "uid", "questId", "npcId", "title", "progress", "targetCount", "status", "dayKey", "acceptedAtMs"]
+    },
+    "Mortgage": {
+      "title": "Mortgage",
+      "description": "Property mortgage contract (KPR) under mortgages/{id}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "borrowerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "borrowerName": { "type": "string", "maxLength": 32 },
+        "propertyId": { "type": "string", "maxLength": 64 },
+        "propertyName": { "type": "string", "maxLength": 80 },
+        "principal": { "type": "number" },
+        "downPayment": { "type": "number" },
+        "rate": { "type": "number" },
+        "termCycles": { "type": "number" },
+        "paidCycles": { "type": "number" },
+        "installment": { "type": "number" },
+        "nextDueAtMs": { "type": "number" },
+        "remaining": { "type": "number" },
+        "missedCount": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "paid", "foreclosed"] },
+        "createdAtMs": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["id", "borrowerId", "propertyId", "principal", "rate", "installment", "nextDueAtMs", "remaining", "status", "createdAtMs"]
+    },
+    "LandPlot": {
+      "title": "LandPlot",
+      "description": "Buildable land parcel (kavling) in Cicalengka under land_plots/{plotId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "name": { "type": "string", "maxLength": 80 },
+        "zone": { "type": "string", "enum": ["cicalengka"] },
+        "areaTag": { "type": "string", "enum": ["stasiun", "pasar", "kampung", "perumahan", "alun_alun"] },
+        "position": { "type": "object" },
+        "size": { "type": "object" },
+        "roadAccess": { "type": "string", "enum": ["utama", "gang"] },
+        "zoning": { "type": "string", "enum": ["residensial", "komersial", "campuran"] },
+        "basePrice": { "type": "number" },
+        "price": { "type": "number" },
+        "priceUpdatedAtMs": { "type": "number" },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "ownerName": { "type": "string", "maxLength": 48 },
+        "permitStatus": { "type": "string", "enum": ["none", "pending", "approved"] },
+        "permitAppliedAtMs": { "type": "number" },
+        "permitReadyAtMs": { "type": "number" },
+        "constructionId": { "type": "string", "maxLength": 64 },
+        "propertyId": { "type": "string", "maxLength": 64 },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["id", "name", "position", "size", "price", "zoning", "permitStatus"]
+    },
+    "Construction": {
+      "title": "Construction",
+      "description": "Timestamp-driven multi-phase house construction project under constructions/{id}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "ownerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "ownerName": { "type": "string", "maxLength": 32 },
+        "plotId": { "type": "string", "maxLength": 64 },
+        "blueprintId": { "type": "string", "maxLength": 32 },
+        "contractorType": { "type": "string", "enum": ["npc", "player"] },
+        "phase": { "type": "string", "enum": ["pondasi", "dinding", "atap", "finishing", "selesai"] },
+        "startedAtMs": { "type": "number" },
+        "phaseStartedAtMs": { "type": "number" },
+        "phaseEndsAtMs": { "type": "number" },
+        "materials": { "type": "object" },
+        "totalCost": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "completed", "cancelled"] },
+        "propertyId": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "ownerId", "plotId", "blueprintId", "phase", "startedAtMs", "phaseEndsAtMs", "materials", "status"]
+    },
+    "Renovation": {
+      "title": "Renovation",
+      "description": "Major property renovation project under renovations/{id}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "ownerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "propertyId": { "type": "string", "maxLength": 64 },
+        "renovationType": { "type": "string", "enum": ["add_room", "add_floor", "garden", "fence", "garage"] },
+        "cost": { "type": "number" },
+        "startedAtMs": { "type": "number" },
+        "completesAtMs": { "type": "number" },
+        "valueBoost": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "completed"] }
+      },
+      "required": ["id", "ownerId", "propertyId", "renovationType", "cost", "startedAtMs", "completesAtMs", "status"]
+    },
+    "AgentClientRequest": {
+      "title": "AgentClientRequest",
+      "description": "Real estate agent client matching lead under agent_clients/{clientId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "agentId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "clientName": { "type": "string", "maxLength": 48 },
+        "isNpc": { "type": "boolean" },
+        "desiredArea": { "type": "string", "maxLength": 24 },
+        "desiredType": { "type": "string", "maxLength": 24 },
+        "maxBudget": { "type": "number" },
+        "commissionRate": { "type": "number" },
+        "status": { "type": "string", "enum": ["open", "matched", "closed", "expired"] },
+        "createdAtMs": { "type": "number" }
+      },
+      "required": ["id", "agentId", "clientName", "maxBudget", "status", "createdAtMs"]
+    },
+    "DevelopmentProject": {
+      "title": "DevelopmentProject",
+      "description": "Multi-unit real estate developer project tracking capex vs revenue under dev_projects/{projectId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "developerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "developerName": { "type": "string", "maxLength": 32 },
+        "name": { "type": "string", "maxLength": 80 },
+        "plotIds": { "type": "array", "items": { "type": "string" } },
+        "constructionIds": { "type": "array", "items": { "type": "string" } },
+        "propertyIds": { "type": "array", "items": { "type": "string" } },
+        "totalCapitalSpent": { "type": "number" },
+        "totalRevenue": { "type": "number" },
+        "status": { "type": "string", "enum": ["planning", "building", "selling", "completed"] },
+        "createdAtMs": { "type": "number" }
+      },
+      "required": ["id", "developerId", "name", "totalCapitalSpent", "totalRevenue", "status", "createdAtMs"]
+    },
+    "AiUsageDay": {
+      "title": "AiUsageDay",
+      "description": "Per-player daily AI dialog rate limit & token budget tracker under ai_usage/{uid}/days/{date}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "date": { "type": "string", "maxLength": 16 },
+        "dateKey": { "type": "string", "maxLength": 16 },
+        "count": { "type": "number" },
+        "callsUsed": { "type": "number" },
+        "tokens": { "type": "number" },
+        "tokensUsed": { "type": "number" },
+        "blockedCount": { "type": "number" },
+        "updatedAtMs": { "type": "number" },
+        "lastCallAtMs": { "type": "number" }
+      },
+      "required": ["uid", "date", "count", "tokens", "updatedAtMs"]
+    },
+    "LawRecap": {
+      "title": "LawRecap",
+      "description": "Daily law enforcement and crime aggregate recap under state/law_recap and crime_recaps/{dayKey}.",
+      "type": "object",
+      "properties": {
+        "dayKey": { "type": "string", "minLength": 1, "maxLength": 24 },
+        "totalCrimesLast24h": { "type": "number" },
+        "activeSentencesCount": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["dayKey", "totalCrimesLast24h", "activeSentencesCount", "updatedAtMs"]
+    },
+    "AiModerationReport": {
+      "title": "AiModerationReport",
+      "description": "Server-only safety & moderation report for flagged AI NPC dialog under ai_moderation_reports/{reportId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "npcId": { "type": "string", "maxLength": 64 },
+        "reason": { "type": "string", "maxLength": 120 },
+        "createdAtMs": { "type": "number" }
+      },
+      "required": ["id", "uid", "npcId", "reason", "createdAtMs"]
+    },
+    "AiFaqCache": {
+      "title": "AiFaqCache",
+      "description": "Server-only shared FAQ cache for NPC AI responses under ai_faq_cache/{cacheKey}.",
+      "type": "object",
+      "properties": {
+        "cacheKey": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "npcId": { "type": "string", "maxLength": 64 },
+        "reply": { "type": "string", "maxLength": 400 },
+        "expiresAtMs": { "type": "number" }
+      },
+      "required": ["cacheKey", "npcId", "reply", "expiresAtMs"]
+    },
+    "Vehicle": {
+      "title": "Vehicle",
+      "description": "Owned motor vehicle (motorcycle or car) with lazy-calculated wear, fuel, tax/STNK, parking, and status under vehicles/{vehicleId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "ownerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "ownerName": { "type": "string", "maxLength": 32 },
+        "modelId": { "type": "string", "minLength": 1, "maxLength": 48 },
+        "category": { "type": "string", "enum": ["motor", "mobil"] },
+        "name": { "type": "string", "maxLength": 64 },
+        "plateNumber": { "type": "string", "maxLength": 16 },
+        "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$", "maxLength": 7 },
+        "condition": { "type": "number" },
+        "odometerKm": { "type": "number" },
+        "fuel": { "type": "number" },
+        "fuelCapacity": { "type": "number" },
+        "isElectric": { "type": "boolean" },
+        "registeredAtMs": { "type": "number" },
+        "stnkExpiresAtMs": { "type": "number" },
+        "taxLastPaidAtMs": { "type": "number" },
+        "lastMaintenanceAtMs": { "type": "number" },
+        "lastWearAtMs": { "type": "number" },
+        "insuranceId": { "type": "string", "maxLength": 64 },
+        "hasInsurance": { "type": "boolean" },
+        "leaseId": { "type": "string", "maxLength": 64 },
+        "garagePropertyId": { "type": "string", "maxLength": 64 },
+        "parkedPos": { "type": "object" },
+        "parkedType": { "type": "string", "enum": ["garage", "parking_lot", "roadside", "dealer", "workshop", "impound"] },
+        "status": { "type": "string", "enum": ["parked", "driving", "impounded", "in_workshop", "listed", "auctioning", "stolen"] },
+        "impoundReason": { "type": "string", "maxLength": 160 },
+        "impoundedAtMs": { "type": "number" },
+        "impoundFine": { "type": "number" },
+        "driverId": { "type": "string", "maxLength": 128 },
+        "passengerIds": { "type": "array", "items": { "type": "string" } },
+        "isPublicActive": { "type": "boolean" },
+        "activeListingId": { "type": "string", "maxLength": 64 },
+        "activeAuctionId": { "type": "string", "maxLength": 64 },
+        "accessories": { "type": "array", "items": { "type": "string" } },
+        "purchasePrice": { "type": "number" },
+        "isUsed": { "type": "boolean" },
+        "createdAtMs": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["id", "ownerId", "modelId", "category", "plateNumber", "color", "condition", "odometerKm", "fuel", "registeredAtMs", "stnkExpiresAtMs", "parkedPos", "status", "createdAtMs", "updatedAtMs"]
+    },
+    "VehiclePlateLock": {
+      "title": "VehiclePlateLock",
+      "description": "Server-only atomic uniqueness lock for Bandung license plates under vehicle_plates/{plateKey}.",
+      "type": "object",
+      "properties": {
+        "plateKey": { "type": "string", "minLength": 3, "maxLength": 16 },
+        "plateNumber": { "type": "string", "maxLength": 16 },
+        "vehicleId": { "type": "string", "maxLength": 64 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "createdAtMs": { "type": "number" }
+      },
+      "required": ["plateKey", "plateNumber", "vehicleId", "ownerId", "createdAtMs"]
+    },
+    "DriverLicense": {
+      "title": "DriverLicense",
+      "description": "Player driver licenses (SIM A & SIM C) and exam attempts under driver_licenses/{uid}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "simA": { "type": "object" },
+        "simC": { "type": "object" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["uid", "updatedAtMs"]
+    },
+    "VehicleLease": {
+      "title": "VehicleLease",
+      "description": "Bank vehicle credit/leasing contract with lazy installment & repossession tracking under vehicle_leases/{leaseId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "borrowerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "borrowerName": { "type": "string", "maxLength": 32 },
+        "vehicleId": { "type": "string", "maxLength": 64 },
+        "modelId": { "type": "string", "maxLength": 48 },
+        "vehicleName": { "type": "string", "maxLength": 64 },
+        "vehiclePrice": { "type": "number" },
+        "downPayment": { "type": "number" },
+        "principal": { "type": "number" },
+        "rate": { "type": "number" },
+        "termCycles": { "type": "number" },
+        "paidCycles": { "type": "number" },
+        "installment": { "type": "number" },
+        "remaining": { "type": "number" },
+        "nextDueAtMs": { "type": "number" },
+        "missedCount": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "paid", "repossessed"] },
+        "createdAtMs": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["id", "borrowerId", "vehicleId", "modelId", "principal", "rate", "installment", "remaining", "nextDueAtMs", "status", "createdAtMs"]
+    },
+    "VehicleServiceLog": {
+      "title": "VehicleServiceLog",
+      "description": "Maintenance, refuel, oil change, paint, and accessory history under vehicles/{vehicleId}/service_logs/{logId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "vehicleId": { "type": "string", "maxLength": 64 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "serviceType": { "type": "string", "enum": ["refuel", "charge", "oil_change", "repair", "paint", "accessory", "registration", "tow_recovery"] },
+        "providerType": { "type": "string", "enum": ["npc", "player_business", "spbu", "samsat"] },
+        "businessId": { "type": "string", "maxLength": 64 },
+        "cost": { "type": "number" },
+        "conditionBefore": { "type": "number" },
+        "conditionAfter": { "type": "number" },
+        "details": { "type": "string", "maxLength": 160 },
+        "createdAtMs": { "type": "number" }
+      },
+      "required": ["id", "vehicleId", "ownerId", "serviceType", "providerType", "cost", "createdAtMs"]
+    },
+    "VehicleListing": {
+      "title": "VehicleListing",
+      "description": "P2P or player-dealer escrow vehicle sale listing under vehicle_listings/{listingId}.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "vehicleId": { "type": "string", "maxLength": 64 },
+        "ownerId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "ownerName": { "type": "string", "maxLength": 32 },
+        "sellerBusinessId": { "type": "string", "maxLength": 64 },
+        "modelId": { "type": "string", "maxLength": 48 },
+        "vehicleName": { "type": "string", "maxLength": 64 },
+        "category": { "type": "string", "enum": ["motor", "mobil"] },
+        "plateNumber": { "type": "string", "maxLength": 16 },
+        "color": { "type": "string", "maxLength": 7 },
+        "condition": { "type": "number" },
+        "odometerKm": { "type": "number" },
+        "price": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "sold", "cancelled"] },
+        "createdAtMs": { "type": "number" },
+        "updatedAtMs": { "type": "number" }
+      },
+      "required": ["id", "vehicleId", "ownerId", "modelId", "vehicleName", "category", "plateNumber", "price", "status", "createdAtMs"]
+    },
+    "VehicleTestDrive": {
+      "title": "VehicleTestDrive",
+      "description": "Temporary 2-minute dealer test drive session under vehicle_test_drives/{uid}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "dealerId": { "type": "string", "maxLength": 64 },
+        "modelId": { "type": "string", "maxLength": 48 },
+        "color": { "type": "string", "maxLength": 7 },
+        "startedAtMs": { "type": "number" },
+        "expiresAtMs": { "type": "number" },
+        "zone": { "type": "string", "maxLength": 24 },
+        "status": { "type": "string", "enum": ["active", "ended", "expired"] }
+      },
+      "required": ["uid", "dealerId", "modelId", "startedAtMs", "expiresAtMs", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": { "schema": { "$ref": "#/entities/User" }, "description": "Private user account metadata" },
+    "/characters/{uid}": { "schema": { "$ref": "#/entities/Character" }, "description": "Persistent character state, vitals, skills, job, trip, housing, bank/business, and Phase 6 law/quest/mortgage/land links" },
+    "/characters/{uid}/transactions/{txId}": { "schema": { "$ref": "#/entities/TransactionRecord" }, "description": "Character financial history" },
+    "/characters/{uid}/bills/{billId}": { "schema": { "$ref": "#/entities/BillRecord" }, "description": "Character rent, utility, property tax, loan, and mortgage installment bills" },
+    "/characters/{uid}/employments/{empId}": { "schema": { "$ref": "#/entities/EmploymentRecord" }, "description": "Character employment records" },
+    "/characters/{uid}/shifts/{shiftId}": { "schema": { "$ref": "#/entities/ShiftRecord" }, "description": "Character shift logs & server-generated task prompts" },
+    "/characters/{uid}/shift_secrets/{shiftId}": { "schema": { "$ref": "#/entities/ShiftSecret" }, "description": "Server-only mini-game answer keys" },
+    "/characters/{uid}/tickets/{ticketId}": { "schema": { "$ref": "#/entities/TicketRecord" }, "description": "Train ticket history" },
+    "/characters/{uid}/clinic_visits/{visitId}": { "schema": { "$ref": "#/entities/ClinicVisitRecord" }, "description": "Clinic treatment logs" },
+    "/characters/{uid}/course_enrollments/{enrollId}": { "schema": { "$ref": "#/entities/CourseEnrollmentRecord" }, "description": "Course enrollment records" },
+    "/characters/{uid}/inventory/{itemId}": { "schema": { "$ref": "#/entities/CharacterInventoryItem" }, "description": "Character owned furniture, goods, building materials, and storage items" },
+    "/characters/{uid}/quest_log/{logId}": { "schema": { "$ref": "#/entities/PlayerQuestLog" }, "description": "Player active & completed NPC quest entries" },
+    "/character_names/{nameLower}": { "schema": { "$ref": "#/entities/CharacterNameLock" }, "description": "Server-managed name uniqueness lock" },
+    "/character_stats/{uid}": { "schema": { "$ref": "#/entities/CharacterStats" }, "description": "Lazy survival stats per character" },
+    "/properties/{propertyId}": { "schema": { "$ref": "#/entities/Property" }, "description": "Properties in Cicalengka (exterior coords, interior layout, furniture, security, renovation, ownership)" },
+    "/property_listings/{listingId}": { "schema": { "$ref": "#/entities/PropertyListing" }, "description": "Public filtered & paginated rent/sale property listings" },
+    "/offers/{offerId}": { "schema": { "$ref": "#/entities/PropertyOffer" }, "description": "Property price negotiation offers" },
+    "/leases/{leaseId}": { "schema": { "$ref": "#/entities/PropertyLease" }, "description": "Rental contracts with deposit, roommates, and due timestamps" },
+    "/property_access/{propertyId}/members/{uid}": { "schema": { "$ref": "#/entities/PropertyAccessMember" }, "description": "Property key & access authorization per user" },
+    "/property_viewings/{viewingId}": { "schema": { "$ref": "#/entities/PropertyViewing" }, "description": "Property inspection/survey logs" },
+    "/accounts/{uid}": { "schema": { "$ref": "#/entities/BankAccount" }, "description": "Bank Cicalengka account balance, savings, and credit score" },
+    "/loans/{loanId}": { "schema": { "$ref": "#/entities/LoanRecord" }, "description": "Bank loan contracts and installment schedules" },
+    "/ledger/{entryId}": { "schema": { "$ref": "#/entities/LedgerEntry" }, "description": "Double-entry financial ledger for audit and anti-duplication" },
+    "/businesses/{businessId}": { "schema": { "$ref": "#/entities/Business" }, "description": "Player-owned businesses in Cicalengka" },
+    "/businesses/{businessId}/stock/{itemId}": { "schema": { "$ref": "#/entities/BusinessStockItem" }, "description": "Business retail stock and prices" },
+    "/businesses/{businessId}/employees/{empId}": { "schema": { "$ref": "#/entities/BusinessEmployee" }, "description": "Business NPC and player employees" },
+    "/businesses/{businessId}/daily_reports/{dayKey}": { "schema": { "$ref": "#/entities/BusinessDailyReport" }, "description": "Aggregated daily business financial summaries" },
+    "/businesses/{businessId}/promotions/{promoId}": { "schema": { "$ref": "#/entities/BusinessPromotion" }, "description": "Active/past business marketing promotions" },
+    "/business_job_posts/{postId}": { "schema": { "$ref": "#/entities/BusinessJobPost" }, "description": "Public job openings posted by player businesses" },
+    "/market_listings/{listingId}": { "schema": { "$ref": "#/entities/MarketListing" }, "description": "P2P fixed-price marketplace listings with escrow" },
+    "/auctions/{auctionId}": { "schema": { "$ref": "#/entities/Auction" }, "description": "Player auctions for items, properties, and businesses" },
+    "/auctions/{auctionId}/bids/{bidId}": { "schema": { "$ref": "#/entities/AuctionBid" }, "description": "Bid log per auction" },
+    "/market_stats/{itemId}": { "schema": { "$ref": "#/entities/MarketStat" }, "description": "Batch-updated dynamic market pricing stats" },
+    "/suppliers/{supplierId}": { "schema": { "$ref": "#/entities/Supplier" }, "description": "NPC wholesale suppliers at Pasar Grosir" },
+    "/state/treasury": { "schema": { "$ref": "#/entities/TreasuryState" }, "description": "National treasury and macro economic indicators" },
+    "/state/law_recap": { "schema": { "$ref": "#/entities/LawRecap" }, "description": "Latest daily crime & enforcement bulletin summary" },
+    "/crime_recaps/{dayKey}": { "schema": { "$ref": "#/entities/LawRecap" }, "description": "Historical daily crime & sentence recaps generated by Cloud Scheduler" },
+    "/items/{itemDocId}": { "schema": { "$ref": "#/entities/InventoryItem" }, "description": "Legacy character inventory items" },
+    "/shop_menu/{itemId}": { "schema": { "$ref": "#/entities/ShopMenuItem" }, "description": "Public read-only warung menu" },
+    "/chat_logs/{messageId}": { "schema": { "$ref": "#/entities/ChatLog" }, "description": "Global chat history" },
+    "/config/{docId}": { "schema": { "$ref": "#/entities/GameConfig" }, "description": "Read-only global config docs" },
+    "/crime_records/{recordId}": { "schema": { "$ref": "#/entities/CrimeRecord" }, "description": "Criminal offense & evidence logs (owner, police, admin read)" },
+    "/sentences/{uid}": { "schema": { "$ref": "#/entities/Sentence" }, "description": "Jail sentence & bail/appeal status per player" },
+    "/police_actions/{id}": { "schema": { "$ref": "#/entities/PoliceAction" }, "description": "Audit trail for police enforcement actions & Internal Affairs reviews" },
+    "/security_installs/{propertyId}": { "schema": { "$ref": "#/entities/SecurityInstall" }, "description": "Installed property/business security hardware & guard info" },
+    "/insurance/{id}": { "schema": { "$ref": "#/entities/InsurancePolicy" }, "description": "Property & business insurance policies" },
+    "/insurance_claims/{claimId}": { "schema": { "$ref": "#/entities/InsuranceClaim" }, "description": "Property & business insurance theft/damage claim records" },
+    "/npc_state/{npcId}": { "schema": { "$ref": "#/entities/NpcState" }, "description": "Mutable lightweight NPC mood, inventory, and relationships" },
+    "/npc_memory/{memoryId}": { "schema": { "$ref": "#/entities/NpcMemory" }, "description": "Short-retention AI dialogue summary & affinity per NPC-player pair" },
+    "/quests/{questId}": { "schema": { "$ref": "#/entities/QuestTemplate" }, "description": "Active NPC quest catalog" },
+    "/mortgages/{id}": { "schema": { "$ref": "#/entities/Mortgage" }, "description": "Bank KPR property mortgage contracts" },
+    "/land_plots/{plotId}": { "schema": { "$ref": "#/entities/LandPlot" }, "description": "Buildable kavling land parcels and IMB permit status" },
+    "/constructions/{id}": { "schema": { "$ref": "#/entities/Construction" }, "description": "Multi-phase construction projects with timestamp progress" },
+    "/renovations/{id}": { "schema": { "$ref": "#/entities/Renovation" }, "description": "Major property renovation projects" },
+    "/agent_clients/{clientId}": { "schema": { "$ref": "#/entities/AgentClientRequest" }, "description": "Property agent client leads and deal matching" },
+    "/dev_projects/{projectId}": { "schema": { "$ref": "#/entities/DevelopmentProject" }, "description": "Multi-unit real estate developer projects" },
+    "/ai_usage/{uid}/days/{date}": { "schema": { "$ref": "#/entities/AiUsageDay" }, "description": "Daily AI dialog rate limit & token budget tracking" },
+    "/ai_faq_cache/{cacheKey}": { "schema": { "$ref": "#/entities/AiFaqCache" }, "description": "Server-only cached NPC AI FAQ responses" },
+    "/ai_moderation_reports/{reportId}": { "schema": { "$ref": "#/entities/AiModerationReport" }, "description": "Server-only AI moderation audit log" },
+    "/vehicles/{vehicleId}": { "schema": { "$ref": "#/entities/Vehicle" }, "description": "Player-owned motor vehicles, STNK/tax timestamps, fuel, condition, and parking state" },
+    "/vehicles/{vehicleId}/service_logs/{logId}": { "schema": { "$ref": "#/entities/VehicleServiceLog" }, "description": "Vehicle maintenance, refueling, paint, and accessory audit logs" },
+    "/vehicle_plates/{plateKey}": { "schema": { "$ref": "#/entities/VehiclePlateLock" }, "description": "Server-only Bandung license plate uniqueness lock" },
+    "/driver_licenses/{uid}": { "schema": { "$ref": "#/entities/DriverLicense" }, "description": "Player SIM A and SIM C license status and exam records" },
+    "/vehicle_leases/{leaseId}": { "schema": { "$ref": "#/entities/VehicleLease" }, "description": "Bank vehicle credit/leasing contracts" },
+    "/vehicle_listings/{listingId}": { "schema": { "$ref": "#/entities/VehicleListing" }, "description": "Escrow vehicle marketplace and player-dealer listings" },
+    "/vehicle_test_drives/{uid}": { "schema": { "$ref": "#/entities/VehicleTestDrive" }, "description": "Server-tracked 2-minute dealer test drive sessions" }
+  }
+}

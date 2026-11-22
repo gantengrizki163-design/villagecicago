@@ -1,0 +1,600 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global safety net: default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Primitive Helpers ---
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    function isActivePolice() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/characters/$(request.auth.uid))
+        && get(/databases/$(database)/documents/characters/$(request.auth.uid)).data.currentJob != null
+        && get(/databases/$(database)/documents/characters/$(request.auth.uid)).data.currentJob.jobId == 'polisi';
+    }
+
+    // --- Validation Blueprints ---
+    function isValidUserPayload(data, uid) {
+      return data.keys().hasAll(['uid', 'createdAt', 'lastLoginAt'])
+        && data.keys().hasOnly(['uid', 'email', 'displayName', 'provider', 'createdAt', 'lastLoginAt'])
+        && data.uid is string
+        && data.uid == uid
+        && (!('email' in data) || (data.email is string && data.email.size() <= 254))
+        && (!('displayName' in data) || (data.displayName is string && data.displayName.size() >= 1 && data.displayName.size() <= 64))
+        && (!('provider' in data) || (data.provider is string && data.provider in ['password', 'google.com']))
+        && data.createdAt is timestamp
+        && data.lastLoginAt is timestamp;
+    }
+
+    // 1. Private User Account Profile (PII isolated to owner)
+    match /users/{uid} {
+      allow get: if isValidId(uid) && isOwner(uid);
+      allow list: if false;
+      allow create: if isValidId(uid)
+        && isOwner(uid)
+        && isValidUserPayload(incoming(), uid)
+        && incoming().createdAt == request.time
+        && incoming().lastLoginAt == request.time;
+      allow update: if isValidId(uid)
+        && isOwner(uid)
+        && isValidUserPayload(incoming(), uid)
+        && incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'email', 'provider', 'lastLoginAt'])
+        && incoming().uid == existing().uid
+        && incoming().createdAt == existing().createdAt
+        && incoming().lastLoginAt == request.time;
+      allow delete: if false;
+    }
+
+    // 2. Characters (Owner read only; ALL writes strictly via Cloud Functions)
+    match /characters/{uid} {
+      allow get: if isValidId(uid) && isOwner(uid);
+      allow list: if false;
+      allow write: if false;
+
+      match /transactions/{txId} {
+        allow get: if isValidId(uid) && isValidId(txId) && isOwner(uid);
+        allow list: if isValidId(uid) && isOwner(uid);
+        allow write: if false;
+      }
+
+      match /bills/{billId} {
+        allow get: if isValidId(uid) && isValidId(billId) && isOwner(uid);
+        allow list: if isValidId(uid) && isOwner(uid);
+        allow write: if false;
+      }
+
+      match /employments/{empId} {
+        allow get: if isValidId(uid) && isValidId(empId) && isOwner(uid);
+        allow list: if isValidId(uid) && isOwner(uid);
+        allow write: if false;
+      }
+
+      match /shifts/{shiftId} {
+        allow get: if isValidId(uid) && isValidId(shiftId) && isOwner(uid);
+        allow list: if isValidId(uid) && isOwner(uid);
+        allow write: if false;
+      }
+
+      // Server-only mini-game answers (never readable by client)
+      match /shift_secrets/{shiftId} {
+        allow read, write: if false;
+      }
+
+      match /tickets/{ticketId} {
+        allow get: if isValidId(uid) && isValidId(ticketId) && isOwner(uid);
+        allow list: if isValidId(uid) && isOwner(uid);
+        allow write: if false;
+      }
+
+      match /clinic_visits/{visitId} {
+        allow get: if isValidId(uid) && isValidId(visitId) && isOwner(uid);
+        allow list: if isValidId(uid) && isOwner(uid);
+        allow write: if false;
+      }
+
+      match /course_enrollments/{enrollId} {
+        allow get: if isValidId(uid) && isValidId(enrollId) && isOwner(uid);
+        allow list: if isValidId(uid) && isOwner(uid);
+        allow write: if false;
+      }
+
+      // Fase 3: Player inventory (furniture, food, materials, evicted storage)
+      match /inventory/{itemId} {
+        allow get: if isValidId(uid) && isValidId(itemId) && isOwner(uid);
+        allow list: if isValidId(uid) && isOwner(uid);
+        allow write: if false;
+      }
+
+      // Fase 6: Player Quest Log (Owner read only; writes strictly via Cloud Functions)
+      match /quest_log/{logId} {
+        allow get: if isValidId(uid) && isValidId(logId) && isOwner(uid);
+        allow list: if isValidId(uid) && isOwner(uid);
+        allow write: if false;
+      }
+    }
+
+    // 3. Character Name Uniqueness Locks (Server-only)
+    match /character_names/{nameLower} {
+      allow read, write: if false;
+    }
+
+    // 4. Character Survival Stats (Owner read only; ALL writes via Cloud Functions)
+    match /character_stats/{uid} {
+      allow get: if isValidId(uid) && isOwner(uid);
+      allow list: if false;
+      allow write: if false;
+    }
+
+    // 5. Legacy Player Inventory Items (Owner read only; ALL writes via Cloud Functions)
+    match /items/{itemDocId} {
+      allow get: if isSignedIn() && isValidId(itemDocId) && existing().uid == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.uid == request.auth.uid;
+      allow write: if false;
+    }
+
+    // 6. Warung Shop Menu (Signed-in read only for available items; writes server-only)
+    match /shop_menu/{itemId} {
+      allow get: if isSignedIn() && isValidId(itemId) && existing().available == true;
+      allow list: if isSignedIn() && resource.data.available == true;
+      allow write: if false;
+    }
+
+    // 7. Global Chat Logs (Signed-in read only; writes via sendChat Cloud Function)
+    match /chat_logs/{messageId} {
+      allow get: if isSignedIn() && isValidId(messageId) && existing().channel == 'global';
+      allow list: if isSignedIn() && resource.data.channel == 'global';
+      allow write: if false;
+    }
+
+    // 8. Global Game Configs (Signed-in read only for known config docs; writes server-only)
+    match /config/{docId} {
+      allow get: if isSignedIn() && docId in [
+        'game', 'jobs', 'clinic', 'courses', 'trainSchedule',
+        'economy', 'housing', 'furniture', 'bank', 'business', 'products', 'tax',
+        'law', 'npcs', 'quests', 'mortgage', 'land', 'construction', 'ai',
+        'vehicles', 'traffic', 'dealer'
+      ];
+      allow list: if false;
+      allow write: if false;
+    }
+
+    // 9. Fase 3: Properties (Interior & furniture gated strictly by ownerId or property_access ACL; writes server-only)
+    match /properties/{propertyId} {
+      allow get: if isSignedIn()
+        && isValidId(propertyId)
+        && (
+          existing().ownerId == request.auth.uid
+          || exists(/databases/$(database)/documents/property_access/$(propertyId)/members/$(request.auth.uid))
+        );
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow write: if false;
+    }
+
+    // 10. Fase 3: Property Access ACL (Member reads own access pass only; writes strictly via Cloud Functions)
+    match /property_access/{propertyId}/members/{uid} {
+      allow get: if isValidId(propertyId) && isValidId(uid) && isOwner(uid) && existing().uid == uid;
+      allow list: if isValidId(propertyId) && isSignedIn() && resource.data.uid == request.auth.uid;
+      allow write: if false;
+    }
+
+    // 11. Fase 3: Property Listings (Active listings public to signed-in players + owner history; writes server-only)
+    match /property_listings/{listingId} {
+      allow get: if isSignedIn()
+        && isValidId(listingId)
+        && (existing().status == 'active' || existing().ownerId == request.auth.uid);
+      allow list: if isSignedIn()
+        && (resource.data.status == 'active' || resource.data.ownerId == request.auth.uid);
+      allow write: if false;
+    }
+
+    // 12. Fase 3: Negotiation Offers (Participant-only read; writes server-only)
+    match /offers/{offerId} {
+      allow get: if isSignedIn()
+        && isValidId(offerId)
+        && (existing().buyerId == request.auth.uid || existing().ownerId == request.auth.uid);
+      allow list: if isSignedIn()
+        && (resource.data.buyerId == request.auth.uid || resource.data.ownerId == request.auth.uid);
+      allow write: if false;
+    }
+
+    // 13. Fase 3: Rental Leases (Tenant, owner, roommate, or invitee read only; writes server-only)
+    match /leases/{leaseId} {
+      allow get: if isSignedIn()
+        && isValidId(leaseId)
+        && (
+          existing().tenantId == request.auth.uid
+          || existing().ownerId == request.auth.uid
+          || ('roommateIds' in existing() && existing().roommateIds is list && request.auth.uid in existing().roommateIds)
+          || ('pendingInviteUids' in existing() && existing().pendingInviteUids is list && request.auth.uid in existing().pendingInviteUids)
+        );
+      allow list: if isSignedIn()
+        && (
+          resource.data.tenantId == request.auth.uid
+          || resource.data.ownerId == request.auth.uid
+          || ('roommateIds' in resource.data && resource.data.roommateIds is list && request.auth.uid in resource.data.roommateIds)
+          || ('pendingInviteUids' in resource.data && resource.data.pendingInviteUids is list && request.auth.uid in resource.data.pendingInviteUids)
+        );
+      allow write: if false;
+    }
+
+    // 14. Fase 3: Property Viewings Log (Viewer or owner read only; writes server-only)
+    match /property_viewings/{viewingId} {
+      allow get: if isSignedIn()
+        && isValidId(viewingId)
+        && (existing().viewerId == request.auth.uid || existing().ownerId == request.auth.uid);
+      allow list: if isSignedIn()
+        && (resource.data.viewerId == request.auth.uid || resource.data.ownerId == request.auth.uid);
+      allow write: if false;
+    }
+
+    // 15. Fase 4: Bank Accounts (Owner read only; writes strictly via Cloud Functions)
+    match /accounts/{uid} {
+      allow get: if isValidId(uid) && isOwner(uid);
+      allow list: if false;
+      allow write: if false;
+    }
+
+    // 16. Fase 4: Bank Loans (Borrower read only; writes strictly via Cloud Functions)
+    match /loans/{loanId} {
+      allow get: if isSignedIn() && isValidId(loanId) && existing().borrowerId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.borrowerId == request.auth.uid;
+      allow write: if false;
+    }
+
+    // 17. Fase 4: Financial Double-Entry Ledger (Participant read only; immutable & server-only)
+    match /ledger/{entryId} {
+      allow get: if isSignedIn()
+        && isValidId(entryId)
+        && (existing().from == request.auth.uid || existing().to == request.auth.uid);
+      allow list: if isSignedIn()
+        && (resource.data.from == request.auth.uid || resource.data.to == request.auth.uid);
+      allow write: if false;
+    }
+
+    // 18. Fase 4: Businesses (Active businesses public for 3D signage/storefront + owner read; writes server-only)
+    match /businesses/{businessId} {
+      allow get: if isSignedIn()
+        && isValidId(businessId)
+        && (existing().status == 'active' || existing().ownerId == request.auth.uid);
+      allow list: if isSignedIn()
+        && (resource.data.status == 'active' || resource.data.ownerId == request.auth.uid);
+      allow write: if false;
+
+      match /stock/{itemId} {
+        allow get, list: if isSignedIn() && isValidId(businessId);
+        allow write: if false;
+      }
+
+      match /employees/{empId} {
+        allow get: if isSignedIn()
+          && isValidId(businessId)
+          && isValidId(empId)
+          && (existing().ownerId == request.auth.uid || existing().uid == request.auth.uid);
+        allow list: if isSignedIn()
+          && isValidId(businessId)
+          && (resource.data.ownerId == request.auth.uid || resource.data.uid == request.auth.uid);
+        allow write: if false;
+      }
+
+      match /daily_reports/{dayKey} {
+        allow get: if isSignedIn()
+          && isValidId(businessId)
+          && isValidId(dayKey)
+          && existing().ownerId == request.auth.uid;
+        allow list: if isSignedIn()
+          && isValidId(businessId)
+          && resource.data.ownerId == request.auth.uid;
+        allow write: if false;
+      }
+
+      match /promotions/{promoId} {
+        allow get: if isSignedIn()
+          && isValidId(businessId)
+          && isValidId(promoId)
+          && existing().ownerId == request.auth.uid;
+        allow list: if isSignedIn()
+          && isValidId(businessId)
+          && resource.data.ownerId == request.auth.uid;
+        allow write: if false;
+      }
+    }
+
+    // 19. Fase 4: Business Job Posts (Open job posts public to signed-in players + owner; writes server-only)
+    match /business_job_posts/{postId} {
+      allow get: if isSignedIn()
+        && isValidId(postId)
+        && (existing().status == 'open' || existing().ownerId == request.auth.uid);
+      allow list: if isSignedIn()
+        && (resource.data.status == 'open' || resource.data.ownerId == request.auth.uid);
+      allow write: if false;
+    }
+
+    // 20. Fase 4: P2P Marketplace Listings (Active listings public + seller history; writes server-only)
+    match /market_listings/{listingId} {
+      allow get: if isSignedIn()
+        && isValidId(listingId)
+        && (existing().status == 'active' || existing().sellerId == request.auth.uid);
+      allow list: if isSignedIn()
+        && (resource.data.status == 'active' || resource.data.sellerId == request.auth.uid);
+      allow write: if false;
+    }
+
+    // 21. Fase 4: Auctions & Bids (Active/settled auctions public to signed-in players + seller; writes server-only)
+    match /auctions/{auctionId} {
+      allow get: if isSignedIn()
+        && isValidId(auctionId)
+        && (existing().status in ['active', 'settled'] || existing().sellerId == request.auth.uid);
+      allow list: if isSignedIn()
+        && (resource.data.status in ['active', 'settled'] || resource.data.sellerId == request.auth.uid);
+      allow write: if false;
+
+      match /bids/{bidId} {
+        allow get: if isSignedIn()
+          && isValidId(auctionId)
+          && isValidId(bidId)
+          && existing().auctionId == auctionId;
+        allow list: if isSignedIn()
+          && isValidId(auctionId)
+          && resource.data.auctionId == auctionId;
+        allow write: if false;
+      }
+    }
+
+    // 22. Fase 4: Dynamic Market Stats & Wholesale Suppliers (Signed-in read only; writes server-only)
+    match /market_stats/{itemId} {
+      allow get: if isSignedIn() && isValidId(itemId);
+      allow list: if isSignedIn();
+      allow write: if false;
+    }
+
+    match /suppliers/{supplierId} {
+      allow get: if isSignedIn() && isValidId(supplierId);
+      allow list: if isSignedIn();
+      allow write: if false;
+    }
+
+    // 23. Fase 4 & 6: National Treasury, Macro Indicators & Daily Law Recap (Signed-in read only; writes server-only)
+    match /state/{docId} {
+      allow get: if isSignedIn() && docId in ['treasury', 'law_recap'];
+      allow list: if false;
+      allow write: if false;
+    }
+
+    match /crime_recaps/{dayKey} {
+      allow get: if isSignedIn() && isValidId(dayKey);
+      allow list: if false;
+      allow write: if false;
+    }
+
+    // 24. Fase 6: Crime Records (Pemilik record, polisi aktif, atau admin saja; writes server-only)
+    match /crime_records/{recordId} {
+      allow get: if isSignedIn()
+        && isValidId(recordId)
+        && (existing().characterId == request.auth.uid || isActivePolice() || isAdmin());
+      allow list: if isSignedIn()
+        && (resource.data.characterId == request.auth.uid || isActivePolice() || isAdmin());
+      allow write: if false;
+    }
+
+    // 25. Fase 6: Jail Sentences (Pemilik, polisi aktif, atau admin; writes server-only)
+    match /sentences/{uid} {
+      allow get: if isValidId(uid) && (isOwner(uid) || isActivePolice() || isAdmin());
+      allow list: if isSignedIn() && (resource.data.uid == request.auth.uid || isActivePolice() || isAdmin());
+      allow write: if false;
+    }
+
+    // 26. Fase 6: Police Enforcement Audit Log (Officer, target, polisi aktif, atau admin; writes server-only)
+    match /police_actions/{actionId} {
+      allow get: if isSignedIn()
+        && isValidId(actionId)
+        && (
+          existing().officerId == request.auth.uid
+          || existing().targetId == request.auth.uid
+          || isActivePolice()
+          || isAdmin()
+        );
+      allow list: if isSignedIn()
+        && (
+          resource.data.officerId == request.auth.uid
+          || resource.data.targetId == request.auth.uid
+          || isActivePolice()
+          || isAdmin()
+        );
+      allow write: if false;
+    }
+
+    // 27. Fase 6: Property & Business Security Installs (Owner read only; writes server-only)
+    match /security_installs/{propertyId} {
+      allow get: if isSignedIn() && isValidId(propertyId) && existing().ownerId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow write: if false;
+    }
+
+    // 28. Fase 6: Insurance Policies & Claims (Owner read only; writes server-only)
+    match /insurance/{insuranceId} {
+      allow get: if isSignedIn() && isValidId(insuranceId) && existing().ownerId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow write: if false;
+    }
+
+    match /insurance_claims/{claimId} {
+      allow get: if isSignedIn() && isValidId(claimId) && existing().ownerId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow write: if false;
+    }
+
+    // 29. Fase 6: NPC Mutable State & Private Per-Player Memory
+    match /npc_state/{npcId} {
+      allow get: if isSignedIn() && isValidId(npcId);
+      allow list: if isSignedIn();
+      allow write: if false;
+    }
+
+    match /npc_memory/{memoryId} {
+      allow get: if isSignedIn() && isValidId(memoryId) && existing().uid == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.uid == request.auth.uid;
+      allow write: if false;
+    }
+
+    // 30. Fase 6: Active Quests Catalog (Signed-in read for active quests; writes server-only)
+    match /quests/{questId} {
+      allow get: if isSignedIn() && isValidId(questId) && existing().active == true;
+      allow list: if isSignedIn() && resource.data.active == true;
+      allow write: if false;
+    }
+
+    // 31. Fase 6: Mortgages / KPR (Borrower read only; writes server-only)
+    match /mortgages/{mortgageId} {
+      allow get: if isSignedIn() && isValidId(mortgageId) && existing().borrowerId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.borrowerId == request.auth.uid;
+      allow write: if false;
+    }
+
+    // 32. Fase 6: Land Plots (Signed-in public read for kavling map; writes server-only)
+    match /land_plots/{plotId} {
+      allow get: if isSignedIn() && isValidId(plotId);
+      allow list: if isSignedIn();
+      allow write: if false;
+    }
+
+    // 33. Fase 6: Constructions (Active 3D builds public to signed-in players + owner; writes server-only)
+    match /constructions/{constructionId} {
+      allow get: if isSignedIn()
+        && isValidId(constructionId)
+        && (existing().status == 'active' || existing().ownerId == request.auth.uid);
+      allow list: if isSignedIn()
+        && (resource.data.status == 'active' || resource.data.ownerId == request.auth.uid);
+      allow write: if false;
+    }
+
+    // 34. Fase 6: Major Renovations (Owner read only; writes server-only)
+    match /renovations/{renovationId} {
+      allow get: if isSignedIn() && isValidId(renovationId) && existing().ownerId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow write: if false;
+    }
+
+    // 35. Fase 6: Real Estate Agent Clients & Developer Projects (Owner read only; writes server-only)
+    match /agent_clients/{clientId} {
+      allow get: if isSignedIn() && isValidId(clientId) && existing().agentId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.agentId == request.auth.uid;
+      allow write: if false;
+    }
+
+    match /dev_projects/{projectId} {
+      allow get: if isSignedIn() && isValidId(projectId) && existing().developerId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.developerId == request.auth.uid;
+      allow write: if false;
+    }
+
+    // 36. Fase 6: AI Usage Rate Limits (Owner read only) & Server-only FAQ Cache
+    match /ai_usage/{uid}/days/{date} {
+      allow get: if isValidId(uid) && isValidId(date) && isOwner(uid) && existing().uid == uid;
+      allow list: if isValidId(uid) && isOwner(uid) && resource.data.uid == uid;
+      allow write: if false;
+    }
+
+    match /ai_faq_cache/{cacheKey} {
+      allow read, write: if false;
+    }
+
+    match /ai_moderation_reports/{reportId} {
+      allow read, write: if false;
+    }
+
+    // 37. Sistem Kendaraan: Kendaraan Pemain, Riwayat Servis & Kunci Plat Bandung
+    match /vehicles/{vehicleId} {
+      allow get: if isSignedIn()
+        && isValidId(vehicleId)
+        && (
+          existing().ownerId == request.auth.uid
+          || existing().driverId == request.auth.uid
+          || ('passengerIds' in existing() && existing().passengerIds is list && request.auth.uid in existing().passengerIds)
+          || existing().isPublicActive == true
+          || isActivePolice()
+          || isAdmin()
+        );
+      allow list: if isSignedIn()
+        && (
+          resource.data.ownerId == request.auth.uid
+          || resource.data.isPublicActive == true
+          || isActivePolice()
+          || isAdmin()
+        );
+      allow write: if false;
+
+      match /service_logs/{logId} {
+        allow get: if isSignedIn()
+          && isValidId(vehicleId)
+          && isValidId(logId)
+          && existing().ownerId == request.auth.uid
+          && existing().vehicleId == vehicleId
+          && get(/databases/$(database)/documents/vehicles/$(vehicleId)).data.ownerId == request.auth.uid;
+        allow list: if isSignedIn()
+          && isValidId(vehicleId)
+          && resource.data.ownerId == request.auth.uid
+          && resource.data.vehicleId == vehicleId;
+        allow write: if false;
+      }
+    }
+
+    match /vehicle_plates/{plateKey} {
+      allow read, write: if false;
+    }
+
+    // 38. Sistem Kendaraan: SIM A & C, Leasing Kendaraan, Listing & Test Drive
+    match /driver_licenses/{uid} {
+      allow get: if isValidId(uid) && (isOwner(uid) || isActivePolice() || isAdmin());
+      allow list: if false;
+      allow write: if false;
+    }
+
+    match /vehicle_leases/{leaseId} {
+      allow get: if isSignedIn() && isValidId(leaseId) && existing().borrowerId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.borrowerId == request.auth.uid;
+      allow write: if false;
+    }
+
+    match /vehicle_listings/{listingId} {
+      allow get: if isSignedIn()
+        && isValidId(listingId)
+        && (existing().status == 'active' || existing().ownerId == request.auth.uid);
+      allow list: if isSignedIn()
+        && (resource.data.status == 'active' || resource.data.ownerId == request.auth.uid);
+      allow write: if false;
+    }
+
+    match /vehicle_test_drives/{uid} {
+      allow get: if isValidId(uid) && isOwner(uid);
+      allow list: if false;
+      allow write: if false;
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+    "phasesOrder": ["pondasi", "dinding", "atap", "finishing"],
+    "contractorFeeRate": {
+        "npc": 1.0,
+        "player": 0.85
+    },
+    "blueprints": {
+        "kecil": {
+            "id": "kecil",
+            "name": "Rumah Tipe 27 (Kecil)",
+            "propertyType": "kontrakan",
+            "rooms": 2,
+            "size": { "width": 6, "depth": 6 },
+            "layout": { "gridCols": 6, "gridRows": 6, "wallColor": "#fef3c7", "floorColor": "#e2e8f0" },
+            "laborCost": 180000,
+            "phaseDurationSec": 35,
+            "materials": {
+                "semen_sak": 4,
+                "bata_merah": 6,
+                "kayu_balok": 3,
+                "genteng_pak": 3,
+                "cat_tembok": 2
+            },
+            "estimatedMarketValue": 920000,
+            "baseRent": 68000
+        },
+        "sedang": {
+            "id": "sedang",
+            "name": "Rumah Tipe 45 (Sedang)",
+            "propertyType": "rumah",
+            "rooms": 3,
+            "size": { "width": 8, "depth": 8 },
+            "layout": { "gridCols": 8, "gridRows": 8, "wallColor": "#ecfdf5", "floorColor": "#e2e8f0" },
+            "laborCost": 340000,
+            "phaseDurationSec": 50,
+            "materials": {
+                "semen_sak": 7,
+                "bata_merah": 10,
+                "kayu_balok": 5,
+                "genteng_pak": 5,
+                "cat_tembok": 4
+            },
+            "estimatedMarketValue": 2150000,
+            "baseRent": 150000
+        },
+        "besar": {
+            "id": "besar",
+            "name": "Rumah / Ruko Tipe 72 (Besar)",
+            "propertyType": "rumah",
+            "rooms": 4,
+            "size": { "width": 9, "depth": 9 },
+            "layout": { "gridCols": 9, "gridRows": 9, "wallColor": "#eff6ff", "floorColor": "#f8fafc" },
+            "laborCost": 560000,
+            "phaseDurationSec": 70,
+            "materials": {
+                "semen_sak": 12,
+                "bata_merah": 16,
+                "kayu_balok": 8,
+                "genteng_pak": 8,
+                "cat_tembok": 6
+            },
+            "estimatedMarketValue": 3350000,
+            "baseRent": 225000
+        }
+    },
+    "renovations": {
+        "add_room": {
+            "id": "add_room",
+            "label": "Tambah Kamar Tidur",
+            "cost": 165000,
+            "durationSec": 45,
+            "materials": { "semen_sak": 3, "bata_merah": 4, "cat_tembok": 2 },
+            "valueBoost": 240000,
+            "roomsDelta": 1,
+            "gridDelta": 1
+        },
+        "add_floor": {
+            "id": "add_floor",
+            "label": "Tingkat Lantai 2",
+            "cost": 360000,
+            "durationSec": 75,
+            "materials": { "semen_sak": 6, "bata_merah": 8, "kayu_balok": 4, "genteng_pak": 4 },
+            "valueBoost": 540000,
+            "roomsDelta": 2,
+            "gridDelta": 1
+        },
+        "garden": {
+            "id": "garden",
+            "label": "Taman & Teras Asri",
+            "cost": 75000,
+            "durationSec": 25,
+            "materials": { "cat_tembok": 1 },
+            "valueBoost": 115000,
+            "moodBonus": 6
+        },
+        "fence": {
+            "id": "fence",
+            "label": "Pagar Keliling Besi",
+            "cost": 95000,
+            "durationSec": 30,
+            "materials": { "semen_sak": 2, "bata_merah": 3 },
+            "valueBoost": 145000,
+            "securityBonus": 10
+        },
+        "garage": {
+            "id": "garage",
+            "label": "Garasi & Kanopi",
+            "cost": 140000,
+            "durationSec": 40,
+            "materials": { "semen_sak": 3, "kayu_balok": 2 },
+            "valueBoost": 210000
+        }
+    },
+    "furnitureSets": [
+        {
+            "id": "set_minimalis",
+            "name": "Paket Minimalis Hemat",
+            "theme": "Minimalis",
+            "itemIds": ["tempat_tidur_single", "meja_kayu", "kursi_santai"],
+            "bundlePrice": 162000,
+            "normalPrice": 185000,
+            "bonusMood": 6,
+            "bonusValue": 75000
+        },
+        {
+            "id": "set_keluarga_sunda",
+            "name": "Paket Keluarga Nyaman",
+            "theme": "Keluarga Sunda",
+            "itemIds": ["tempat_tidur_queen", "meja_kayu", "kompor_gas", "kulkas_mini"],
+            "bundlePrice": 425000,
+            "normalPrice": 485000,
+            "bonusMood": 10,
+            "bonusValue": 165000
+        },
+        {
+            "id": "set_modern_elektronik",
+            "name": "Paket Modern Lengkap",
+            "theme": "Modern",
+            "itemIds": ["tempat_tidur_queen", "tv_led", "kulkas_mini", "kompor_gas"],
+            "bundlePrice": 495000,
+            "normalPrice": 570000,
+            "bonusMood": 14,
+            "bonusValue": 210000
+        }
+    ],
+    "agentSettings": {
+        "officePos": { "x": 6, "z": 26, "label": "Kantor Agen Properti Priangan" },
+        "licenseFee": 120000,
+        "minKomunikasi": 8,
+        "minHitung": 6,
+        "minReputation": 50,
+        "baseCommissionRate": 0.04,
+        "premiumListingFee": 35000,
+        "developerMinCapital": 650000
+    }
+}

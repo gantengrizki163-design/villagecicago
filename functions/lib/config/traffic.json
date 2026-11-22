@@ -1,0 +1,77 @@
+{
+    "enabled": true,
+    "laneOffsetRatio": 0.25,
+    "speedLimitsMps": {
+        "arteri": 16.0,
+        "kolektor": 12.5,
+        "lingkungan": 9.0,
+        "gang": 5.5
+    },
+    "speedingToleranceMps": 2.5,
+    "maxActiveNpcVehiclesMobile": 14,
+    "maxActiveNpcVehiclesDesktop": 24,
+    "cullRadiusMeters": 88,
+    "lodSimpleRadiusMeters": 46,
+    "trafficLightCycleMs": 28000,
+    "trafficLightGreenMs": 11000,
+    "trafficLightYellowMs": 3000,
+    "trafficLights": [
+        {
+            "id": "tl_alun_barat",
+            "label": "Simpang Alun-Alun Barat",
+            "x": -18,
+            "z": -10,
+            "ewRoadId": "jalan_raya",
+            "nsRoadId": "jalan_alun_barat",
+            "phaseOffsetMs": 0
+        },
+        {
+            "id": "tl_alun_timur",
+            "label": "Simpang Alun-Alun Timur",
+            "x": 18,
+            "z": -10,
+            "ewRoadId": "jalan_raya",
+            "nsRoadId": "jalan_alun_timur",
+            "phaseOffsetMs": 14000
+        }
+    ],
+    "densityByHour": [
+        { "startHour": 0, "endHour": 5, "density": 0.25 },
+        { "startHour": 5, "endHour": 9, "density": 0.95 },
+        { "startHour": 9, "endHour": 15, "density": 0.72 },
+        { "startHour": 15, "endHour": 19, "density": 1.0 },
+        { "startHour": 19, "endHour": 24, "density": 0.48 }
+    ],
+    "halteSpots": [
+        { "id": "halte_stasiun", "label": "Halte Stasiun Cicalengka", "x": 4, "z": -40, "roadId": "jalan_stasiun" },
+        { "id": "halte_alun", "label": "Halte Alun-Alun", "x": 0, "z": -10, "roadId": "jalan_raya" },
+        { "id": "halte_pasar", "label": "Halte Pasar Sehat", "x": 44, "z": -10, "roadId": "jalan_raya" },
+        { "id": "halte_perumahan", "label": "Halte Perumahan Timur", "x": 60, "z": 18, "roadId": "jalan_perumahan_timur" }
+    ],
+    "npcPoolWeights": [
+        { "modelId": "motor_bebek", "weight": 22 },
+        { "modelId": "motor_matic", "weight": 26 },
+        { "modelId": "motor_ojek", "weight": 10 },
+        { "modelId": "motor_tua", "weight": 5 },
+        { "modelId": "mobil_angkot", "weight": 12 },
+        { "modelId": "mobil_city", "weight": 8 },
+        { "modelId": "mobil_mpv", "weight": 9 },
+        { "modelId": "mobil_pickup", "weight": 6 },
+        { "modelId": "npc_becak", "weight": 5 },
+        { "modelId": "npc_bus", "weight": 3 },
+        { "modelId": "npc_truk_besar", "weight": 3 },
+        { "modelId": "npc_polisi", "weight": 2 },
+        { "modelId": "npc_ambulans", "weight": 1 }
+    ],
+    "trafficOffenseFines": {
+        "noSimC": 25000,
+        "noSimA": 45000,
+        "expiredStnk": 35000,
+        "speeding": 30000,
+        "redLight": 40000,
+        "illegalParking": 25000,
+        "railwayGateViolation": 50000,
+        "pedestrianCollision": 35000
+    },
+    "pedestrianFaintSec": 3.5
+}

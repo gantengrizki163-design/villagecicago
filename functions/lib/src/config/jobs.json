@@ -1,0 +1,99 @@
+{
+    "jobs": [
+        {
+            "id": "kasir_minimarket",
+            "title": "Kasir Minimarket",
+            "employer": "Cicalengka Mart",
+            "zone": "cicalengka",
+            "location": { "x": 22, "z": -10, "label": "Minimarket Cicalengka" },
+            "basePay": 28000,
+            "minDurationSec": 25,
+            "energyCost": 18,
+            "hygieneCost": 8,
+            "skillGain": { "hitung": 2, "komunikasi": 1 },
+            "requiredSkills": { "komunikasi": 0, "fisik": 0, "hitung": 0, "teknis": 0 },
+            "miniGameType": "kasir",
+            "ranks": [
+                { "title": "Kasir Magang", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+                { "title": "Kasir Senior", "minTotalWorkSec": 300, "payMultiplier": 1.2 },
+                { "title": "Kepala Toko", "minTotalWorkSec": 900, "payMultiplier": 1.45 }
+            ]
+        },
+        {
+            "id": "pedagang_pasar",
+            "title": "Pedagang Pasar",
+            "employer": "Pasar Sehat Cicalengka",
+            "zone": "cicalengka",
+            "location": { "x": 42, "z": -10, "label": "Pasar Cicalengka" },
+            "basePay": 32000,
+            "minDurationSec": 28,
+            "energyCost": 22,
+            "hygieneCost": 12,
+            "skillGain": { "komunikasi": 2, "hitung": 2 },
+            "requiredSkills": { "komunikasi": 4, "fisik": 0, "hitung": 4, "teknis": 0 },
+            "miniGameType": "pedagang",
+            "ranks": [
+                { "title": "Pedagang Pemula", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+                { "title": "Juragan Kios", "minTotalWorkSec": 360, "payMultiplier": 1.25 },
+                { "title": "Bandar Pasar", "minTotalWorkSec": 1000, "payMultiplier": 1.5 }
+            ]
+        },
+        {
+            "id": "kurir",
+            "title": "Kurir Paket",
+            "employer": "Kilat Priangan Ekspres",
+            "zone": "cicalengka",
+            "location": { "x": -10, "z": -28, "label": "Pos Kurir Cicalengka" },
+            "basePay": 38000,
+            "minDurationSec": 24,
+            "energyCost": 26,
+            "hygieneCost": 15,
+            "skillGain": { "fisik": 3, "komunikasi": 1 },
+            "requiredSkills": { "komunikasi": 0, "fisik": 6, "hitung": 0, "teknis": 0 },
+            "miniGameType": "kurir",
+            "ranks": [
+                { "title": "Kurir Baru", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+                { "title": "Kurir Kilat", "minTotalWorkSec": 300, "payMultiplier": 1.25 },
+                { "title": "Koordinator Rute", "minTotalWorkSec": 900, "payMultiplier": 1.5 }
+            ]
+        },
+        {
+            "id": "buruh_pabrik",
+            "title": "Buruh Pabrik Tekstil",
+            "employer": "PT Tekstil Rancaekek",
+            "zone": "rancaekek",
+            "location": { "x": 18, "z": -14, "label": "Pabrik Tekstil Rancaekek" },
+            "basePay": 44000,
+            "minDurationSec": 30,
+            "energyCost": 30,
+            "hygieneCost": 22,
+            "skillGain": { "fisik": 2, "teknis": 3 },
+            "requiredSkills": { "komunikasi": 0, "fisik": 10, "hitung": 0, "teknis": 5 },
+            "miniGameType": "pabrik",
+            "ranks": [
+                { "title": "Operator Junior", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+                { "title": "Operator Mesin", "minTotalWorkSec": 360, "payMultiplier": 1.25 },
+                { "title": "Mandor Produksi", "minTotalWorkSec": 1000, "payMultiplier": 1.5 }
+            ]
+        },
+        {
+            "id": "guru_honorer",
+            "title": "Guru Honorer",
+            "employer": "SDN Harapan Bandung",
+            "zone": "bandung",
+            "location": { "x": -18, "z": -12, "label": "Sekolah Bandung" },
+            "basePay": 48000,
+            "minDurationSec": 30,
+            "energyCost": 20,
+            "hygieneCost": 6,
+            "skillGain": { "komunikasi": 3, "hitung": 2 },
+            "requiredSkills": { "komunikasi": 12, "fisik": 0, "hitung": 10, "teknis": 0 },
+            "miniGameType": "guru",
+            "ranks": [
+                { "title": "Guru Bantu", "minTotalWorkSec": 0, "payMultiplier": 1.0 },
+                { "title": "Guru Tetap", "minTotalWorkSec": 360, "payMultiplier": 1.25 },
+                { "title": "Wakil Kepala Sekolah", "minTotalWorkSec": 1000, "payMultiplier": 1.5 }
+            ]
+        }
+    ]
+}

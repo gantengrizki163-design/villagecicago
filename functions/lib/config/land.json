@@ -1,0 +1,98 @@
+{
+    "maxLandsPerPlayer": 4,
+    "imbFeeBase": 45000,
+    "imbDurationMs": 90000,
+    "areaBasePricePerSqm": {
+        "kampung": 6500,
+        "perumahan": 8500,
+        "pasar": 13500,
+        "stasiun": 12000,
+        "alun_alun": 14000
+    },
+    "roadAccessMultiplier": {
+        "gang": 1.0,
+        "utama": 1.18
+    },
+    "plots": [
+        {
+            "id": "plot_kampung_1",
+            "name": "Kavling Babakan Barat A1",
+            "areaTag": "kampung",
+            "position": { "x": -70, "y": 0, "z": 26 },
+            "size": { "width": 7, "depth": 7 },
+            "roadAccess": "gang",
+            "zoning": "residensial",
+            "price": 320000
+        },
+        {
+            "id": "plot_kampung_2",
+            "name": "Kavling Babakan Kidul B2",
+            "areaTag": "kampung",
+            "position": { "x": -46, "y": 0, "z": 74 },
+            "size": { "width": 7, "depth": 7 },
+            "roadAccess": "gang",
+            "zoning": "residensial",
+            "price": 340000
+        },
+        {
+            "id": "plot_kampung_3",
+            "name": "Kavling Jalan Desa C3",
+            "areaTag": "kampung",
+            "position": { "x": -32, "y": 0, "z": 74 },
+            "size": { "width": 8, "depth": 8 },
+            "roadAccess": "utama",
+            "zoning": "campuran",
+            "price": 450000
+        },
+        {
+            "id": "plot_perumahan_1",
+            "name": "Kavling Griya Harmoni D1",
+            "areaTag": "perumahan",
+            "position": { "x": 0, "y": 0, "z": 74 },
+            "size": { "width": 8, "depth": 8 },
+            "roadAccess": "utama",
+            "zoning": "residensial",
+            "price": 560000
+        },
+        {
+            "id": "plot_perumahan_2",
+            "name": "Kavling Cicalengka Hills E2",
+            "areaTag": "perumahan",
+            "position": { "x": 30, "y": 0, "z": 74 },
+            "size": { "width": 9, "depth": 9 },
+            "roadAccess": "utama",
+            "zoning": "residensial",
+            "price": 720000
+        },
+        {
+            "id": "plot_perumahan_3",
+            "name": "Kavling Kareumbi Asri F3",
+            "areaTag": "perumahan",
+            "position": { "x": 44, "y": 0, "z": 74 },
+            "size": { "width": 8, "depth": 8 },
+            "roadAccess": "gang",
+            "zoning": "residensial",
+            "price": 530000
+        },
+        {
+            "id": "plot_pasar_1",
+            "name": "Kavling Niaga Pasar Timur G1",
+            "areaTag": "pasar",
+            "position": { "x": 50, "y": 0, "z": 38 },
+            "size": { "width": 7, "depth": 7 },
+            "roadAccess": "utama",
+            "zoning": "komersial",
+            "price": 680000
+        },
+        {
+            "id": "plot_stasiun_1",
+            "name": "Kavling Stasiun Barat H1",
+            "areaTag": "stasiun",
+            "position": { "x": -46, "y": 0, "z": -50 },
+            "size": { "width": 8, "depth": 8 },
+            "roadAccess": "utama",
+            "zoning": "campuran",
+            "price": 760000
+        }
+    ]
+}

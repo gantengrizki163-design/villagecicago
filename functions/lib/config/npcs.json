@@ -1,0 +1,281 @@
+{
+    "maxActiveRenderCount": { "low": 8, "medium": 12, "high": 16 },
+    "lodActiveRadiusMeters": 45,
+    "npcs": [
+        {
+            "id": "npc_bripka_asep",
+            "name": "Bripka Asep",
+            "role": "polisi_patroli",
+            "personality": "Tegas, sigap, namun mengayomi warga Cicalengka dengan pendekatan humanis.",
+            "gender": "laki-laki",
+            "appearance": { "skinColor": "#c68642", "hairColor": "#1e1b18", "shirtColor": "#1e293b", "pantsColor": "#0f172a" },
+            "homePos": { "x": -6, "z": 22 },
+            "workPos": { "x": -6, "z": 20 },
+            "speed": 2.3,
+            "patrolRoute": [[-6, 18], [-18, 18], [-18, -10], [-46, -10], [-18, -10], [18, -10], [46, -10], [18, -10], [18, 18], [-6, 18]],
+            "defaultInventory": ["borgol", "buku_tilang", "ht_patroli"],
+            "schedule": [
+                { "startHour": 0, "endHour": 6, "activity": "patroli_malam", "zoneTag": "stasiun" },
+                { "startHour": 6, "endHour": 12, "activity": "patroli_pagi", "zoneTag": "pasar" },
+                { "startHour": 12, "endHour": 13, "activity": "istirahat", "zoneTag": "polsek" },
+                { "startHour": 13, "endHour": 18, "activity": "patroli_sore", "zoneTag": "alun_alun" },
+                { "startHour": 18, "endHour": 24, "activity": "jaga_polsek", "zoneTag": "polsek" }
+            ]
+        },
+        {
+            "id": "npc_polwan_rina",
+            "name": "Briptu Rina",
+            "role": "polisi_patroli",
+            "personality": "Cermat, ramah saat menerima laporan warga, dan teliti memeriksa barang bukti.",
+            "gender": "perempuan",
+            "appearance": { "skinColor": "#e0ac69", "hairColor": "#1e1b18", "shirtColor": "#1e293b", "pantsColor": "#0f172a" },
+            "homePos": { "x": -8, "z": 22 },
+            "workPos": { "x": -4, "z": 20 },
+            "speed": 2.25,
+            "patrolRoute": [[-6, 18], [-18, 18], [-18, -40], [0, -40], [18, -40], [18, 18], [-6, 18]],
+            "defaultInventory": ["tablet_laporan", "ht_patroli"],
+            "schedule": [
+                { "startHour": 0, "endHour": 6, "activity": "jaga_tahanan", "zoneTag": "polsek" },
+                { "startHour": 6, "endHour": 14, "activity": "jaga_polsek", "zoneTag": "polsek" },
+                { "startHour": 14, "endHour": 22, "activity": "patroli_sore", "zoneTag": "stasiun" },
+                { "startHour": 22, "endHour": 24, "activity": "istirahat", "zoneTag": "polsek" }
+            ]
+        },
+        {
+            "id": "npc_kanit_hendar",
+            "name": "Kompol Hendar (Propam)",
+            "role": "polisi_atasan",
+            "personality": "Disiplin tinggi, mengawasi integritas aparat agar tidak menyalahgunakan wewenang.",
+            "gender": "laki-laki",
+            "appearance": { "skinColor": "#c68642", "hairColor": "#475569", "shirtColor": "#0f172a", "pantsColor": "#0f172a" },
+            "homePos": { "x": -6, "z": 22 },
+            "workPos": { "x": -6, "z": 20.5 },
+            "speed": 1.7,
+            "patrolRoute": [[-8, 20], [-4, 20]],
+            "defaultInventory": ["berkas_audit"],
+            "schedule": [
+                { "startHour": 0, "endHour": 7, "activity": "tidur", "zoneTag": "polsek" },
+                { "startHour": 7, "endHour": 17, "activity": "kerja", "zoneTag": "polsek" },
+                { "startHour": 17, "endHour": 24, "activity": "jaga_polsek", "zoneTag": "polsek" }
+            ]
+        },
+        {
+            "id": "npc_teh_neng",
+            "name": "Teh Neng (Warung)",
+            "role": "pedagang",
+            "personality": "Hangat, cerewet khas Sunda, hafal pelanggan setia dan suka memberi informasi gosip pasar.",
+            "gender": "perempuan",
+            "appearance": { "skinColor": "#e0ac69", "hairColor": "#1e1b18", "shirtColor": "#f59e0b", "pantsColor": "#334155" },
+            "homePos": { "x": -32, "z": 52 },
+            "workPos": { "x": -30, "z": -18 },
+            "speed": 1.85,
+            "patrolRoute": [[-30, -16], [-30, -10], [46, -10], [46, -4], [46, -10], [-30, -10]],
+            "defaultInventory": ["nasi_telur", "es_teh", "kopi_tubruk"],
+            "schedule": [
+                { "startHour": 0, "endHour": 5, "activity": "tidur", "zoneTag": "rumah" },
+                { "startHour": 5, "endHour": 7, "activity": "belanja_pasar", "zoneTag": "pasar" },
+                { "startHour": 7, "endHour": 12, "activity": "kerja", "zoneTag": "warung" },
+                { "startHour": 12, "endHour": 13, "activity": "makan_siang", "zoneTag": "warung" },
+                { "startHour": 13, "endHour": 21, "activity": "kerja", "zoneTag": "warung" },
+                { "startHour": 21, "endHour": 24, "activity": "pulang_tidur", "zoneTag": "rumah" }
+            ]
+        },
+        {
+            "id": "npc_mang_oding",
+            "name": "Mang Oding (Grosir)",
+            "role": "pedagang_grosir",
+            "personality": "Praktis, cekatan menghitung stok bahan bangunan & sembako, senang kalau bisnis warga ramai.",
+            "gender": "laki-laki",
+            "appearance": { "skinColor": "#c68642", "hairColor": "#1e1b18", "shirtColor": "#15803d", "pantsColor": "#1e293b" },
+            "homePos": { "x": 4, "z": 52 },
+            "workPos": { "x": 46, "z": -16.5 },
+            "speed": 1.9,
+            "patrolRoute": [[46, -16], [46, -10], [30, -10], [30, -16], [30, -10], [46, -10]],
+            "defaultInventory": ["beras_5kg", "semen_sak", "bata_merah"],
+            "schedule": [
+                { "startHour": 0, "endHour": 5, "activity": "tidur", "zoneTag": "rumah" },
+                { "startHour": 5, "endHour": 17, "activity": "kerja", "zoneTag": "pasar_grosir" },
+                { "startHour": 17, "endHour": 20, "activity": "santai", "zoneTag": "alun_alun" },
+                { "startHour": 20, "endHour": 24, "activity": "tidur", "zoneTag": "rumah" }
+            ]
+        },
+        {
+            "id": "npc_kang_ujang",
+            "name": "Kang Ujang (Agen)",
+            "role": "agen_properti",
+            "personality": "Persuasif, berwawasan luas soal harga tanah, IMB, dan tren hunian Cicalengka.",
+            "gender": "laki-laki",
+            "appearance": { "skinColor": "#e0ac69", "hairColor": "#1e1b18", "shirtColor": "#2563eb", "pantsColor": "#1e293b" },
+            "homePos": { "x": 30, "z": 52.8 },
+            "workPos": { "x": 6, "z": 21.5 },
+            "speed": 2.0,
+            "patrolRoute": [[6, 18], [18, 18], [18, 48], [30, 48], [18, 48], [18, 18]],
+            "defaultInventory": ["katalog_kavling", "brosur_kpr"],
+            "schedule": [
+                { "startHour": 0, "endHour": 6, "activity": "tidur", "zoneTag": "rumah" },
+                { "startHour": 6, "endHour": 8, "activity": "sarapan", "zoneTag": "warung" },
+                { "startHour": 8, "endHour": 17, "activity": "kerja", "zoneTag": "kantor_agen" },
+                { "startHour": 17, "endHour": 19, "activity": "survei_lokasi", "zoneTag": "perumahan" },
+                { "startHour": 19, "endHour": 24, "activity": "tidur", "zoneTag": "rumah" }
+            ]
+        },
+        {
+            "id": "npc_pak_tatang",
+            "name": "Pak Kades Tatang",
+            "role": "pejabat_desa",
+            "personality": "Bijak, tertib administrasi, selalu mendorong gotong royong dan legalitas IMB warga.",
+            "gender": "laki-laki",
+            "appearance": { "skinColor": "#c68642", "hairColor": "#64748b", "shirtColor": "#f8fafc", "pantsColor": "#1e293b" },
+            "homePos": { "x": -48, "z": 52 },
+            "workPos": { "x": -24, "z": 4 },
+            "speed": 1.75,
+            "patrolRoute": [[-22, 4], [-18, 4], [-18, -10], [0, -10], [0, -2], [0, -10], [-18, -10], [-18, 4]],
+            "defaultInventory": ["stempel_desa", "dokumen_imb"],
+            "schedule": [
+                { "startHour": 0, "endHour": 6, "activity": "tidur", "zoneTag": "rumah" },
+                { "startHour": 6, "endHour": 8, "activity": "jalan_pagi", "zoneTag": "alun_alun" },
+                { "startHour": 8, "endHour": 16, "activity": "kerja", "zoneTag": "kantor_desa" },
+                { "startHour": 16, "endHour": 19, "activity": "sambang_warga", "zoneTag": "kampung" },
+                { "startHour": 19, "endHour": 24, "activity": "tidur", "zoneTag": "rumah" }
+            ]
+        },
+        {
+            "id": "npc_bu_kokom",
+            "name": "Bu Kokom (Ibu RT)",
+            "role": "ibu_rumah_tangga",
+            "personality": "Perhatian pada tetangga, hafal siapa warga baru dan suka mengajak bersih-bersih lingkungan.",
+            "gender": "perempuan",
+            "appearance": { "skinColor": "#c68642", "hairColor": "#1e1b18", "shirtColor": "#16a34a", "pantsColor": "#334155" },
+            "homePos": { "x": -40, "z": 52 },
+            "workPos": { "x": -8, "z": 44.5 },
+            "speed": 1.8,
+            "patrolRoute": [[-8, 48], [-18, 48], [-18, -10], [46, -10], [-18, -10], [-18, 48]],
+            "defaultInventory": ["tas_belanja"],
+            "schedule": [
+                { "startHour": 0, "endHour": 5, "activity": "tidur", "zoneTag": "rumah" },
+                { "startHour": 5, "endHour": 8, "activity": "belanja_pasar", "zoneTag": "pasar" },
+                { "startHour": 8, "endHour": 15, "activity": "kerja_rumah", "zoneTag": "kampung" },
+                { "startHour": 15, "endHour": 18, "activity": "santai", "zoneTag": "alun_alun" },
+                { "startHour": 18, "endHour": 24, "activity": "tidur", "zoneTag": "rumah" }
+            ]
+        },
+        {
+            "id": "npc_bu_nia",
+            "name": "Bu Nia (Guru)",
+            "role": "guru",
+            "personality": "Sabar, edukatif, senang menjelaskan sejarah dan tips finansial bagi pendatang baru.",
+            "gender": "perempuan",
+            "appearance": { "skinColor": "#e0ac69", "hairColor": "#1e1b18", "shirtColor": "#0d9488", "pantsColor": "#1e293b" },
+            "homePos": { "x": -4, "z": 52 },
+            "workPos": { "x": -48, "z": 43.2 },
+            "speed": 1.85,
+            "patrolRoute": [[-48, 48], [-18, 48], [-18, -10], [-30, -10], [-18, -10], [-18, 48]],
+            "defaultInventory": ["buku_pelajaran"],
+            "schedule": [
+                { "startHour": 0, "endHour": 6, "activity": "tidur", "zoneTag": "rumah" },
+                { "startHour": 6, "endHour": 14, "activity": "kerja", "zoneTag": "sekolah" },
+                { "startHour": 14, "endHour": 16, "activity": "makan_siang", "zoneTag": "warung" },
+                { "startHour": 16, "endHour": 20, "activity": "santai", "zoneTag": "alun_alun" },
+                { "startHour": 20, "endHour": 24, "activity": "tidur", "zoneTag": "rumah" }
+            ]
+        },
+        {
+            "id": "npc_rafi_siswa",
+            "name": "Rafi (Pelajar)",
+            "role": "anak_sekolah",
+            "personality": "Energik, penasaran, suka nongkrong di sekitar stasiun melihat kereta lokal lewat.",
+            "gender": "laki-laki",
+            "appearance": { "skinColor": "#e0ac69", "hairColor": "#1e1b18", "shirtColor": "#f8fafc", "pantsColor": "#1d4ed8" },
+            "homePos": { "x": -40, "z": 52 },
+            "workPos": { "x": -48, "z": 44 },
+            "speed": 2.2,
+            "patrolRoute": [[-48, 48], [-18, 48], [-18, -40], [0, -40], [-18, -40], [-18, 48]],
+            "defaultInventory": ["buku_tulis"],
+            "schedule": [
+                { "startHour": 0, "endHour": 6, "activity": "tidur", "zoneTag": "rumah" },
+                { "startHour": 6, "endHour": 13, "activity": "sekolah", "zoneTag": "sekolah" },
+                { "startHour": 13, "endHour": 17, "activity": "main", "zoneTag": "stasiun" },
+                { "startHour": 17, "endHour": 20, "activity": "santai", "zoneTag": "alun_alun" },
+                { "startHour": 20, "endHour": 24, "activity": "tidur", "zoneTag": "rumah" }
+            ]
+        },
+        {
+            "id": "npc_mang_dadang",
+            "name": "Mang Dadang (Ojek)",
+            "role": "ojek",
+            "personality": "Supel, hafal seluruh jalan pintas Cicalengka, sering jadi saksi mata kejadian di stasiun.",
+            "gender": "laki-laki",
+            "appearance": { "skinColor": "#c68642", "hairColor": "#1e1b18", "shirtColor": "#16a34a", "pantsColor": "#1e293b" },
+            "homePos": { "x": -66.5, "z": 56 },
+            "workPos": { "x": -6, "z": -43 },
+            "speed": 2.35,
+            "patrolRoute": [[-6, -40], [18, -40], [18, -10], [46, -10], [18, -10], [-18, -10], [-18, -40]],
+            "defaultInventory": ["helm_cadangan"],
+            "schedule": [
+                { "startHour": 0, "endHour": 5, "activity": "tidur", "zoneTag": "rumah" },
+                { "startHour": 5, "endHour": 12, "activity": "mangkal", "zoneTag": "stasiun" },
+                { "startHour": 12, "endHour": 13, "activity": "makan_siang", "zoneTag": "warung" },
+                { "startHour": 13, "endHour": 22, "activity": "mangkal", "zoneTag": "stasiun" },
+                { "startHour": 22, "endHour": 24, "activity": "tidur", "zoneTag": "rumah" }
+            ]
+        },
+        {
+            "id": "npc_abah_eman",
+            "name": "Abah Eman (Petani)",
+            "role": "petani",
+            "personality": "Sederhana, pekerja keras, membawa hasil panen dari pinggiran kampung ke pasar pagi.",
+            "gender": "laki-laki",
+            "appearance": { "skinColor": "#8d5524", "hairColor": "#cbd5e1", "shirtColor": "#78350f", "pantsColor": "#1e293b" },
+            "homePos": { "x": -66.5, "z": 56 },
+            "workPos": { "x": 46, "z": -4 },
+            "speed": 1.65,
+            "patrolRoute": [[-60, 48], [-60, -10], [46, -10], [-60, -10]],
+            "defaultInventory": ["sayur_segar", "beras_5kg"],
+            "schedule": [
+                { "startHour": 0, "endHour": 4, "activity": "tidur", "zoneTag": "rumah" },
+                { "startHour": 4, "endHour": 10, "activity": "jual_panen", "zoneTag": "pasar" },
+                { "startHour": 10, "endHour": 17, "activity": "berkebun", "zoneTag": "kampung" },
+                { "startHour": 17, "endHour": 24, "activity": "tidur", "zoneTag": "rumah" }
+            ]
+        },
+        {
+            "id": "npc_mba_linda",
+            "name": "Mba Linda (Bank)",
+            "role": "pegawai_bank",
+            "personality": "Profesional, rapi, ahli menjelaskan simulasi KPR, skor kredit, dan pinjaman usaha.",
+            "gender": "perempuan",
+            "appearance": { "skinColor": "#f1c27d", "hairColor": "#4a3222", "shirtColor": "#1d4ed8", "pantsColor": "#0f172a" },
+            "homePos": { "x": 28, "z": 43.2 },
+            "workPos": { "x": -46, "z": -3.5 },
+            "speed": 1.85,
+            "patrolRoute": [[-46, -6], [-46, -10], [-18, -10], [-18, 18], [0, 18], [-18, 18], [-18, -10], [-46, -10]],
+            "defaultInventory": ["formulir_kpr"],
+            "schedule": [
+                { "startHour": 0, "endHour": 6, "activity": "tidur", "zoneTag": "rumah" },
+                { "startHour": 6, "endHour": 8, "activity": "sarapan", "zoneTag": "alun_alun" },
+                { "startHour": 8, "endHour": 16, "activity": "kerja", "zoneTag": "bank" },
+                { "startHour": 16, "endHour": 20, "activity": "santai", "zoneTag": "alun_alun" },
+                { "startHour": 20, "endHour": 24, "activity": "tidur", "zoneTag": "rumah" }
+            ]
+        },
+        {
+            "id": "npc_pak_mandor_budi",
+            "name": "Mandor Budi (Kontraktor)",
+            "role": "kontraktor",
+            "personality": "Tegas, paham hitung-hitungan semen, bata, genteng, dan progres pembangunan rumah.",
+            "gender": "laki-laki",
+            "appearance": { "skinColor": "#c68642", "hairColor": "#1e1b18", "shirtColor": "#ea580c", "pantsColor": "#334155" },
+            "homePos": { "x": 40, "z": 43.2 },
+            "workPos": { "x": -6, "z": -18 },
+            "speed": 1.95,
+            "patrolRoute": [[-6, -16], [-6, -10], [46, -10], [18, -10], [18, 66], [30, 66], [18, 66], [18, -10], [-6, -10]],
+            "defaultInventory": ["meteran", "denah_rumah"],
+            "schedule": [
+                { "startHour": 0, "endHour": 6, "activity": "tidur", "zoneTag": "rumah" },
+                { "startHour": 6, "endHour": 17, "activity": "kerja", "zoneTag": "toko_mebel" },
+                { "startHour": 17, "endHour": 20, "activity": "makan_sore", "zoneTag": "warung" },
+                { "startHour": 20, "endHour": 24, "activity": "tidur", "zoneTag": "rumah" }
+            ]
+        }
+    ]
+}

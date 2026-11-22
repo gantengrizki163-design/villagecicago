@@ -1,0 +1,335 @@
+{
+  "interactRadiusMeters": 9.5,
+  "hysteresisMeters": 2.0,
+  "npcInteractRadiusMeters": 4.5,
+  "locations": {
+    "warung": {
+      "zone": "cicalengka",
+      "label": "Warung Nasi Teh Neng",
+      "x": -30,
+      "z": -22,
+      "doorX": -30,
+      "doorZ": -18
+    },
+    "puskesmas": {
+      "zone": "cicalengka",
+      "label": "Puskesmas Cicalengka",
+      "x": -48,
+      "z": -22,
+      "doorX": -48,
+      "doorZ": -17
+    },
+    "klinik_swasta": {
+      "zone": "cicalengka",
+      "label": "Klinik Sehat Pratama",
+      "x": -46,
+      "z": 26,
+      "doorX": -46,
+      "doorZ": 21.5
+    },
+    "sekolah": {
+      "zone": "cicalengka",
+      "label": "Balai Kursus & Sekolah Cicalengka",
+      "x": -48,
+      "z": 38,
+      "doorX": -48,
+      "doorZ": 43.2
+    },
+    "stasiun": {
+      "zone": "cicalengka",
+      "label": "Stasiun Cicalengka",
+      "x": 0,
+      "z": -56,
+      "doorX": 0,
+      "doorZ": -49.5
+    },
+    "loket_tiket": {
+      "zone": "cicalengka",
+      "label": "Loket Stasiun Cicalengka",
+      "x": 8,
+      "z": -48,
+      "doorX": 8,
+      "doorZ": -46
+    },
+    "bank": {
+      "zone": "cicalengka",
+      "label": "Bank Priangan Cicalengka",
+      "x": -46,
+      "z": 2,
+      "doorX": -46,
+      "doorZ": -3.2
+    },
+    "atm_stasiun": {
+      "zone": "cicalengka",
+      "label": "ATM Stasiun Cicalengka",
+      "x": -8,
+      "z": -48,
+      "doorX": -8,
+      "doorZ": -46.4
+    },
+    "atm_alun": {
+      "zone": "cicalengka",
+      "label": "ATM Alun-Alun Cicalengka",
+      "x": 26,
+      "z": 10,
+      "doorX": 24.2,
+      "doorZ": 10
+    },
+    "atm_pasar": {
+      "zone": "cicalengka",
+      "label": "ATM Pasar Cicalengka",
+      "x": 50,
+      "z": 12,
+      "doorX": 50,
+      "doorZ": 13.6
+    },
+    "kantor_desa": {
+      "zone": "cicalengka",
+      "label": "Kantor Desa Cicalengka",
+      "x": -30,
+      "z": 4,
+      "doorX": -24.5,
+      "doorZ": 4
+    },
+    "pasar_grosir": {
+      "zone": "cicalengka",
+      "label": "Pasar Grosir Induk",
+      "x": 46,
+      "z": -22,
+      "doorX": 46,
+      "doorZ": -16.8
+    },
+    "balai_lelang": {
+      "zone": "cicalengka",
+      "label": "Balai Lelang Kota",
+      "x": 6,
+      "z": -22,
+      "doorX": 6,
+      "doorZ": -17.8
+    },
+    "toko_mebel": {
+      "zone": "cicalengka",
+      "label": "Toko Mebel Jaya",
+      "x": -6,
+      "z": -22,
+      "doorX": -6,
+      "doorZ": -18
+    },
+    "polsek": {
+      "zone": "cicalengka",
+      "label": "Polsek Cicalengka",
+      "x": -6,
+      "z": 26,
+      "doorX": -6,
+      "doorZ": 22
+    },
+    "kantor_agen": {
+      "zone": "cicalengka",
+      "label": "Kantor Agen Properti",
+      "x": 6,
+      "z": 26,
+      "doorX": 6,
+      "doorZ": 22
+    },
+    "penampungan": {
+      "zone": "cicalengka",
+      "label": "Balai Penampungan Warga",
+      "x": -70,
+      "z": -2,
+      "doorX": -65.5,
+      "doorZ": -2
+    },
+    "emperan_stasiun": {
+      "zone": "cicalengka",
+      "label": "Bangku Emperan Stasiun",
+      "x": -18,
+      "z": -48,
+      "doorX": -18,
+      "doorZ": -45.8
+    },
+    "emperan_pasar": {
+      "zone": "cicalengka",
+      "label": "Teras Emperan Pasar",
+      "x": 40,
+      "z": 14,
+      "doorX": 40,
+      "doorZ": 15.8
+    },
+    "bath_mck": {
+      "zone": "cicalengka",
+      "label": "MCK Umum Alun-Alun",
+      "x": 32,
+      "z": 10,
+      "doorX": 32,
+      "doorZ": 13
+    },
+    "minimarket": {
+      "zone": "cicalengka",
+      "label": "Minimarket Cicalengka",
+      "x": 30,
+      "z": -22,
+      "doorX": 30,
+      "doorZ": -17.2
+    },
+    "pasar": {
+      "zone": "cicalengka",
+      "label": "Pasar Baru Cicalengka",
+      "x": 46,
+      "z": 4,
+      "doorX": 46,
+      "doorZ": -3.2
+    },
+    "pos_kurir": {
+      "zone": "cicalengka",
+      "label": "Pos Kurir Cicalengka",
+      "x": 0,
+      "z": -30,
+      "doorX": 0,
+      "doorZ": -33.8
+    },
+    "kontrakan_1": {
+      "zone": "cicalengka",
+      "label": "Kontrakan Pak Ujang",
+      "x": -36,
+      "z": 40,
+      "doorX": -36,
+      "doorZ": 44
+    },
+    "kontrakan_2": {
+      "zone": "cicalengka",
+      "label": "Kontrakan Teh Ani",
+      "x": -28,
+      "z": 40,
+      "doorX": -28,
+      "doorZ": 44
+    },
+    "kontrakan_3": {
+      "zone": "cicalengka",
+      "label": "Kontrakan Babakan 3",
+      "x": -8,
+      "z": 40,
+      "doorX": -8,
+      "doorZ": 44
+    },
+    "kontrakan_4": {
+      "zone": "cicalengka",
+      "label": "Kontrakan Mang Dedi",
+      "x": 0,
+      "z": 40,
+      "doorX": 0,
+      "doorZ": 44
+    },
+    "kontrakan_5": {
+      "zone": "cicalengka",
+      "label": "Kontrakan Bu Haji",
+      "x": 8,
+      "z": 40,
+      "doorX": 8,
+      "doorZ": 44
+    },
+    "factory_rancaekek": {
+      "zone": "rancaekek",
+      "label": "PT Tekstil Rancaekek",
+      "x": 18,
+      "z": -14,
+      "doorX": 18,
+      "doorZ": -14
+    },
+    "school_bandung": {
+      "zone": "bandung",
+      "label": "SDN Harapan Bandung",
+      "x": -18,
+      "z": -12,
+      "doorX": -18,
+      "doorZ": -12
+    },
+    "station_rancaekek": {
+      "zone": "rancaekek",
+      "label": "Stasiun Rancaekek",
+      "x": 0,
+      "z": -42,
+      "doorX": 0,
+      "doorZ": -42
+    },
+    "station_bandung": {
+      "zone": "bandung",
+      "label": "Stasiun Bandung",
+      "x": 0,
+      "z": -42,
+      "doorX": 0,
+      "doorZ": -42
+    },
+    "station_nagreg": {
+      "zone": "nagreg",
+      "label": "Stasiun Nagreg",
+      "x": 0,
+      "z": -42,
+      "doorX": 0,
+      "doorZ": -42
+    },
+    "dealer_motor_baru": {
+      "zone": "cicalengka",
+      "label": "Dealer Motor Siliwangi Baru",
+      "x": -32,
+      "z": -30,
+      "doorX": -32,
+      "doorZ": -33.8
+    },
+    "lapak_motor_bekas": {
+      "zone": "cicalengka",
+      "label": "Lapak Motor Bekas Kang Ujang",
+      "x": -70,
+      "z": -30,
+      "doorX": -65.4,
+      "doorZ": -30
+    },
+    "showroom_mobil_baru": {
+      "zone": "cicalengka",
+      "label": "Showroom Mobil Priangan Baru",
+      "x": -30,
+      "z": 26,
+      "doorX": -30,
+      "doorZ": 21.6
+    },
+    "showroom_mobil_bekas": {
+      "zone": "cicalengka",
+      "label": "Showroom Mobil Bekas Jaya",
+      "x": -34,
+      "z": -50,
+      "doorX": -34,
+      "doorZ": -45.5
+    },
+    "spbu_cicalengka": {
+      "zone": "cicalengka",
+      "label": "SPBU & Stasiun Cas Cicalengka",
+      "x": -70,
+      "z": -14,
+      "doorX": -65.2,
+      "doorZ": -14
+    },
+    "bengkel_umum": {
+      "zone": "cicalengka",
+      "label": "Bengkel Resmi Priangan",
+      "x": -48,
+      "z": -30,
+      "doorX": -48,
+      "doorZ": -33.8
+    },
+    "pangkalan_ojek": {
+      "zone": "cicalengka",
+      "label": "Pangkalan CikOjek Stasiun",
+      "x": 10,
+      "z": -42,
+      "doorX": 8,
+      "doorZ": -40
+    },
+    "terminal_angkot": {
+      "zone": "cicalengka",
+      "label": "Terminal & Halte Stasiun",
+      "x": 4,
+      "z": -40,
+      "doorX": 4,
+      "doorZ": -44.2
+    }
+  }
+}

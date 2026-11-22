@@ -1,0 +1,600 @@
+Render Start 
+05:50:26.143
+App
+Error
+ Firestore Error: 
+  {"error":"Missing or insufficient permissions.","authInfo":{"userId":"V0ov2CdTJqhXYGi92LlXtH7p7PI2","email":"rizki056@guru.smk.belajar.id","emailVerified":true,"isAnonymous":false,"tenantId":null,"providerInfo":[{"providerId":"google.com","email":"rizki056@guru.smk.belajar.id"}]},"operationType":"get","path":"character_stats/V0ov2CdTJqhXYGi92LlXtH7p7PI2"} 
+05:50:26.144
+App
+Error
+ Firestore Error: 
+  {"error":"Missing or insufficient permissions.","authInfo":{"userId":"V0ov2CdTJqhXYGi92LlXtH7p7PI2","email":"rizki056@guru.smk.belajar.id","emailVerified":true,"isAnonymous":false,"tenantId":null,"providerInfo":[{"providerId":"google.com","email":"rizki056@guru.smk.belajar.id"}]},"operationType":"list","path":"characters/V0ov2CdTJqhXYGi92LlXtH7p7PI2/bills"} 
+05:50:26.144
+App
+Error
+ Firestore Error: 
+  {"error":"Missing or insufficient permissions.","authInfo":{"userId":"V0ov2CdTJqhXYGi92LlXtH7p7PI2","email":"rizki056@guru.smk.belajar.id","emailVerified":true,"isAnonymous":false,"tenantId":null,"providerInfo":[{"providerId":"google.com","email":"rizki056@guru.smk.belajar.id"}]},"operationType":"list","path":"characters/V0ov2CdTJqhXYGi92LlXtH7p7PI2/transactions"} 
+05:50:26.145
+App
+Error
+ React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  GameApp
+  1. useState                   useState
+2. useEffect                  useEffect
+3. useState                   useState
+4. useState                   useState
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useState                   useState
+9. useState                   useState
+10. useState                  useState
+11. useState                  useState
+12. useState                  useState
+13. useState                  useState
+14. useState                  useState
+15. useState                  useState
+16. useState                  useState
+17. useState                  useState
+18. useState                  useState
+19. useState                  useState
+20. useState                  useState
+21. useState                  useState
+22. useState                  useState
+23. useState                  useState
+24. useState                  useState
+25. useState                  useState
+26. useState                  useState
+27. useState                  useState
+28. useState                  useState
+29. useState                  useState
+30. useState                  useState
+31. useState                  useState
+32. useState                  useState
+33. useState                  useState
+34. useState                  useState
+35. useState                  useState
+36. useState                  useState
+37. useState                  useState
+38. useState                  useState
+39. useState                  useState
+40. useState                  useState
+41. useState                  useState
+42. useState                  useState
+43. useState                  useState
+44. useState                  useState
+45. useState                  useState
+46. useState                  useState
+47. useState                  useState
+48. useState                  useState
+49. useState                  useState
+50. useState                  useState
+51. useState                  useState
+52. useState                  useState
+53. useState                  useState
+54. useState                  useState
+55. useState                  useState
+56. useState                  useState
+57. useState                  useState
+58. useState                  useState
+59. useCallback               useCallback
+60. useState                  useState
+61. useState                  useState
+62. useState                  useState
+63. useState                  useState
+64. useState                  useState
+65. useState                  useState
+66. useState                  useState
+67. useState                  useState
+68. useState                  useState
+69. useState                  useState
+70. useState                  useState
+71. useState                  useState
+72. useState                  useState
+73. useState                  useState
+74. useState                  useState
+75. useState                  useState
+76. useState                  useState
+77. useState                  useState
+78. useState                  useState
+79. useState                  useState
+80. useState                  useState
+81. useState                  useState
+82. useState                  useState
+83. useState                  useState
+84. useState                  useState
+85. useState                  useState
+86. useState                  useState
+87. useState                  useState
+88. useState                  useState
+89. useState                  useState
+90. useState                  useState
+91. useState                  useState
+92. useState                  useState
+93. useState                  useState
+94. useState                  useState
+95. useState                  useState
+96. useState                  useState
+97. useState                  useState
+98. useState                  useState
+99. useState                  useState
+100. useState                 useState
+101. useState                 useState
+102. useState                 useState
+103. useState                 useState
+104. useState                 useState
+105. useState                 useState
+106. useRef                   useRef
+107. useRef                   useRef
+108. useRef                   useRef
+109. useState                 useState
+110. useState                 useState
+111. useState                 useState
+112. useState                 useState
+113. useRef                   useRef
+114. useRef                   useRef
+115. useRef                   useRef
+116. useState                 useState
+117. useState                 useState
+118. useState                 useState
+119. useState                 useState
+120. useState                 useState
+121. useState                 useState
+122. useRef                   useRef
+123. useRef                   useRef
+124. useRef                   useRef
+125. useRef                   useRef
+126. useRef                   useRef
+127. useCallback              useCallback
+128. useEffect                useEffect
+129. useEffect                useEffect
+130. useEffect                useEffect
+131. useEffect                useEffect
+132. useEffect                useEffect
+133. useEffect                useEffect
+134. useEffect                useEffect
+135. useMemo                  useMemo
+136. useMemo                  useMemo
+137. useEffect                useEffect
+138. useEffect                useEffect
+139. useMemo                  useMemo
+140. useMemo                  useMemo
+141. useMemo                  useMemo
+142. useMemo                  useMemo
+143. useMemo                  useMemo
+144. useMemo                  useMemo
+145. useMemo                  useMemo
+146. useMemo                  useMemo
+147. useMemo                  useMemo
+148. useEffect                useEffect
+149. useEffect                useEffect
+150. useEffect                useEffect
+151. useState                 useState
+152. useState                 useState
+153. useState                 useState
+154. useState                 useState
+155. useRef                   useRef
+156. useRef                   useRef
+157. useRef                   useRef
+158. useRef                   useRef
+159. useCallback              useCallback
+160. useEffect                useEffect
+161. useEffect                useEffect
+162. useEffect                useEffect
+163. useCallback              useCallback
+164. useEffect                useEffect
+165. useState                 useState
+166. useState                 useState
+167. useState                 useState
+168. useState                 useState
+169. useRef                   useRef
+170. useCallback              useCallback
+171. useEffect                useEffect
+172. useEffect                useEffect
+173. useEffect                useEffect
+174. useEffect                useEffect
+175. useCallback              useCallback
+176. useCallback              useCallback
+177. useCallback              useCallback
+178. useCallback              useCallback
+179. useCallback              useCallback
+180. useCallback              useCallback
+181. useCallback              useCallback
+182. useCallback              useCallback
+183. useCallback              useCallback
+184. useMemo                  useMemo
+185. useMemo                  useMemo
+186. useEffect                useEffect
+187. useCallback              useCallback
+188. useCallback              useCallback
+189. useCallback              useCallback
+190. useCallback              useCallback
+191. useCallback              useCallback
+192. useCallback              useCallback
+193. useCallback              useCallback
+194. useCallback              useCallback
+195. useCallback              useCallback
+196. useCallback              useCallback
+197. useCallback              useCallback
+198. useCallback              useCallback
+199. useCallback              useCallback
+200. useCallback              useCallback
+201. useCallback              useCallback
+202. useCallback              useCallback
+203. useCallback              useCallback
+204. useEffect                useEffect
+205. useCallback              useCallback
+206. useCallback              useCallback
+207. useCallback              useCallback
+208. useCallback              useCallback
+209. useCallback              useCallback
+210. useCallback              useCallback
+211. useCallback              useCallback
+212. useCallback              useCallback
+213. useEffect                useEffect
+214. useCallback              useCallback
+215. useCallback              useCallback
+216. useCallback              useCallback
+217. useCallback              useCallback
+218. useCallback              useCallback
+219. useCallback              useCallback
+220. useCallback              useCallback
+221. useCallback              useCallback
+222. useEffect                useEffect
+223. useEffect                useEffect
+224. undefined                useMemo
+ 
+05:50:26.146
+App
+Error
+ %o
+
+%s
+
+%s
+
+  Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:4269:12)
+    at updateMemo (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:4889:15)
+    at Object.useMemo (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:14302:13)
+    at exports.useMemo (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/react-4hkZzRew.js?v=88eae2e1:757:31)
+    at GameApp (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/client/src/App.tsx:1981:29)
+    at Object.react_stack_bottom_frame (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:13895:12)
+    at renderWithHooks (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:4153:19)
+    at updateFunctionComponent (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:5528:16)
+    at beginWork (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:6144:20)
+    at runWithFiberInDEV (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:697:66)
+  The above error occurred in the <GameApp> component.
+  React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary. 
+05:50:27.955
+Backend
+Log
+ Server restarting... 
+05:50:27.955
+Backend
+Log
+ Server stopped. 
+05:50:27.955
+Backend
+Log
+ Server started on port 3000. 
+05:50:27.955
+Backend
+Log
+ Pre-warming 1 paths...
+  
+  > react-example@0.0.0 dev
+  > vite --port=3000 --host=0.0.0.0 --port 3000 --host 0.0.0.0
+  
+  (!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+    - `__dirname` (vite.config.ts:22:40). Use `import.meta.dirname` instead
+  Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+  
+    VITE v8.3.8  ready in 498 ms
+  
+    ➜  Local:   http://localhost:3000/
+    ➜  Network: http://169.254.8.1:3000/    eth1
+    ➜  Network: http://169.254.9.1:3000/    eth2
+    ➜  Network: http://169.254.169.1:3000/  eth2 
+05:50:27.955
+Backend
+Log
+ Pre-warming completed. 
+05:50:27.971
+Backend
+Log
+ CONNECTED 
+05:50:28.951
+System
+Build
+ Render End 
+05:50:29.498
+App
+Debug
+ [vite] connecting... 
+05:50:29.510
+App
+Debug
+ [vite] connected. 
+05:50:30.404
+App
+Error
+ Firestore Error: 
+  {"error":"Missing or insufficient permissions.","authInfo":{"userId":"V0ov2CdTJqhXYGi92LlXtH7p7PI2","email":"rizki056@guru.smk.belajar.id","emailVerified":true,"isAnonymous":false,"tenantId":null,"providerInfo":[{"providerId":"google.com","email":"rizki056@guru.smk.belajar.id"}]},"operationType":"get","path":"users/V0ov2CdTJqhXYGi92LlXtH7p7PI2"} 
+05:50:30.779
+App
+Error
+ Firestore Error: 
+  {"error":"Missing or insufficient permissions.","authInfo":{"userId":"V0ov2CdTJqhXYGi92LlXtH7p7PI2","email":"rizki056@guru.smk.belajar.id","emailVerified":true,"isAnonymous":false,"tenantId":null,"providerInfo":[{"providerId":"google.com","email":"rizki056@guru.smk.belajar.id"}]},"operationType":"get","path":"character_stats/V0ov2CdTJqhXYGi92LlXtH7p7PI2"} 
+05:50:31.144
+App
+Error
+ Firestore Error: 
+  {"error":"Missing or insufficient permissions.","authInfo":{"userId":"V0ov2CdTJqhXYGi92LlXtH7p7PI2","email":"rizki056@guru.smk.belajar.id","emailVerified":true,"isAnonymous":false,"tenantId":null,"providerInfo":[{"providerId":"google.com","email":"rizki056@guru.smk.belajar.id"}]},"operationType":"list","path":"characters/V0ov2CdTJqhXYGi92LlXtH7p7PI2/bills"} 
+05:50:31.145
+App
+Error
+ Firestore Error: 
+  {"error":"Missing or insufficient permissions.","authInfo":{"userId":"V0ov2CdTJqhXYGi92LlXtH7p7PI2","email":"rizki056@guru.smk.belajar.id","emailVerified":true,"isAnonymous":false,"tenantId":null,"providerInfo":[{"providerId":"google.com","email":"rizki056@guru.smk.belajar.id"}]},"operationType":"list","path":"characters/V0ov2CdTJqhXYGi92LlXtH7p7PI2/transactions"} 
+05:50:31.146
+App
+Error
+ React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  GameApp
+  1. useState                   useState
+2. useEffect                  useEffect
+3. useState                   useState
+4. useState                   useState
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useState                   useState
+9. useState                   useState
+10. useState                  useState
+11. useState                  useState
+12. useState                  useState
+13. useState                  useState
+14. useState                  useState
+15. useState                  useState
+16. useState                  useState
+17. useState                  useState
+18. useState                  useState
+19. useState                  useState
+20. useState                  useState
+21. useState                  useState
+22. useState                  useState
+23. useState                  useState
+24. useState                  useState
+25. useState                  useState
+26. useState                  useState
+27. useState                  useState
+28. useState                  useState
+29. useState                  useState
+30. useState                  useState
+31. useState                  useState
+32. useState                  useState
+33. useState                  useState
+34. useState                  useState
+35. useState                  useState
+36. useState                  useState
+37. useState                  useState
+38. useState                  useState
+39. useState                  useState
+40. useState                  useState
+41. useState                  useState
+42. useState                  useState
+43. useState                  useState
+44. useState                  useState
+45. useState                  useState
+46. useState                  useState
+47. useState                  useState
+48. useState                  useState
+49. useState                  useState
+50. useState                  useState
+51. useState                  useState
+52. useState                  useState
+53. useState                  useState
+54. useState                  useState
+55. useState                  useState
+56. useState                  useState
+57. useState                  useState
+58. useState                  useState
+59. useCallback               useCallback
+60. useState                  useState
+61. useState                  useState
+62. useState                  useState
+63. useState                  useState
+64. useState                  useState
+65. useState                  useState
+66. useState                  useState
+67. useState                  useState
+68. useState                  useState
+69. useState                  useState
+70. useState                  useState
+71. useState                  useState
+72. useState                  useState
+73. useState                  useState
+74. useState                  useState
+75. useState                  useState
+76. useState                  useState
+77. useState                  useState
+78. useState                  useState
+79. useState                  useState
+80. useState                  useState
+81. useState                  useState
+82. useState                  useState
+83. useState                  useState
+84. useState                  useState
+85. useState                  useState
+86. useState                  useState
+87. useState                  useState
+88. useState                  useState
+89. useState                  useState
+90. useState                  useState
+91. useState                  useState
+92. useState                  useState
+93. useState                  useState
+94. useState                  useState
+95. useState                  useState
+96. useState                  useState
+97. useState                  useState
+98. useState                  useState
+99. useState                  useState
+100. useState                 useState
+101. useState                 useState
+102. useState                 useState
+103. useState                 useState
+104. useState                 useState
+105. useState                 useState
+106. useRef                   useRef
+107. useRef                   useRef
+108. useRef                   useRef
+109. useState                 useState
+110. useState                 useState
+111. useState                 useState
+112. useState                 useState
+113. useRef                   useRef
+114. useRef                   useRef
+115. useRef                   useRef
+116. useState                 useState
+117. useState                 useState
+118. useState                 useState
+119. useState                 useState
+120. useState                 useState
+121. useState                 useState
+122. useRef                   useRef
+123. useRef                   useRef
+124. useRef                   useRef
+125. useRef                   useRef
+126. useRef                   useRef
+127. useCallback              useCallback
+128. useEffect                useEffect
+129. useEffect                useEffect
+130. useEffect                useEffect
+131. useEffect                useEffect
+132. useEffect                useEffect
+133. useEffect                useEffect
+134. useEffect                useEffect
+135. useMemo                  useMemo
+136. useMemo                  useMemo
+137. useEffect                useEffect
+138. useEffect                useEffect
+139. useMemo                  useMemo
+140. useMemo                  useMemo
+141. useMemo                  useMemo
+142. useMemo                  useMemo
+143. useMemo                  useMemo
+144. useMemo                  useMemo
+145. useMemo                  useMemo
+146. useMemo                  useMemo
+147. useMemo                  useMemo
+148. useEffect                useEffect
+149. useEffect                useEffect
+150. useEffect                useEffect
+151. useState                 useState
+152. useState                 useState
+153. useState                 useState
+154. useState                 useState
+155. useRef                   useRef
+156. useRef                   useRef
+157. useRef                   useRef
+158. useRef                   useRef
+159. useCallback              useCallback
+160. useEffect                useEffect
+161. useEffect                useEffect
+162. useEffect                useEffect
+163. useCallback              useCallback
+164. useEffect                useEffect
+165. useState                 useState
+166. useState                 useState
+167. useState                 useState
+168. useState                 useState
+169. useRef                   useRef
+170. useCallback              useCallback
+171. useEffect                useEffect
+172. useEffect                useEffect
+173. useEffect                useEffect
+174. useEffect                useEffect
+175. useCallback              useCallback
+176. useCallback              useCallback
+177. useCallback              useCallback
+178. useCallback              useCallback
+179. useCallback              useCallback
+180. useCallback              useCallback
+181. useCallback              useCallback
+182. useCallback              useCallback
+183. useCallback              useCallback
+184. useMemo                  useMemo
+185. useMemo                  useMemo
+186. useEffect                useEffect
+187. useCallback              useCallback
+188. useCallback              useCallback
+189. useCallback              useCallback
+190. useCallback              useCallback
+191. useCallback              useCallback
+192. useCallback              useCallback
+193. useCallback              useCallback
+194. useCallback              useCallback
+195. useCallback              useCallback
+196. useCallback              useCallback
+197. useCallback              useCallback
+198. useCallback              useCallback
+199. useCallback              useCallback
+200. useCallback              useCallback
+201. useCallback              useCallback
+202. useCallback              useCallback
+203. useCallback              useCallback
+204. useEffect                useEffect
+205. useCallback              useCallback
+206. useCallback              useCallback
+207. useCallback              useCallback
+208. useCallback              useCallback
+209. useCallback              useCallback
+210. useCallback              useCallback
+211. useCallback              useCallback
+212. useCallback              useCallback
+213. useEffect                useEffect
+214. useCallback              useCallback
+215. useCallback              useCallback
+216. useCallback              useCallback
+217. useCallback              useCallback
+218. useCallback              useCallback
+219. useCallback              useCallback
+220. useCallback              useCallback
+221. useCallback              useCallback
+222. useEffect                useEffect
+223. useEffect                useEffect
+224. undefined                useMemo
+ 
+05:50:31.147
+App
+Error
+ %o
+
+%s
+
+%s
+
+  Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:4269:12)
+    at updateMemo (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:4889:15)
+    at Object.useMemo (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:14302:13)
+    at exports.useMemo (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/react-4hkZzRew.js?v=88eae2e1:757:31)
+    at GameApp (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/client/src/App.tsx:1981:29)
+    at Object.react_stack_bottom_frame (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:13895:12)
+    at renderWithHooks (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:4153:19)
+    at updateFunctionComponent (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:5528:16)
+    at beginWork (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:6144:20)
+    at runWithFiberInDEV (https://ais-dev-yygq55fyln6f7tf7l6pxc5-223900700973.asia-southeast1.run.app/node_modules/.vite/deps/client-D7P7Zikj.js?v=88eae2e1:697:66)
+  The above error occurred in the <GameApp> component.
+  React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary. 
